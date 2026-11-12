@@ -1,10 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Inventory Update</title>
 </head>
 <body>
+
+<h1>StockSmart</h1>
+<h2>Inventory Update</h2>
+
+<nav>
+  <a href="index.html">Dashboard</a> |
+  <a href="products.html">Products</a> |
+  <a href="inventory.html">Inventory</a> |
+  <a href="sales.html">Sales</a> |
+  <a href="reports.html">Reports</a>
+</nav>
+
+<hr>
+
+<h3>Update Inventory</h3>
+
+<!-- Interface only: database connection comes later -->
+<form action="#" method="get">
+
+  <label for="productId">Product:</label>
+  <select id="productId" name="productId" required>
+    <option value="">Select Product</option>
+    <option value="1">Whole Milk</option>
+    <option value="7">Sourdough Bread</option>
+    <option value="12">Ground Beef</option>
+  </select>
+  <br><br>
+
+  <label for="quantity">Quantity in Stock:</label>
+  <input type="number" id="quantity"
+         name="quantity"
+         min="0" step="1" required>
+  <br><br>
+
+  <label for="minStock">Minimum Stock Level:</label>
+  <input type="number" id="minStock"
+         name="minStock"
+         min="0" step="1" required>
+  <br><br>
+
+  <button type="submit">Update Inventory</button>
+  <button type="reset">Clear Form</button>
+</form>
+
+<hr>
+
+<h3>Inventory Query Results</h3>
+
+<p>
+  Placeholder results. This table will display
+  MySQL query results in Phase 4.
+</p>
+
+<table border="1" cellpadding="8">
+  <thead>
+  <tr>
+    <th>Inventory ID</th>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Min Stock</th>
+    <th>Last Updated</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Whole Milk</td>
+    <td>4</td>
+    <td>10</td>
+    <td>2026-11-12 09:30:00</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Sourdough Bread</td>
+    <td>2</td>
+    <td>5</td>
+    <td>2026-11-11 16:45:00</td>
+  </tr>
+  </tbody>
+</table>
 
 </body>
 </html>
