@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Product Management</title>
+</head>
+<body>
+
+<h1>StockSmart</h1>
+<h2>Product Management</h2>
+
+<nav>
+  <a href="index.html">Dashboard</a> |
+  <a href="products.html">Products</a> |
+  <a href="inventory.html">Inventory</a> |
+  <a href="sales.html">Sales</a> |
+  <a href="reports.html">Reports</a>
+</nav>
+
+<hr>
+
+<h3>Add Product</h3>
+
+<!-- Interface only: database connection comes later -->
+<form action="#" method="get">
+
+  <label for="productName">Product Name:</label>
+  <input type="text" id="productName"
+         name="productName" required>
+  <br><br>
+
+  <label for="category">Category:</label>
+  <select id="category" name="category" required>
+    <option value="">Select Category</option>
+    <option value="1">Dairy</option>
+    <option value="2">Produce</option>
+    <option value="3">Meat</option>
+    <option value="4">Bakery</option>
+    <option value="5">Snacks</option>
+  </select>
+  <br><br>
+
+  <label for="purchasePrice">Purchase Price:</label>
+  <input type="number" id="purchasePrice"
+         name="purchasePrice"
+         min="0" step="0.01" required>
+  <br><br>
+
+  <label for="sellPrice">Selling Price:</label>
+  <input type="number" id="sellPrice"
+         name="sellPrice"
+         min="0" step="0.01" required>
+  <br><br>
+
+  <label for="expirationDate">Expiration Date:</label>
+  <input type="date" id="expirationDate"
+         name="expirationDate">
+  <br><br>
+
+  <button type="submit">Add Product</button>
+  <button type="reset">Clear Form</button>
+</form>
+
+<hr>
+
+<h3>Product Query Results</h3>
+
+<p>
+  Placeholder results. This table will display
+  MySQL query results in Phase 4.
+</p>
+
+<table border="1" cellpadding="8">
+  <thead>
+  <tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Category</th>
+    <th>Purchase Price</th>
+    <th>Selling Price</th>
+    <th>Expiration Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Whole Milk</td>
+    <td>Dairy</td>
+    <td>2.50</td>
+    <td>4.99</td>
+    <td>2026-11-20</td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
