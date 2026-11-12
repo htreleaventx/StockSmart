@@ -1,10 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Alert Dashboard</title>
 </head>
 <body>
+
+<h1>StockSmart</h1>
+<h2>Alert Dashboard</h2>
+
+<nav>
+  <a href="index.html">Dashboard</a> |
+  <a href="products.html">Products</a> |
+  <a href="inventory.html">Inventory</a> |
+  <a href="sales.html">Sales</a> |
+  <a href="reports.html">Reports</a>
+</nav>
+
+<hr>
+
+<h3>Search / Filter Inventory</h3>
+
+<!-- Interface only: database connection comes later -->
+<form action="#" method="get">
+
+  <label for="searchName">Product Name:</label>
+  <input type="text" id="searchName" name="searchName">
+  <br><br>
+
+  <label for="category">Category:</label>
+  <select id="category" name="category">
+    <option value="">All Categories</option>
+    <option value="1">Dairy</option>
+    <option value="2">Produce</option>
+    <option value="3">Meat</option>
+    <option value="4">Bakery</option>
+    <option value="5">Snacks</option>
+  </select>
+  <br><br>
+
+  <label for="expiringDays">Expiring Within (days):</label>
+  <input type="number" id="expiringDays"
+         name="expiringDays" min="1" value="7">
+  <br><br>
+
+  <button type="submit">Search</button>
+  <button type="reset">Clear Filters</button>
+</form>
+
+<hr>
+
+<h3>Low Stock Alerts</h3>
+
+<p>
+  Placeholder results. Phase 4 will show products where
+  Quantity &lt;= MinStock.
+</p>
+
+<table border="1" cellpadding="8">
+  <thead>
+  <tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Category</th>
+    <th>Quantity</th>
+    <th>Min Stock</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Whole Milk</td>
+    <td>Dairy</td>
+    <td>4</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Sourdough Bread</td>
+    <td>Bakery</td>
+    <td>2</td>
+    <td>5</td>
+  </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h3>Expiring Soon</h3>
+
+<p>
+  Placeholder results. Phase 4 will show products whose
+  ExpirationDate falls within the selected number of days.
+</p>
+
+<table border="1" cellpadding="8">
+  <thead>
+  <tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Category</th>
+    <th>Quantity</th>
+    <th>Expiration Date</th>
+    <th>Days Left</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Whole Milk</td>
+    <td>Dairy</td>
+    <td>4</td>
+    <td>2026-11-20</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Ground Beef</td>
+    <td>Meat</td>
+    <td>15</td>
+    <td>2026-11-15</td>
+    <td>3</td>
+  </tr>
+  </tbody>
+</table>
 
 </body>
 </html>
