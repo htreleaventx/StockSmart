@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Expiring Soon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>StockSmart</h1>
+    <h2>Alert Dashboard</h2>
+  </div>
+  <nav>
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="products.html">Products</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="sales.html">Sales</a>
+    <a href="reports.html">Reports</a>
+  </nav>
+</header>
+
+<main>
+  <aside class="sections">
+    <a href="index.html">Search / Filter Inventory</a>
+    <a href="low-stock.html">Low Stock Alerts</a>
+    <a href="expiring.html" class="active">Expiring Soon</a>
+  </aside>
+
+  <section class="content">
+    <h3>Expiring Soon</h3>
+
+    <!-- Interface only: database connection comes later -->
+    <form action="#" method="get">
+
+      <label for="expiringDays">Expiring Within (days):</label>
+      <input type="number" id="expiringDays"
+             name="expiringDays" min="1" value="10">
+      <br><br>
+
+      <button type="submit">Show Products</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <p class="note">
+      Placeholder results. Phase 4 will show products whose
+      ExpirationDate falls within the selected number of days.
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Expiration Date</th>
+        <th>Days Left</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>7</td>
+        <td>Sourdough Bread</td>
+        <td>Bakery</td>
+        <td>2</td>
+        <td>2026-11-14</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Ground Beef</td>
+        <td>Meat</td>
+        <td>15</td>
+        <td>2026-11-15</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Whole Milk</td>
+        <td>Dairy</td>
+        <td>4</td>
+        <td>2026-11-20</td>
+        <td>8</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+</body>
+</html>
