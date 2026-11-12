@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Sales Entry</title>
+</head>
+<body>
+
+<h1>StockSmart</h1>
+<h2>Sales Entry / Checkout</h2>
+
+<nav>
+  <a href="index.html">Dashboard</a> |
+  <a href="products.html">Products</a> |
+  <a href="inventory.html">Inventory</a> |
+  <a href="sales.html">Sales</a> |
+  <a href="reports.html">Reports</a>
+</nav>
+
+<hr>
+
+<h3>Add Item to Sale</h3>
+
+<!-- Interface only: database connection comes later -->
+<form action="#" method="get">
+
+  <label for="productId">Product:</label>
+  <select id="productId" name="productId" required>
+    <option value="">Select Product</option>
+    <option value="1">Whole Milk</option>
+    <option value="7">Sourdough Bread</option>
+    <option value="12">Ground Beef</option>
+  </select>
+  <br><br>
+
+  <label for="quantitySold">Quantity Sold:</label>
+  <input type="number" id="quantitySold"
+         name="quantitySold"
+         min="1" step="1" required>
+  <br><br>
+
+  <label for="unitPrice">Unit Price:</label>
+  <input type="number" id="unitPrice"
+         name="unitPrice"
+         min="0" step="0.01" readonly>
+  <br><br>
+
+  <label for="unitCost">Unit Cost:</label>
+  <input type="number" id="unitCost"
+         name="unitCost"
+         min="0" step="0.01" readonly>
+  <br><br>
+
+  <p>
+    Unit price and unit cost are copied from the Product table
+    when the sale is recorded (filled in during Phase 4).
+  </p>
+
+  <button type="submit">Add Item</button>
+  <button type="reset">Clear Form</button>
+</form>
+
+<hr>
+
+<h3>Current Sale</h3>
+
+<p>
+  Placeholder results. Completing a sale will insert into the
+  Sale and SaleItem tables and reduce inventory in Phase 4.
+</p>
+
+<table border="1" cellpadding="8">
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Quantity Sold</th>
+    <th>Unit Price</th>
+    <th>Unit Cost</th>
+    <th>Line Revenue</th>
+    <th>Line Cost</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Whole Milk</td>
+    <td>2</td>
+    <td>4.99</td>
+    <td>2.50</td>
+    <td>9.98</td>
+    <td>5.00</td>
+  </tr>
+  <tr>
+    <td>Sourdough Bread</td>
+    <td>1</td>
+    <td>5.49</td>
+    <td>2.75</td>
+    <td>5.49</td>
+    <td>2.75</td>
+  </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>Total Revenue</th>
+    <td>15.47</td>
+  </tr>
+  <tr>
+    <th>Total Cost</th>
+    <td>7.75</td>
+  </tr>
+  <tr>
+    <th>Total Profit</th>
+    <td>7.72</td>
+  </tr>
+</table>
+
+<br>
+
+<form action="#" method="get">
+  <button type="submit">Complete Sale</button>
+  <button type="reset">Cancel Sale</button>
+</form>
+
+</body>
+</html>

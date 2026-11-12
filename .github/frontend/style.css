@@ -1,0 +1,218 @@
+
+/* NOTE: need to make more scalable across device sizes using clamp() etc, and Tailwind wud be a good add-on */
+
+:root {
+  --green: #2e7d32;
+  --green-dark: #1b5e20;
+  --green-light: #e8f5e9;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --border: #d1d5db;
+  --bg: #f4f6f8;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  line-height: 1.5;
+}
+
+/* ---------- Headings ---------- */
+h1 {
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+h3 {
+  margin: 28px 0 10px;
+  color: var(--green-dark);
+  font-size: 1.15rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 6px 0 12px;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+  background: var(--green);
+  border-radius: 8px;
+  padding: 6px 8px;
+  color: var(--green-light); 
+  margin-bottom: 8px;
+}
+
+nav a {
+  display: inline-block;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: var(--green-dark);
+}
+
+/* ---------- Forms ---------- */
+form {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  max-width: 560px;
+}
+
+label {
+  display: inline-block;
+  width: 180px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 260px;
+  max-width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--white);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+input[readonly] {
+  background: var(--bg);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+button[type="submit"] {
+  background: var(--green);
+  color: var(--white);
+}
+
+button[type="submit"]:hover {
+  background: var(--green-dark);
+}
+
+button[type="reset"] {
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button[type="reset"]:hover {
+  background: var(--bg);
+}
+
+/* ---------- Tables ---------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+}
+
+thead th {
+  background: var(--green);
+  color: var(--white);
+  font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+tbody tr:hover {
+  background: var(--green-light);
+}
+
+table:not(:has(thead)) {
+  width: auto;
+  min-width: 280px;
+}
+
+table:not(:has(thead)) th {
+  background: var(--green-light);
+  color: var(--green-dark);
+}
+
+@media (max-width: 600px) {
+  label {
+    display: block;
+    width: auto;
+    margin-bottom: 4px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  select {
+    width: 100%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
