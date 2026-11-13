@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Current Sale</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>StockSmart</h1>
+    <h2>Sales Entry / Checkout</h2>
+    <h3>Never run out. Never run over.</h3>
+  </div>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="products.html">Products</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="sales.html" class="active">Sales</a>
+    <a href="reports.html">Reports</a>
+  </nav>
+</header>
+
+<main>
+  <aside class="sections">
+    <a href="sales.html">Add Item to Sale</a>
+    <a href="current-sale.html" class="active">Current Sale</a>
+  </aside>
+
+  <section class="content">
+    <h3>Current Sale</h3>
+
+    <p class="note">
+      Placeholder results. Completing a sale will insert into the
+      Sale and SaleItem tables and reduce inventory in Phase 4.
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity Sold</th>
+        <th>Unit Price</th>
+        <th>Unit Cost</th>
+        <th>Line Revenue</th>
+        <th>Line Cost</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Whole Milk</td>
+        <td>2</td>
+        <td>4.99</td>
+        <td>2.50</td>
+        <td>9.98</td>
+        <td>5.00</td>
+      </tr>
+      <tr>
+        <td>Sourdough Bread</td>
+        <td>1</td>
+        <td>5.49</td>
+        <td>2.75</td>
+        <td>5.49</td>
+        <td>2.75</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table class="totals">
+      <tr>
+        <th>Total Revenue</th>
+        <td>15.47</td>
+      </tr>
+      <tr>
+        <th>Total Cost</th>
+        <td>7.75</td>
+      </tr>
+      <tr>
+        <th>Total Profit</th>
+        <td>7.72</td>
+      </tr>
+    </table>
+
+    <!-- Interface only: database connection comes later -->
+    <form action="#" method="get">
+      <button type="submit">Complete Sale</button>
+      <button type="reset">Cancel Sale</button>
+    </form>
+  </section>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playball&display=swap');
+
+:root {
+  --bg-left: #8adb5a;
+  --bg-right: #cbe566;
+  --ink: #0b5345;
+  --ink-dark: #073b31;
+  --pill: #09a84b;
+  --pill-dark: #078a3d;
+  --grad-active: linear-gradient(90deg, #5ce1e6, #0045a8);
+  --blob: rgba(236, 244, 150, 0.6);
+  --card: rgba(255, 255, 255, 0.9);
+  --border: #b7c9a0;
+  --navy: #2a2a85;
+  --blue: #1a75bb;
+  --serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --script: "Playball", "Brush Script MT", cursive;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #b3e064;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--serif);
+  color: var(--ink-dark);
+  line-height: 1.55;
+  background:
+    url("pantry.jpg") right center / auto 100% no-repeat fixed,
+    linear-gradient(90deg, var(--bg-left), var(--bg-right)) fixed;
+}
+
+/* ---------- Header ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding-right: clamp(16px, 3vw, 32px);
+}
+
+.brand {
+  position: relative;
+  padding: 22px clamp(48px, 6vw, 80px) 14px clamp(20px, 3vw, 32px);
+  border-bottom: 3px solid #000;
+  flex: 1;
+  max-width: 900px;
+}
+
+.brand::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: clamp(20px, 3vw, 40px);
+  width: 3px;
+  height: calc(100% + 28px);
+  background: #000;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 5rem);
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.brand h2 {
+  margin: 0 0 0 clamp(20px, 4vw, 56px);
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.5vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.brand h3 {
+  margin: 4px 0 0 clamp(20px, 4vw, 56px);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  line-height: 1.2;
+  color: var(--ink-dark);
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 210px;
+  flex-shrink: 0;
+  padding-top: 22px;
+}
+
+header nav a {
+  display: block;
+  text-align: center;
+  padding: 15px 12px;
+  border-radius: 999px;
+  background: var(--pill);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background 0.15s;
+}
+
+header nav a:hover {
+  background: var(--pill-dark);
+}
+
+header nav a.active {
+  background: var(--grad-active);
+}
+
+/* ---------- Main Layout (Restored intentional overlap) ---------- */
+main {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+  padding: 0 clamp(16px, 3vw, 40px) 36px;
+  margin-top: -70px; /* Pulls content up nicely under the header banner */
+  align-items: start;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sections a {
+  display: block;
+  padding: 24px 26px;
+  text-align: center;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.25;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--blob);
+  border-radius: 38% 62% 55% 45% / 55% 40% 60% 45%;
+  rotate: -1.5deg;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.sections a:nth-child(2) {
+  border-radius: 62% 38% 40% 60% / 45% 55% 45% 55%;
+  rotate: 1.5deg;
+}
+
+.sections a:nth-child(3) {
+  border-radius: 45% 55% 62% 38% / 60% 45% 55% 40%;
+  rotate: -1deg;
+}
+
+.sections a:hover {
+  transform: scale(1.04);
+  background: rgba(246, 250, 180, 0.85);
+}
+
+.sections a.active {
+  background: var(--grad-active);
+  color: #fff;
+}
+
+.content {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.95) 55%, rgba(255, 255, 255, 0.35) 100%),
+    url("veggies.jpg") right center / auto 100% no-repeat;
+  border-radius: 20px;
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: 0 4px 14px rgba(7, 59, 49, 0.15);
+  min-width: 0;
+  max-width: 920px;
+  width: 100%;
+}
+
+.content h3 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  color: var(--ink);
+}
+
+.content h3.spaced {
+  margin-top: 30px;
+}
+
+.note {
+  margin: 4px 0 12px;
+  font-size: 0.85rem;
+  color: #4b6b5c;
+}
+
+/* ---------- Forms (Fixed for robust label/input spacing) ---------- */
+form {
+  max-width: 580px;
+}
+
+/* Supports either direct layout or wrapped form-groups */
+form label,
+.form-group label {
+  display: inline-block;
+  width: 180px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form select,
+.form-group input,
+.form-group select {
+  width: 260px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid #9fb88a;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--pill);
+  box-shadow: 0 0 0 3px rgba(9, 168, 75, 0.25);
+}
+
+input[readonly] {
+  background: #eef2e8;
+  color: #6b7f72;
+  cursor: not-allowed;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-top: 10px;
+}
+
+button[type="submit"] {
+  background: var(--pill);
+  color: #fff;
+}
+
+button[type="submit"]:hover {
+  background: var(--pill-dark);
+}
+
+button[type="reset"] {
+  background: #fff;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+button[type="reset"]:hover {
+  background: #eef6e0;
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  margin-top: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 0.88rem;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e3ecd6;
+}
+
+thead th {
+  background: var(--ink);
+  color: #fff;
+}
+
+tbody tr:last-child > * {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+  background: #f6faee;
+}
+
+tbody tr:hover {
+  background: #e9f6d3;
+}
+
+table.totals {
+  width: auto;
+  min-width: 280px;
+  margin: 16px 0;
+}
+
+table.totals th {
+  background: #e9f6d3;
+  color: var(--ink);
+}
+
+/* ---------- Responsive Breakpoints ---------- */
+@media (max-width: 860px) {
+  header {
+    flex-direction: column;
+    padding-right: 0;
+    gap: 12px;
+  }
+
+  .brand {
+    width: 100%;
+    padding-right: 30px;
+  }
+
+  header nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 8px 16px 0;
+  }
+
+  header nav a {
+    flex: 1 1 130px;
+    padding: 12px 10px;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+    padding: 20px;
+  }
+
+  .sections {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sections a {
+    flex: 1 1 180px;
+    padding: 16px 20px;
+  }
+
+  form label,
+  .form-group label {
+    display: block;
+    width: auto;
+    margin-bottom: 4px;
+  }
+
+  form input[type="text"],
+  form input[type="number"],
+  form input[type="date"],
+  form select,
+  .form-group input,
+  .form-group select {
+    width: 100%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
