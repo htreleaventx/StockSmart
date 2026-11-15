@@ -11,7 +11,7 @@ such as product name, quantity, category, expiration date, purchase cost, and se
 Group members (sorted alphabetically by last name) & roles for Phase 3:
 1. Casey, Benjamin -- Part A
 2. Matta, Rithwik -- Part C*
-3. Shenoj, Shriya -- Part B
+3. Shenoj, Shriya -- Part B + README
 4. Treleaven, Hunter -- Part B
 
 How to run:
