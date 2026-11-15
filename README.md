@@ -28,4 +28,22 @@ HTML files are in frontend/, and a style.css file is present as well.
 
 *TaskC.pdf contains code for create.sql and load.sql
 
+### Included HTML Files (`frontend/`)
+- `current-sale.html`
+- `expiring.html`
+- `index.html`
+- `inventory-results.html`
+- `inventory.html`
+- `low-stock.html`
+- `product-results.html`
+- `products.html`
+- `report-summary.html`
+- `reports.html`
+- `sales.html`
+
+### Styling & Assets (`frontend/`)
+- `style.css`
+- `pantry.jpg`
+- `veggies.jpg`
+
 <img width="3408" height="1838" alt="image" src="https://github.com/user-attachments/assets/44c7f1f9-181d-4ad6-93fe-ff4d246bf796" />
