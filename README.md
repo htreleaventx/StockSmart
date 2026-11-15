@@ -24,6 +24,6 @@ How to run:
 
 (As proof for Phase 3 Part B - UI)
 
-HTML files are in frontend/
+HTML files are in frontend/, and a style.css file is present as well.
 
 <img width="3408" height="1838" alt="image" src="https://github.com/user-attachments/assets/44c7f1f9-181d-4ad6-93fe-ff4d246bf796" />
