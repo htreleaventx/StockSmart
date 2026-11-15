@@ -7,3 +7,5 @@ How to run:
 `python3 -m http.server 8000 --directory frontend`
 
 Then visit `http://localhost:8000/`
+
+(for Phase 3 Part B proof - UI)
