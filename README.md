@@ -26,6 +26,6 @@ How to run:
 
 HTML files are in frontend/, and a style.css file is present as well.
 
-* TaskC.pdf contains code for create.sql and load.sql
+*TaskC.pdf contains code for create.sql and load.sql
 
 <img width="3408" height="1838" alt="image" src="https://github.com/user-attachments/assets/44c7f1f9-181d-4ad6-93fe-ff4d246bf796" />
