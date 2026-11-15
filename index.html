@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Alert Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>StockSmart</h1>
+    <h2>Alert Dashboard</h2>
+    <h3>Never run out. Never run over.</h3>
+  </div>
+  <nav>
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="products.html">Products</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="sales.html">Sales</a>
+    <a href="reports.html">Reports</a>
+  </nav>
+</header>
+
+<main>
+  <aside class="sections">
+    <a href="index.html" class="active">Search / Filter Inventory</a>
+    <a href="low-stock.html">Low Stock Alerts</a>
+    <a href="expiring.html">Expiring Soon</a>
+  </aside>
+
+  <section class="content">
+    <h3>Search / Filter Inventory</h3>
+
+    <!-- Interface only: database connection comes later -->
+    <form action="#" method="get">
+
+      <label for="searchName">Product Name:</label>
+      <input type="text" id="searchName" name="searchName">
+      <br><br>
+
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <option value="">All Categories</option>
+        <option value="1">Dairy</option>
+        <option value="2">Produce</option>
+        <option value="3">Meat</option>
+        <option value="4">Bakery</option>
+        <option value="5">Snacks</option>
+      </select>
+      <br><br>
+
+      <button type="submit">Search</button>
+      <button type="reset">Clear Filters</button>
+    </form>
+
+    <h3 class="spaced">Search Results</h3>
+
+    <p class="note">
+      Placeholder results. This table will display
+      MySQL query results in Phase 4.
+    </p>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Quantity</th>
+        <th>Expiration Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>1</td>
+        <td>Whole Milk</td>
+        <td>Dairy</td>
+        <td>4</td>
+        <td>2026-11-20</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Sourdough Bread</td>
+        <td>Bakery</td>
+        <td>2</td>
+        <td>2026-11-14</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Ground Beef</td>
+        <td>Meat</td>
+        <td>15</td>
+        <td>2026-11-15</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+</body>
+</html>

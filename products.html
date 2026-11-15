@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>StockSmart - Product Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>StockSmart</h1>
+    <h2>Product Management</h2>
+    <h3>Never run out. Never run over.</h3>
+  </div>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="sales.html">Sales</a>
+    <a href="reports.html">Reports</a>
+  </nav>
+</header>
+
+<main>
+  <aside class="sections">
+    <a href="products.html" class="active">Add Product</a>
+    <a href="product-results.html">Product Query Results</a>
+  </aside>
+
+  <section class="content">
+    <h3>Add Product</h3>
+
+    <!-- Interface only: database connection comes later -->
+    <form action="#" method="get">
+
+      <label for="productName">Product Name:</label>
+      <input type="text" id="productName"
+             name="productName" required>
+      <br><br>
+
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        <option value="">Select Category</option>
+        <option value="1">Dairy</option>
+        <option value="2">Produce</option>
+        <option value="3">Meat</option>
+        <option value="4">Bakery</option>
+        <option value="5">Snacks</option>
+      </select>
+      <br><br>
+
+      <label for="purchasePrice">Purchase Price:</label>
+      <input type="number" id="purchasePrice"
+             name="purchasePrice"
+             min="0" step="0.01" required>
+      <br><br>
+
+      <label for="sellPrice">Selling Price:</label>
+      <input type="number" id="sellPrice"
+             name="sellPrice"
+             min="0" step="0.01" required>
+      <br><br>
+
+      <label for="expirationDate">Expiration Date:</label>
+      <input type="date" id="expirationDate"
+             name="expirationDate">
+      <br><br>
+
+      <button type="submit">Add Product</button>
+      <button type="reset">Clear Form</button>
+    </form>
+  </section>
+</main>
+
+</body>
+</html>
