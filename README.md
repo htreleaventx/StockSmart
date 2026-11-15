@@ -10,7 +10,7 @@ such as product name, quantity, category, expiration date, purchase cost, and se
 
 Group members (sorted alphabetically by last name) & roles for Phase 3:
 1. Casey, Benjamin -- Part A
-2. Matta, Rithwik -- Part C
+2. Matta, Rithwik -- Part C*
 3. Shenoj, Shriya -- Part B
 4. Treleaven, Hunter -- Part B
 
@@ -25,5 +25,7 @@ How to run:
 (As proof for Phase 3 Part B - UI)
 
 HTML files are in frontend/, and a style.css file is present as well.
+
+* TaskC.pdf contains code for create.sql and load.sql
 
 <img width="3408" height="1838" alt="image" src="https://github.com/user-attachments/assets/44c7f1f9-181d-4ad6-93fe-ff4d246bf796" />
