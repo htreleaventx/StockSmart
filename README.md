@@ -47,3 +47,69 @@ HTML files are in frontend/, and a style.css file is present as well.
 - `veggies.jpg`
 
 <img width="3408" height="1838" alt="image" src="https://github.com/user-attachments/assets/44c7f1f9-181d-4ad6-93fe-ff4d246bf796" />
+
+## Database Setup
+On Mac:
+
+Step 1: Check Homebrew
+
+brew --version
+
+Step 2: Install MySQL
+
+brew install mysql
+brew services start mysql
+
+Step 3: Verify installation
+
+mysql --version
+
+Step 4: Log into MySQL
+
+mysql -u root
+
+Inside the MySQL prompt (mysql>), set your own password:
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'some_pwd';
+
+Replace some_pwd with your own password.
+
+Step 5: Exit MySQL
+
+exit;
+
+Step 6: Test login
+
+mysql -u root -p
+
+Enter the password you just created. If you successfully log in, exit again:
+
+exit;
+
+Step 7: Create the StockSmart database
+
+From the StockSmart project root:
+
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS stocksmart;"
+
+Step 8: Import the database schema
+
+Navigate into the database folder:
+
+cd database
+
+Import the SQL file:
+
+mysql -u root -p stocksmart < create.sql
+
+Step 9: Verify the tables
+
+mysql -u root -p -e "USE stocksmart; SHOW TABLES;"
+
+You should see:
+
+CATEGORY
+INVENTORY
+PRODUCT
+SALE
+SALEITEM
