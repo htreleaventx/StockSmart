@@ -5,22 +5,29 @@ requireAccount();
 require __DIR__ . '/db.php';
 
 $search = trim(input(INPUT_GET, 'searchName'));
-$category = integer(INPUT_GET, 'category');
 $categories = categories($pdo);
-$query = '
-    SELECT p.ProductID, p.ProductName, c.CategoryName, COALESCE(i.Quantity, 0) AS Quantity, p.ExpirationDate
-    FROM PRODUCT p
-    JOIN CATEGORY c ON c.CategoryID = p.CategoryID
-    LEFT JOIN INVENTORY i ON i.ProductID = p.ProductID
-    WHERE p.ProductName LIKE ?';
-$params = ['%' . $search . '%'];
-if ($category !== null) {
-    $query .= ' AND p.CategoryID = ?';
-    $params[] = $category;
+$category = categoryFilter($categories);
+$error = '';
+$products = [];
+if ($category === false) {
+    http_response_code(422);
+    $error = 'Choose a category from the list or select All Categories.';
+} else {
+    $query = '
+        SELECT p.ProductID, p.ProductName, c.CategoryName, COALESCE(i.Quantity, 0) AS Quantity, p.ExpirationDate
+        FROM PRODUCT p
+        JOIN CATEGORY c ON c.CategoryID = p.CategoryID
+        LEFT JOIN INVENTORY i ON i.ProductID = p.ProductID
+        WHERE p.ProductName LIKE ?';
+    $params = ['%' . $search . '%'];
+    if ($category !== null) {
+        $query .= ' AND p.CategoryID = ?';
+        $params[] = $category;
+    }
+    $stmt = $pdo->prepare($query . ' ORDER BY p.ProductName, p.ProductID');
+    $stmt->execute($params);
+    $products = $stmt->fetchAll();
 }
-$stmt = $pdo->prepare($query . ' ORDER BY p.ProductName, p.ProductID');
-$stmt->execute($params);
-$products = $stmt->fetchAll();
 ?>
 <?php pageStart('Alert Dashboard', 'Alert Dashboard', 'dashboard'); ?>
 
@@ -39,6 +46,8 @@ $products = $stmt->fetchAll();
   <section class="content">
     <h3>Search / Filter Inventory</h3>
 
+    <?php pageMessage($error); ?>
+
     <form action="index.php" method="get">
 
       <label for="searchName">Product Name:</label>
@@ -48,7 +57,7 @@ $products = $stmt->fetchAll();
       <label for="category">Category:</label>
       <select id="category" name="category">
         <option value="">All Categories</option>
-        <?php categoryOptions($categories, $category); ?>
+        <?php categoryOptions($categories, $category === false ? null : $category); ?>
       </select>
       <br><br>
 
@@ -56,6 +65,7 @@ $products = $stmt->fetchAll();
       <button type="reset" onclick="window.location.href='index.php'">Clear Filters</button>
     </form>
 
+    <?php if (!$error): ?>
     <h3 class="spaced">Search Results</h3>
 
     <?php if (!$products): ?><p class="note">No products found.</p><?php endif; ?>
@@ -82,6 +92,7 @@ $products = $stmt->fetchAll();
       <?php endforeach; ?>
       </tbody>
     </table>
+    <?php endif; ?>
   </section>
 </main>
 

@@ -45,8 +45,14 @@ if (postRequest()) {
         } else {
             $sql = 'INSERT INTO PRODUCT SET ' . $fields;
         }
-        $pdo->prepare($sql)->execute($params);
-        redirect('product-results.php?saved=1');
+        try {
+            $pdo->prepare($sql)->execute($params);
+            redirect('product-results.php?saved=1');
+        } catch (PDOException $exception) {
+            error_log($exception->getMessage());
+            http_response_code(500);
+            $error = 'Could not save the product. Try again.';
+        }
     }
 }
 ?>

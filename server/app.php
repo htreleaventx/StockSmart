@@ -80,6 +80,18 @@ function categories(PDO $pdo): array
     return $pdo->query('SELECT CategoryID, CategoryName FROM CATEGORY ORDER BY CategoryName')->fetchAll();
 }
 
+function categoryFilter(array $categories): int|false|null
+{
+    // An omitted category or the empty "All Categories" option leaves the results unfiltered.
+    $value = filter_input(INPUT_GET, 'category');
+    if ($value === null || $value === '') {
+        return null;
+    }
+
+    $category = integer(INPUT_GET, 'category');
+    return in_array($category, array_column($categories, 'CategoryID'), true) ? $category : false;
+}
+
 function categoryOptions(array $categories, int|string|null $selected): void
 {
     foreach ($categories as $category) {

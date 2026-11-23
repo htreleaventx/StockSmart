@@ -44,36 +44,42 @@ $message = $messages[(string)filter_input(INPUT_GET, 'msg')] ?? '';
 
 // ---------- READ (with optional filters) ----------
 $search   = trim((string)filter_input(INPUT_GET, 'searchName'));
-$category = integer(INPUT_GET, 'category');
 $lowOnly  = isset($_GET['lowOnly']);
-
-$sql = "
-    SELECT i.InventoryID, p.ProductName, c.CategoryName, i.Quantity, i.MinStock, i.LastUpdated
-    FROM INVENTORY i
-    JOIN PRODUCT  p ON i.ProductID  = p.ProductID
-    JOIN CATEGORY c ON p.CategoryID = c.CategoryID
-    WHERE 1=1";
-$params = [];
-
-if ($search !== '') {
-    $sql .= " AND p.ProductName LIKE ?";
-    $params[] = '%' . $search . '%';
-}
-if ($category) {
-    $sql .= " AND c.CategoryID = ?";
-    $params[] = $category;
-}
-if ($lowOnly) {
-    $sql .= " AND i.Quantity <= i.MinStock";
-}
-$sql .= " ORDER BY i.LastUpdated DESC, p.ProductName";
-
+$category = null;
 $inventoryList = [];
+
 try {
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    $inventoryList = $stmt->fetchAll();
     $categories = categories($pdo);
+    $category = categoryFilter($categories);
+    if ($category === false) {
+        if ($error === '') {
+            http_response_code(422);
+            $error = 'Choose a category from the list or select All Categories.';
+        }
+    } else {
+        $sql = "
+            SELECT i.InventoryID, p.ProductName, c.CategoryName, i.Quantity, i.MinStock, i.LastUpdated
+            FROM INVENTORY i
+            JOIN PRODUCT  p ON i.ProductID  = p.ProductID
+            JOIN CATEGORY c ON p.CategoryID = c.CategoryID
+            WHERE 1=1";
+        $params = [];
+
+        if ($search !== '') {
+            $sql .= " AND p.ProductName LIKE ?";
+            $params[] = '%' . $search . '%';
+        }
+        if ($category !== null) {
+            $sql .= " AND c.CategoryID = ?";
+            $params[] = $category;
+        }
+        if ($lowOnly) {
+            $sql .= " AND i.Quantity <= i.MinStock";
+        }
+        $stmt = $pdo->prepare($sql . " ORDER BY i.LastUpdated DESC, p.ProductName");
+        $stmt->execute($params);
+        $inventoryList = $stmt->fetchAll();
+    }
 } catch (PDOException $e) {
     error_log($e->getMessage());
     http_response_code(500);
@@ -92,12 +98,7 @@ try {
   <section class="content">
     <h3>Inventory Query Results</h3>
 
-    <?php if ($message): ?>
-      <p style="color: green; font-weight: bold;"><?= htmlspecialchars($message) ?></p>
-    <?php endif; ?>
-    <?php if ($error): ?>
-      <p style="color: #b00020; font-weight: bold;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
+    <?php pageMessage($error, $message); ?>
 
     <form action="inventory-results.php" method="GET">
       <label for="searchName">Product Name:</label>
@@ -106,7 +107,7 @@ try {
       <label for="category">Category:</label>
       <select id="category" name="category">
         <option value="">All Categories</option>
-        <?php categoryOptions($categories, $category); ?>
+        <?php categoryOptions($categories, $category === false ? null : $category); ?>
       </select>
 
       <label><input type="checkbox" name="lowOnly" value="1" <?= $lowOnly ? 'checked' : '' ?>> Low stock only</label>
@@ -115,6 +116,7 @@ try {
       <a href="inventory-results.php"><button type="button">Clear Filters</button></a>
     </form>
 
+    <?php if ($category !== false): ?>
     <p class="note">Displaying live MySQL query results from the database.</p>
 
     <table>
@@ -160,6 +162,7 @@ try {
       <?php endif; ?>
       </tbody>
     </table>
+    <?php endif; ?>
   </section>
 </main>
 

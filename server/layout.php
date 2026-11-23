@@ -1,6 +1,7 @@
 <?php
 function pageStart(string $title, string $heading, string $section = ''): void
 {
+    global $isManager;
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +21,14 @@ function pageStart(string $title, string $heading, string $section = ''): void
   <nav>
     <?php if ($section !== ''): ?>
       <a href="index.php"<?= $section === 'dashboard' ? ' class="active"' : '' ?>>Dashboard</a>
-      <a href="products.php"<?= $section === 'products' ? ' class="active"' : '' ?>>Products</a>
+      <?php if ($isManager): ?>
+        <a href="products.php"<?= $section === 'products' ? ' class="active"' : '' ?>>Products</a>
+      <?php endif; ?>
       <a href="inventory.php"<?= $section === 'inventory' ? ' class="active"' : '' ?>>Inventory</a>
       <a href="sales.php"<?= $section === 'sales' ? ' class="active"' : '' ?>>Sales</a>
-      <a href="reports.php"<?= $section === 'reports' ? ' class="active"' : '' ?>>Reports</a>
+      <?php if ($isManager): ?>
+        <a href="reports.php"<?= $section === 'reports' ? ' class="active"' : '' ?>>Reports</a>
+      <?php endif; ?>
     <?php endif; ?>
   </nav>
 </header>
