@@ -118,13 +118,13 @@ header nav a.active {
   background: var(--grad-active);
 }
 
-/* ---------- Main Layout (Restored intentional overlap) ---------- */
+/* ---------- Main Layout ---------- */
 main {
   display: grid;
   grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
   gap: clamp(16px, 2.5vw, 28px);
   padding: 0 clamp(16px, 3vw, 40px) 36px;
-  margin-top: -70px; /* Pulls content up nicely under the header banner */
+  margin-top: 10px;
   align-items: start;
 }
 
@@ -348,7 +348,6 @@ table.totals th {
 
   main {
     grid-template-columns: 1fr;
-    margin-top: 10px;
     padding: 20px;
   }
 

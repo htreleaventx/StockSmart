@@ -4,3 +4,8 @@ CategoryID,CategoryName,Description
 3,Beverages,Drinks and refreshments
 4,Produce,Fresh fruits and vegetables
 5,Household,Household supplies
+6,Meat & Seafood,"Chilled meat, poultry and seafood"
+7,Frozen,"Frozen meals, vegetables and desserts"
+8,Pantry,Shelf-stable cooking ingredients and canned goods
+9,Snacks,"Crackers, chips, nuts and snack bars"
+10,Deli & Prepared Foods,Prepared meals and refrigerated deli items

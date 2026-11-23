@@ -9,3 +9,993 @@ ProductID,ProductName,PurchasePrice,SellPrice,ExpirationDate,CategoryID
 8,Bananas,0.20,0.50,2026-11-15,4
 9,Dish Soap,1.75,3.25,,5
 10,Paper Towels,2.50,4.50,,5
+11,Cedar Lane Whole Milk 1 qt,3.00,5.45,2026-12-04,1
+12,Blue Mill Whole Milk 1 qt,3.67,5.45,2026-12-29,1
+13,North Grove Whole Milk 1 qt,2.96,4.79,2026-12-21,1
+14,Sage Creek Whole Milk 1 qt,2.61,4.05,2026-12-20,1
+15,Copper Valley Whole Milk 1 qt,2.95,5.05,2027-01-07,1
+16,Juniper Trail Whole Milk 1 qt,3.55,5.45,2026-11-28,1
+17,Silver Orchard Whole Milk 1 qt,2.37,4.19,2026-12-15,1
+18,West Hearth Whole Milk 1 qt,3.79,5.35,2026-12-28,1
+19,Prairie Bend Whole Milk 1 qt,3.28,5.35,2027-01-03,1
+20,Oak Corner Whole Milk 1 qt,3.77,5.25,2026-12-24,1
+21,Cedar Lane 2% Milk 1 gal,1.16,2.05,2026-12-05,1
+22,Blue Mill 2% Milk 1 gal,1.01,1.85,2026-12-06,1
+23,North Grove 2% Milk 1 gal,1.08,1.99,2026-11-25,1
+24,Sage Creek 2% Milk 1 gal,1.08,1.69,2027-01-03,1
+25,Copper Valley 2% Milk 1 gal,1.35,1.75,2026-12-01,1
+26,Juniper Trail 2% Milk 1 gal,1.35,2.55,2026-12-02,1
+27,Silver Orchard 2% Milk 1 gal,1.62,2.45,2027-01-04,1
+28,West Hearth 2% Milk 1 gal,1.52,2.95,2026-12-03,1
+29,Prairie Bend 2% Milk 1 gal,1.21,1.79,2026-12-17,1
+30,Oak Corner 2% Milk 1 gal,0.87,1.59,2027-01-05,1
+31,Cedar Lane Greek Yogurt 5 oz,2.85,4.65,2026-12-04,1
+32,Blue Mill Greek Yogurt 5 oz,3.47,5.05,2026-12-10,1
+33,North Grove Greek Yogurt 5 oz,3.87,5.95,2026-12-05,1
+34,Sage Creek Greek Yogurt 5 oz,3.54,5.19,2026-12-05,1
+35,Copper Valley Greek Yogurt 5 oz,2.93,5.65,2026-12-18,1
+36,Juniper Trail Greek Yogurt 5 oz,4.00,5.55,2027-01-04,1
+37,Silver Orchard Greek Yogurt 5 oz,3.38,4.65,2026-11-29,1
+38,West Hearth Greek Yogurt 5 oz,3.43,5.29,2026-12-02,1
+39,Prairie Bend Greek Yogurt 5 oz,3.16,5.45,2026-12-07,1
+40,Oak Corner Greek Yogurt 5 oz,3.80,5.15,2026-12-29,1
+41,Cedar Lane Salted Butter 8 oz,3.49,5.99,2026-12-28,1
+42,Blue Mill Salted Butter 8 oz,4.18,6.49,2026-12-22,1
+43,North Grove Salted Butter 8 oz,3.02,5.49,2026-11-20,1
+44,Sage Creek Salted Butter 8 oz,2.91,5.65,2026-12-05,1
+45,Copper Valley Salted Butter 8 oz,4.00,6.29,2026-12-19,1
+46,Juniper Trail Salted Butter 8 oz,3.36,5.29,2026-12-31,1
+47,Silver Orchard Salted Butter 8 oz,3.94,6.39,2026-12-04,1
+48,West Hearth Salted Butter 8 oz,2.84,5.19,2026-12-02,1
+49,Prairie Bend Salted Butter 8 oz,3.24,5.75,2027-01-05,1
+50,Oak Corner Salted Butter 8 oz,3.36,5.39,2026-12-27,1
+51,Cedar Lane Large Eggs 1 dozen,1.73,2.25,2026-12-30,1
+52,Blue Mill Large Eggs 1 dozen,1.25,1.95,2027-01-06,1
+53,North Grove Large Eggs 1 dozen,1.99,2.65,2026-11-30,1
+54,Sage Creek Large Eggs 1 dozen,1.32,1.89,2026-12-16,1
+55,Copper Valley Large Eggs 1 dozen,2.01,2.69,2026-11-28,1
+56,Juniper Trail Large Eggs 1 dozen,1.81,2.75,2026-11-30,1
+57,Silver Orchard Large Eggs 1 dozen,1.16,1.59,2026-11-30,1
+58,West Hearth Large Eggs 1 dozen,1.77,2.89,2026-12-19,1
+59,Prairie Bend Large Eggs 1 dozen,1.10,1.55,2026-11-25,1
+60,Oak Corner Large Eggs 1 dozen,1.68,2.65,2027-01-09,1
+61,Cedar Lane Mozzarella 8 oz,3.59,5.89,2026-11-23,1
+62,Blue Mill Mozzarella 8 oz,3.29,6.45,2027-01-02,1
+63,North Grove Mozzarella 8 oz,3.26,5.19,2026-12-03,1
+64,Sage Creek Mozzarella 8 oz,4.12,5.65,2027-01-09,1
+65,Copper Valley Mozzarella 8 oz,3.41,5.19,2026-12-16,1
+66,Juniper Trail Mozzarella 8 oz,3.98,5.65,2026-12-28,1
+67,Silver Orchard Mozzarella 8 oz,4.35,6.15,2026-12-22,1
+68,West Hearth Mozzarella 8 oz,3.38,6.35,2027-01-08,1
+69,Prairie Bend Mozzarella 8 oz,2.94,5.65,2027-01-06,1
+70,Oak Corner Mozzarella 8 oz,3.01,5.59,2027-01-02,1
+71,Cedar Lane Cottage Cheese 16 oz,1.77,3.05,2026-11-30,1
+72,Blue Mill Cottage Cheese 16 oz,2.11,3.09,2026-12-10,1
+73,North Grove Cottage Cheese 16 oz,2.54,3.45,2026-12-01,1
+74,Sage Creek Cottage Cheese 16 oz,2.10,2.99,2026-12-03,1
+75,Copper Valley Cottage Cheese 16 oz,1.53,3.09,2026-12-24,1
+76,Juniper Trail Cottage Cheese 16 oz,2.14,2.89,2026-11-27,1
+77,Silver Orchard Cottage Cheese 16 oz,1.60,2.99,2027-01-07,1
+78,West Hearth Cottage Cheese 16 oz,2.17,3.29,2026-12-21,1
+79,Prairie Bend Cottage Cheese 16 oz,2.51,3.85,2026-12-15,1
+80,Oak Corner Cottage Cheese 16 oz,2.13,3.49,2026-12-02,1
+81,Cedar Lane Sour Cream 8 oz,3.59,5.39,2027-01-04,1
+82,Blue Mill Sour Cream 8 oz,2.89,5.69,2026-12-03,1
+83,North Grove Sour Cream 8 oz,3.66,5.59,2027-01-03,1
+84,Sage Creek Sour Cream 8 oz,3.70,5.75,2026-12-01,1
+85,Copper Valley Sour Cream 8 oz,3.01,4.75,2026-12-22,1
+86,Juniper Trail Sour Cream 8 oz,4.22,5.59,2026-11-19,1
+87,Silver Orchard Sour Cream 8 oz,2.69,4.65,2026-11-27,1
+88,West Hearth Sour Cream 8 oz,3.23,5.65,2027-01-06,1
+89,Prairie Bend Sour Cream 8 oz,2.89,4.69,2027-01-08,1
+90,Oak Corner Sour Cream 8 oz,2.68,4.79,2027-01-05,1
+91,Cedar Lane Half and Half 1 pint,1.63,2.99,2026-12-13,1
+92,Blue Mill Half and Half 1 pint,1.24,2.15,2026-12-15,1
+93,North Grove Half and Half 1 pint,1.07,1.99,2027-01-10,1
+94,Sage Creek Half and Half 1 pint,1.40,2.29,2026-12-08,1
+95,Copper Valley Half and Half 1 pint,1.50,2.99,2026-12-12,1
+96,Juniper Trail Half and Half 1 pint,1.73,2.99,2027-01-04,1
+97,Silver Orchard Half and Half 1 pint,1.63,2.75,2026-12-12,1
+98,West Hearth Half and Half 1 pint,1.76,2.65,2027-01-07,1
+99,Prairie Bend Half and Half 1 pint,1.59,2.49,2026-12-03,1
+100,Oak Corner Half and Half 1 pint,1.31,1.75,2026-12-18,1
+101,Cedar Lane Kefir 32 oz,3.05,4.85,2026-12-07,1
+102,Blue Mill Kefir 32 oz,3.54,4.89,2027-01-07,1
+103,North Grove Kefir 32 oz,3.75,4.99,2027-01-05,1
+104,Sage Creek Kefir 32 oz,3.66,5.25,2026-12-03,1
+105,Copper Valley Kefir 32 oz,2.93,4.69,2026-12-13,1
+106,Juniper Trail Kefir 32 oz,3.19,5.09,2026-12-11,1
+107,Silver Orchard Kefir 32 oz,3.16,5.65,2027-01-05,1
+108,West Hearth Kefir 32 oz,3.50,5.49,2026-12-01,1
+109,Prairie Bend Kefir 32 oz,2.66,4.95,2027-01-02,1
+110,Oak Corner Kefir 32 oz,3.55,5.55,2026-12-07,1
+111,Cedar Lane Sourdough Loaf,3.72,6.05,2026-12-09,2
+112,Blue Mill Sourdough Loaf,3.04,5.59,2026-12-05,2
+113,North Grove Sourdough Loaf,3.22,5.75,2026-11-24,2
+114,Sage Creek Sourdough Loaf,3.54,6.09,2026-12-04,2
+115,Copper Valley Sourdough Loaf,4.84,6.65,2026-12-01,2
+116,Juniper Trail Sourdough Loaf,4.28,5.85,2026-12-03,2
+117,Silver Orchard Sourdough Loaf,4.03,5.99,2026-11-30,2
+118,West Hearth Sourdough Loaf,4.80,6.75,2026-12-06,2
+119,Prairie Bend Sourdough Loaf,4.12,6.09,2026-12-09,2
+120,Oak Corner Sourdough Loaf,4.65,6.39,2026-11-29,2
+121,Cedar Lane Everything Bagels 6 ct,3.47,5.99,2026-11-30,2
+122,Blue Mill Everything Bagels 6 ct,5.27,6.79,2026-11-23,2
+123,North Grove Everything Bagels 6 ct,4.18,5.89,2026-11-27,2
+124,Sage Creek Everything Bagels 6 ct,4.75,6.89,2026-12-06,2
+125,Copper Valley Everything Bagels 6 ct,3.13,5.45,2026-11-27,2
+126,Juniper Trail Everything Bagels 6 ct,3.81,6.45,2026-12-06,2
+127,Silver Orchard Everything Bagels 6 ct,3.09,5.69,2026-12-09,2
+128,West Hearth Everything Bagels 6 ct,3.45,5.65,2026-12-09,2
+129,Prairie Bend Everything Bagels 6 ct,3.05,5.55,2026-11-18,2
+130,Oak Corner Everything Bagels 6 ct,4.64,6.65,2026-11-24,2
+131,Cedar Lane Brioche Buns 4 ct,4.41,6.19,2026-12-03,2
+132,Blue Mill Brioche Buns 4 ct,3.33,6.45,2026-12-08,2
+133,North Grove Brioche Buns 4 ct,4.16,5.85,2026-12-09,2
+134,Sage Creek Brioche Buns 4 ct,4.22,6.29,2026-12-07,2
+135,Copper Valley Brioche Buns 4 ct,3.50,6.55,2026-12-06,2
+136,Juniper Trail Brioche Buns 4 ct,4.08,5.65,2026-11-28,2
+137,Silver Orchard Brioche Buns 4 ct,3.82,6.49,2026-11-27,2
+138,West Hearth Brioche Buns 4 ct,3.43,5.49,2026-11-26,2
+139,Prairie Bend Brioche Buns 4 ct,3.89,6.45,2026-12-01,2
+140,Oak Corner Brioche Buns 4 ct,3.06,6.15,2026-11-27,2
+141,Cedar Lane Multigrain Bread,4.26,5.95,2026-11-25,2
+142,Blue Mill Multigrain Bread,3.75,5.15,2026-12-03,2
+143,North Grove Multigrain Bread,3.20,5.45,2026-11-27,2
+144,Sage Creek Multigrain Bread,3.54,5.69,2026-11-25,2
+145,Copper Valley Multigrain Bread,3.93,6.49,2026-12-05,2
+146,Juniper Trail Multigrain Bread,3.51,5.29,2026-11-26,2
+147,Silver Orchard Multigrain Bread,2.94,5.45,2026-11-27,2
+148,West Hearth Multigrain Bread,3.66,6.09,2026-12-08,2
+149,Prairie Bend Multigrain Bread,3.66,6.59,2026-12-08,2
+150,Oak Corner Multigrain Bread,4.25,5.79,2026-11-24,2
+151,Cedar Lane English Muffins 6 ct,3.26,6.35,2026-11-24,2
+152,Blue Mill English Muffins 6 ct,3.46,5.65,2026-12-01,2
+153,North Grove English Muffins 6 ct,4.20,6.19,2026-12-04,2
+154,Sage Creek English Muffins 6 ct,3.11,6.25,2026-12-02,2
+155,Copper Valley English Muffins 6 ct,4.24,6.29,2026-11-28,2
+156,Juniper Trail English Muffins 6 ct,4.20,6.49,2026-11-29,2
+157,Silver Orchard English Muffins 6 ct,3.47,5.65,2026-12-02,2
+158,West Hearth English Muffins 6 ct,3.44,5.39,2026-12-01,2
+159,Prairie Bend English Muffins 6 ct,3.06,5.55,2026-11-26,2
+160,Oak Corner English Muffins 6 ct,3.53,5.65,2026-12-06,2
+161,Cedar Lane Blueberry Muffins 4 ct,3.99,7.15,2026-11-30,2
+162,Blue Mill Blueberry Muffins 4 ct,5.08,7.95,2026-12-03,2
+163,North Grove Blueberry Muffins 4 ct,4.58,7.79,2026-11-29,2
+164,Sage Creek Blueberry Muffins 4 ct,3.90,7.59,2026-11-26,2
+165,Copper Valley Blueberry Muffins 4 ct,4.04,6.69,2026-12-04,2
+166,Juniper Trail Blueberry Muffins 4 ct,5.43,7.79,2026-12-02,2
+167,Silver Orchard Blueberry Muffins 4 ct,4.95,6.99,2026-12-03,2
+168,West Hearth Blueberry Muffins 4 ct,5.07,6.95,2026-11-27,2
+169,Prairie Bend Blueberry Muffins 4 ct,4.12,6.59,2026-12-05,2
+170,Oak Corner Blueberry Muffins 4 ct,4.05,7.15,2026-12-08,2
+171,Cedar Lane Flour Tortillas 10 ct,1.41,2.79,2026-11-30,2
+172,Blue Mill Flour Tortillas 10 ct,1.99,3.15,2026-11-18,2
+173,North Grove Flour Tortillas 10 ct,2.13,2.75,2026-12-08,2
+174,Sage Creek Flour Tortillas 10 ct,1.93,3.45,2026-11-24,2
+175,Copper Valley Flour Tortillas 10 ct,1.55,2.45,2026-11-29,2
+176,Juniper Trail Flour Tortillas 10 ct,2.52,3.45,2026-12-05,2
+177,Silver Orchard Flour Tortillas 10 ct,1.78,2.95,2026-11-24,2
+178,West Hearth Flour Tortillas 10 ct,1.59,2.25,2026-12-04,2
+179,Prairie Bend Flour Tortillas 10 ct,1.57,2.29,2026-11-24,2
+180,Oak Corner Flour Tortillas 10 ct,1.70,2.49,2026-12-01,2
+181,Cedar Lane Pita Bread 6 ct,1.92,3.59,2026-11-29,2
+182,Blue Mill Pita Bread 6 ct,2.74,3.59,2026-12-06,2
+183,North Grove Pita Bread 6 ct,2.04,3.05,2026-11-23,2
+184,Sage Creek Pita Bread 6 ct,2.19,3.69,2026-11-28,2
+185,Copper Valley Pita Bread 6 ct,2.17,3.35,2026-11-28,2
+186,Juniper Trail Pita Bread 6 ct,2.30,3.89,2026-11-27,2
+187,Silver Orchard Pita Bread 6 ct,1.87,3.65,2026-12-09,2
+188,West Hearth Pita Bread 6 ct,3.36,4.49,2026-11-29,2
+189,Prairie Bend Pita Bread 6 ct,2.45,3.15,2026-12-02,2
+190,Oak Corner Pita Bread 6 ct,2.03,3.45,2026-12-09,2
+191,Cedar Lane Ciabatta Rolls 4 ct,2.51,4.45,2026-12-02,2
+192,Blue Mill Ciabatta Rolls 4 ct,2.72,3.89,2026-11-25,2
+193,North Grove Ciabatta Rolls 4 ct,2.37,3.95,2026-11-30,2
+194,Sage Creek Ciabatta Rolls 4 ct,2.59,3.39,2026-12-09,2
+195,Copper Valley Ciabatta Rolls 4 ct,2.44,3.19,2026-11-24,2
+196,Juniper Trail Ciabatta Rolls 4 ct,1.55,3.09,2026-12-04,2
+197,Silver Orchard Ciabatta Rolls 4 ct,2.81,4.25,2026-11-27,2
+198,West Hearth Ciabatta Rolls 4 ct,2.03,3.49,2026-12-01,2
+199,Prairie Bend Ciabatta Rolls 4 ct,3.03,3.89,2026-11-29,2
+200,Oak Corner Ciabatta Rolls 4 ct,2.38,3.35,2026-11-29,2
+201,Cedar Lane Banana Bread Slices 4 ct,5.02,7.05,2026-12-05,2
+202,Blue Mill Banana Bread Slices 4 ct,4.57,7.35,2026-11-30,2
+203,North Grove Banana Bread Slices 4 ct,4.08,7.09,2026-12-02,2
+204,Sage Creek Banana Bread Slices 4 ct,3.97,7.35,2026-11-28,2
+205,Copper Valley Banana Bread Slices 4 ct,5.64,7.49,2026-11-29,2
+206,Juniper Trail Banana Bread Slices 4 ct,4.19,7.35,2026-11-24,2
+207,Silver Orchard Banana Bread Slices 4 ct,4.29,7.85,2026-12-08,2
+208,West Hearth Banana Bread Slices 4 ct,5.67,7.89,2026-12-02,2
+209,Prairie Bend Banana Bread Slices 4 ct,6.08,8.19,2026-12-05,2
+210,Oak Corner Banana Bread Slices 4 ct,4.43,8.15,2026-12-07,2
+211,Cedar Lane Orange Juice 52 fl oz,1.49,2.15,2027-01-27,3
+212,Blue Mill Orange Juice 52 fl oz,1.85,2.79,2027-08-11,3
+213,North Grove Orange Juice 52 fl oz,1.70,2.29,2027-01-01,3
+214,Sage Creek Orange Juice 52 fl oz,1.92,2.89,2027-09-03,3
+215,Copper Valley Orange Juice 52 fl oz,1.83,2.79,2026-11-19,3
+216,Juniper Trail Orange Juice 52 fl oz,1.66,2.39,2027-06-10,3
+217,Silver Orchard Orange Juice 52 fl oz,1.59,2.79,2027-01-24,3
+218,West Hearth Orange Juice 52 fl oz,1.82,3.25,2027-01-29,3
+219,Prairie Bend Orange Juice 52 fl oz,1.69,2.25,2027-10-09,3
+220,Oak Corner Orange Juice 52 fl oz,1.58,2.95,2027-06-02,3
+221,Cedar Lane Sparkling Lime Water 8 pk,3.20,6.35,2027-07-15,3
+222,Blue Mill Sparkling Lime Water 8 pk,4.19,6.25,2027-04-05,3
+223,North Grove Sparkling Lime Water 8 pk,3.51,6.05,2027-01-02,3
+224,Sage Creek Sparkling Lime Water 8 pk,4.16,6.09,2027-06-17,3
+225,Copper Valley Sparkling Lime Water 8 pk,4.40,5.79,2027-01-23,3
+226,Juniper Trail Sparkling Lime Water 8 pk,3.07,5.79,2027-05-20,3
+227,Silver Orchard Sparkling Lime Water 8 pk,2.78,5.59,2027-08-04,3
+228,West Hearth Sparkling Lime Water 8 pk,3.82,5.79,2027-03-04,3
+229,Prairie Bend Sparkling Lime Water 8 pk,3.32,5.99,2027-09-27,3
+230,Oak Corner Sparkling Lime Water 8 pk,4.12,6.35,2027-01-14,3
+231,Cedar Lane Cold Brew Coffee 32 fl oz,3.70,4.75,2027-05-12,3
+232,Blue Mill Cold Brew Coffee 32 fl oz,2.41,3.89,2027-01-09,3
+233,North Grove Cold Brew Coffee 32 fl oz,2.34,4.45,2027-04-05,3
+234,Sage Creek Cold Brew Coffee 32 fl oz,2.24,4.05,2027-02-02,3
+235,Copper Valley Cold Brew Coffee 32 fl oz,3.63,5.25,2026-12-11,3
+236,Juniper Trail Cold Brew Coffee 32 fl oz,1.99,3.95,2027-09-17,3
+237,Silver Orchard Cold Brew Coffee 32 fl oz,2.31,4.25,2027-06-26,3
+238,West Hearth Cold Brew Coffee 32 fl oz,2.76,5.09,2027-06-10,3
+239,Prairie Bend Cold Brew Coffee 32 fl oz,3.28,4.79,2027-09-25,3
+240,Oak Corner Cold Brew Coffee 32 fl oz,3.45,5.05,2027-08-25,3
+241,Cedar Lane Black Iced Tea 64 fl oz,2.20,3.09,2027-08-23,3
+242,Blue Mill Black Iced Tea 64 fl oz,1.18,2.19,2027-05-29,3
+243,North Grove Black Iced Tea 64 fl oz,1.66,3.39,2027-09-25,3
+244,Sage Creek Black Iced Tea 64 fl oz,1.33,2.65,2026-11-23,3
+245,Copper Valley Black Iced Tea 64 fl oz,1.50,2.29,2027-04-13,3
+246,Juniper Trail Black Iced Tea 64 fl oz,1.73,3.05,2027-09-03,3
+247,Silver Orchard Black Iced Tea 64 fl oz,1.78,3.25,2027-06-05,3
+248,West Hearth Black Iced Tea 64 fl oz,1.32,2.45,2027-08-19,3
+249,Prairie Bend Black Iced Tea 64 fl oz,1.34,2.19,2027-04-24,3
+250,Oak Corner Black Iced Tea 64 fl oz,2.45,3.19,2027-04-09,3
+251,Cedar Lane Coconut Water 1 L,3.94,7.55,2027-05-30,3
+252,Blue Mill Coconut Water 1 L,4.54,7.89,2027-03-31,3
+253,North Grove Coconut Water 1 L,4.80,7.59,2027-06-17,3
+254,Sage Creek Coconut Water 1 L,4.28,6.85,2027-07-28,3
+255,Copper Valley Coconut Water 1 L,4.43,6.95,2027-02-09,3
+256,Juniper Trail Coconut Water 1 L,4.27,8.05,2027-04-02,3
+257,Silver Orchard Coconut Water 1 L,5.71,7.75,2027-09-12,3
+258,West Hearth Coconut Water 1 L,5.21,7.15,2026-11-17,3
+259,Prairie Bend Coconut Water 1 L,4.11,7.85,2027-07-17,3
+260,Oak Corner Coconut Water 1 L,4.84,8.39,2027-04-28,3
+261,Cedar Lane Ginger Ale 6 pk,4.23,5.79,2027-05-11,3
+262,Blue Mill Ginger Ale 6 pk,4.32,5.79,2026-12-05,3
+263,North Grove Ginger Ale 6 pk,3.67,5.79,2027-04-20,3
+264,Sage Creek Ginger Ale 6 pk,3.71,5.55,2027-01-31,3
+265,Copper Valley Ginger Ale 6 pk,3.06,5.99,2027-01-20,3
+266,Juniper Trail Ginger Ale 6 pk,4.49,6.39,2027-01-12,3
+267,Silver Orchard Ginger Ale 6 pk,3.55,5.59,2027-08-23,3
+268,West Hearth Ginger Ale 6 pk,4.08,6.65,2027-06-16,3
+269,Prairie Bend Ginger Ale 6 pk,4.92,6.49,2027-06-17,3
+270,Oak Corner Ginger Ale 6 pk,4.64,6.55,2027-02-01,3
+271,Cedar Lane Apple Juice 64 fl oz,2.48,4.79,2026-12-24,3
+272,Blue Mill Apple Juice 64 fl oz,2.46,3.95,2027-01-29,3
+273,North Grove Apple Juice 64 fl oz,3.16,5.05,2027-04-06,3
+274,Sage Creek Apple Juice 64 fl oz,2.65,3.99,2027-04-19,3
+275,Copper Valley Apple Juice 64 fl oz,2.22,4.15,2027-09-04,3
+276,Juniper Trail Apple Juice 64 fl oz,3.71,5.05,2027-03-07,3
+277,Silver Orchard Apple Juice 64 fl oz,3.54,4.89,2027-06-21,3
+278,West Hearth Apple Juice 64 fl oz,2.54,4.59,2027-08-04,3
+279,Prairie Bend Apple Juice 64 fl oz,2.37,4.05,2027-02-25,3
+280,Oak Corner Apple Juice 64 fl oz,3.16,5.19,2027-01-22,3
+281,Cedar Lane Lemonade 52 fl oz,2.11,3.99,2027-05-26,3
+282,Blue Mill Lemonade 52 fl oz,4.01,5.19,2027-06-20,3
+283,North Grove Lemonade 52 fl oz,2.67,5.15,2026-12-18,3
+284,Sage Creek Lemonade 52 fl oz,2.58,4.49,2027-05-19,3
+285,Copper Valley Lemonade 52 fl oz,3.54,5.15,2027-09-30,3
+286,Juniper Trail Lemonade 52 fl oz,3.68,4.75,2027-01-18,3
+287,Silver Orchard Lemonade 52 fl oz,2.48,4.85,2027-05-22,3
+288,West Hearth Lemonade 52 fl oz,3.36,4.55,2027-09-11,3
+289,Prairie Bend Lemonade 52 fl oz,2.51,3.95,2027-05-31,3
+290,Oak Corner Lemonade 52 fl oz,2.96,4.55,2027-06-10,3
+291,Cedar Lane Grape Juice 32 fl oz,4.38,6.59,2027-03-26,3
+292,Blue Mill Grape Juice 32 fl oz,4.14,6.89,2027-03-07,3
+293,North Grove Grape Juice 32 fl oz,4.23,6.85,2027-02-14,3
+294,Sage Creek Grape Juice 32 fl oz,4.10,6.49,2027-05-01,3
+295,Copper Valley Grape Juice 32 fl oz,3.85,6.99,2027-08-13,3
+296,Juniper Trail Grape Juice 32 fl oz,4.97,6.45,2027-03-06,3
+297,Silver Orchard Grape Juice 32 fl oz,5.60,7.65,2027-06-23,3
+298,West Hearth Grape Juice 32 fl oz,5.05,6.85,2027-04-25,3
+299,Prairie Bend Grape Juice 32 fl oz,3.72,6.35,2027-08-11,3
+300,Oak Corner Grape Juice 32 fl oz,4.65,6.35,2027-03-12,3
+301,Cedar Lane Oat Drink 32 fl oz,3.10,5.99,2026-11-21,3
+302,Blue Mill Oat Drink 32 fl oz,3.54,5.09,2027-04-15,3
+303,North Grove Oat Drink 32 fl oz,3.59,5.35,2027-01-15,3
+304,Sage Creek Oat Drink 32 fl oz,3.18,5.25,2027-09-07,3
+305,Copper Valley Oat Drink 32 fl oz,3.40,5.19,2026-11-23,3
+306,Juniper Trail Oat Drink 32 fl oz,2.80,4.79,2027-03-07,3
+307,Silver Orchard Oat Drink 32 fl oz,2.53,4.69,2027-04-23,3
+308,West Hearth Oat Drink 32 fl oz,2.95,5.69,2027-10-03,3
+309,Prairie Bend Oat Drink 32 fl oz,3.41,4.89,2027-04-18,3
+310,Oak Corner Oat Drink 32 fl oz,2.37,4.75,2027-10-09,3
+311,Willow Farm Honeycrisp Apples 3 lb,4.47,6.65,2026-11-30,4
+312,Pecan Bend Honeycrisp Apples 3 lb,3.83,6.85,2026-12-13,4
+313,Sunny Acre Honeycrisp Apples 3 lb,3.94,6.39,2026-12-09,4
+314,Hillcrest Growers Honeycrisp Apples 3 lb,3.96,7.19,2026-12-07,4
+315,Lone Creek Honeycrisp Apples 3 lb,3.88,6.59,2026-12-08,4
+316,Prairie Field Honeycrisp Apples 3 lb,3.22,5.85,2026-12-09,4
+317,Red Barn Honeycrisp Apples 3 lb,4.53,6.19,2026-11-29,4
+318,Green Mesa Honeycrisp Apples 3 lb,3.28,6.25,2026-12-06,4
+319,Clover Farm Honeycrisp Apples 3 lb,3.49,6.75,2026-11-24,4
+320,River Bluff Honeycrisp Apples 3 lb,3.58,5.85,2026-12-05,4
+321,Willow Farm Baby Spinach 5 oz,5.34,7.59,2026-12-03,4
+322,Pecan Bend Baby Spinach 5 oz,5.06,7.35,2026-12-05,4
+323,Sunny Acre Baby Spinach 5 oz,4.44,6.65,2026-12-01,4
+324,Hillcrest Growers Baby Spinach 5 oz,3.57,6.85,2026-11-25,4
+325,Lone Creek Baby Spinach 5 oz,4.69,6.89,2026-12-10,4
+326,Prairie Field Baby Spinach 5 oz,5.01,7.49,2026-12-01,4
+327,Red Barn Baby Spinach 5 oz,3.83,7.49,2026-12-03,4
+328,Green Mesa Baby Spinach 5 oz,3.99,7.25,2026-12-04,4
+329,Clover Farm Baby Spinach 5 oz,4.40,7.49,2026-11-25,4
+330,River Bluff Baby Spinach 5 oz,4.50,6.55,2026-11-24,4
+331,Willow Farm Hass Avocados 4 ct,4.80,7.75,2026-12-05,4
+332,Pecan Bend Hass Avocados 4 ct,4.41,6.79,2026-12-08,4
+333,Sunny Acre Hass Avocados 4 ct,4.49,7.69,2026-11-27,4
+334,Hillcrest Growers Hass Avocados 4 ct,5.82,7.69,2026-12-01,4
+335,Lone Creek Hass Avocados 4 ct,3.53,6.65,2026-11-26,4
+336,Prairie Field Hass Avocados 4 ct,3.67,6.85,2026-11-30,4
+337,Red Barn Hass Avocados 4 ct,5.16,7.35,2026-11-29,4
+338,Green Mesa Hass Avocados 4 ct,4.18,7.15,2026-12-17,4
+339,Clover Farm Hass Avocados 4 ct,5.41,7.55,2026-12-10,4
+340,River Bluff Hass Avocados 4 ct,4.94,6.45,2026-12-11,4
+341,Willow Farm Roma Tomatoes 1 lb,2.02,3.49,2026-12-11,4
+342,Pecan Bend Roma Tomatoes 1 lb,1.66,2.49,2026-12-11,4
+343,Sunny Acre Roma Tomatoes 1 lb,2.09,3.45,2026-12-06,4
+344,Hillcrest Growers Roma Tomatoes 1 lb,1.91,3.65,2026-11-22,4
+345,Lone Creek Roma Tomatoes 1 lb,2.19,3.29,2026-11-26,4
+346,Prairie Field Roma Tomatoes 1 lb,2.08,3.29,2026-12-06,4
+347,Red Barn Roma Tomatoes 1 lb,2.42,3.49,2026-11-30,4
+348,Green Mesa Roma Tomatoes 1 lb,1.89,2.59,2026-11-30,4
+349,Clover Farm Roma Tomatoes 1 lb,1.78,2.89,2026-12-11,4
+350,River Bluff Roma Tomatoes 1 lb,1.68,3.39,2026-12-04,4
+351,Willow Farm Blueberries 6 oz,4.12,7.29,2026-12-15,4
+352,Pecan Bend Blueberries 6 oz,3.70,6.59,2026-12-05,4
+353,Sunny Acre Blueberries 6 oz,3.35,6.15,2026-12-09,4
+354,Hillcrest Growers Blueberries 6 oz,5.12,6.69,2026-11-25,4
+355,Lone Creek Blueberries 6 oz,3.48,6.35,2026-11-29,4
+356,Prairie Field Blueberries 6 oz,3.27,5.89,2026-12-16,4
+357,Red Barn Blueberries 6 oz,3.86,6.25,2026-12-11,4
+358,Green Mesa Blueberries 6 oz,3.83,6.25,2026-12-04,4
+359,Clover Farm Blueberries 6 oz,3.88,6.05,2026-12-15,4
+360,River Bluff Blueberries 6 oz,5.07,7.15,2026-12-04,4
+361,Willow Farm Organic Bananas 2 lb,1.93,2.75,2026-12-17,4
+362,Pecan Bend Organic Bananas 2 lb,2.05,3.19,2026-12-10,4
+363,Sunny Acre Organic Bananas 2 lb,2.04,3.79,2026-12-07,4
+364,Hillcrest Growers Organic Bananas 2 lb,2.04,3.29,2026-12-10,4
+365,Lone Creek Organic Bananas 2 lb,1.95,3.35,2026-11-26,4
+366,Prairie Field Organic Bananas 2 lb,2.14,3.45,2026-11-23,4
+367,Red Barn Organic Bananas 2 lb,2.40,3.75,2026-12-04,4
+368,Green Mesa Organic Bananas 2 lb,2.45,3.15,2026-12-07,4
+369,Clover Farm Organic Bananas 2 lb,1.78,3.49,2026-12-14,4
+370,River Bluff Organic Bananas 2 lb,2.03,3.15,2026-11-27,4
+371,Willow Farm Romaine Hearts 3 ct,1.99,3.29,2026-12-01,4
+372,Pecan Bend Romaine Hearts 3 ct,1.89,3.69,2026-12-07,4
+373,Sunny Acre Romaine Hearts 3 ct,2.41,3.45,2026-12-14,4
+374,Hillcrest Growers Romaine Hearts 3 ct,2.42,3.95,2026-12-11,4
+375,Lone Creek Romaine Hearts 3 ct,1.89,3.09,2026-11-28,4
+376,Prairie Field Romaine Hearts 3 ct,2.08,3.19,2026-12-09,4
+377,Red Barn Romaine Hearts 3 ct,1.58,2.79,2026-12-08,4
+378,Green Mesa Romaine Hearts 3 ct,2.17,3.55,2026-12-17,4
+379,Clover Farm Romaine Hearts 3 ct,2.14,3.15,2026-12-09,4
+380,River Bluff Romaine Hearts 3 ct,2.52,3.75,2026-12-10,4
+381,Willow Farm Rainbow Carrots 1 lb,3.64,5.19,2026-12-11,4
+382,Pecan Bend Rainbow Carrots 1 lb,2.60,4.99,2026-12-02,4
+383,Sunny Acre Rainbow Carrots 1 lb,2.59,4.35,2026-12-05,4
+384,Hillcrest Growers Rainbow Carrots 1 lb,3.30,4.25,2026-12-04,4
+385,Lone Creek Rainbow Carrots 1 lb,2.64,4.25,2026-12-15,4
+386,Prairie Field Rainbow Carrots 1 lb,2.34,4.25,2026-12-07,4
+387,Red Barn Rainbow Carrots 1 lb,3.05,5.15,2026-11-19,4
+388,Green Mesa Rainbow Carrots 1 lb,3.19,4.49,2026-12-10,4
+389,Clover Farm Rainbow Carrots 1 lb,2.64,4.85,2026-11-28,4
+390,River Bluff Rainbow Carrots 1 lb,2.71,3.89,2026-12-13,4
+391,Willow Farm Navel Oranges 3 lb,4.25,6.59,2026-12-12,4
+392,Pecan Bend Navel Oranges 3 lb,3.72,6.65,2026-12-17,4
+393,Sunny Acre Navel Oranges 3 lb,3.57,6.05,2026-12-11,4
+394,Hillcrest Growers Navel Oranges 3 lb,4.56,5.99,2026-12-17,4
+395,Lone Creek Navel Oranges 3 lb,4.55,6.35,2026-12-02,4
+396,Prairie Field Navel Oranges 3 lb,4.02,7.15,2026-12-07,4
+397,Red Barn Navel Oranges 3 lb,3.19,6.45,2026-12-04,4
+398,Green Mesa Navel Oranges 3 lb,4.93,6.59,2026-11-29,4
+399,Clover Farm Navel Oranges 3 lb,4.75,6.15,2026-12-11,4
+400,River Bluff Navel Oranges 3 lb,5.08,6.99,2026-11-28,4
+401,Willow Farm English Cucumbers 2 ct,1.84,3.59,2026-11-29,4
+402,Pecan Bend English Cucumbers 2 ct,1.94,3.15,2026-12-07,4
+403,Sunny Acre English Cucumbers 2 ct,1.75,3.49,2026-11-24,4
+404,Hillcrest Growers English Cucumbers 2 ct,2.37,3.15,2026-12-04,4
+405,Lone Creek English Cucumbers 2 ct,2.56,3.35,2026-12-12,4
+406,Prairie Field English Cucumbers 2 ct,2.94,3.79,2026-11-29,4
+407,Red Barn English Cucumbers 2 ct,2.09,3.69,2026-11-26,4
+408,Green Mesa English Cucumbers 2 ct,2.49,3.65,2026-11-27,4
+409,Clover Farm English Cucumbers 2 ct,2.86,3.89,2026-12-13,4
+410,River Bluff English Cucumbers 2 ct,1.89,3.05,2026-11-30,4
+411,Cedar Lane Dish Soap 16 fl oz,4.18,6.75,,5
+412,Blue Mill Dish Soap 16 fl oz,5.33,7.69,,5
+413,North Grove Dish Soap 16 fl oz,4.34,7.49,,5
+414,Sage Creek Dish Soap 16 fl oz,4.41,6.49,,5
+415,Copper Valley Dish Soap 16 fl oz,4.42,7.09,,5
+416,Juniper Trail Dish Soap 16 fl oz,3.43,6.75,,5
+417,Silver Orchard Dish Soap 16 fl oz,3.70,6.85,,5
+418,West Hearth Dish Soap 16 fl oz,3.59,7.25,,5
+419,Prairie Bend Dish Soap 16 fl oz,3.50,6.65,,5
+420,Oak Corner Dish Soap 16 fl oz,5.16,7.35,,5
+421,Cedar Lane Paper Towels 2 rolls,6.44,9.85,,5
+422,Blue Mill Paper Towels 2 rolls,6.32,10.35,,5
+423,North Grove Paper Towels 2 rolls,5.88,9.95,,5
+424,Sage Creek Paper Towels 2 rolls,6.69,9.25,,5
+425,Copper Valley Paper Towels 2 rolls,4.64,9.45,,5
+426,Juniper Trail Paper Towels 2 rolls,5.11,10.39,,5
+427,Silver Orchard Paper Towels 2 rolls,6.26,9.65,,5
+428,West Hearth Paper Towels 2 rolls,6.52,9.25,,5
+429,Prairie Bend Paper Towels 2 rolls,6.91,9.29,,5
+430,Oak Corner Paper Towels 2 rolls,6.55,9.95,,5
+431,Cedar Lane Laundry Detergent 40 loads,2.74,4.25,,5
+432,Blue Mill Laundry Detergent 40 loads,3.41,5.59,,5
+433,North Grove Laundry Detergent 40 loads,3.10,4.69,,5
+434,Sage Creek Laundry Detergent 40 loads,2.81,5.15,,5
+435,Copper Valley Laundry Detergent 40 loads,3.25,4.95,,5
+436,Juniper Trail Laundry Detergent 40 loads,3.43,5.19,,5
+437,Silver Orchard Laundry Detergent 40 loads,2.91,4.55,,5
+438,West Hearth Laundry Detergent 40 loads,2.96,4.89,,5
+439,Prairie Bend Laundry Detergent 40 loads,3.21,4.85,,5
+440,Oak Corner Laundry Detergent 40 loads,3.99,5.55,,5
+441,Cedar Lane Kitchen Trash Bags 20 ct,5.03,8.85,,5
+442,Blue Mill Kitchen Trash Bags 20 ct,4.76,9.09,,5
+443,North Grove Kitchen Trash Bags 20 ct,5.75,8.95,,5
+444,Sage Creek Kitchen Trash Bags 20 ct,4.61,8.99,,5
+445,Copper Valley Kitchen Trash Bags 20 ct,7.56,10.09,,5
+446,Juniper Trail Kitchen Trash Bags 20 ct,5.76,9.19,,5
+447,Silver Orchard Kitchen Trash Bags 20 ct,5.49,9.85,,5
+448,West Hearth Kitchen Trash Bags 20 ct,4.73,9.29,,5
+449,Prairie Bend Kitchen Trash Bags 20 ct,6.25,8.99,,5
+450,Oak Corner Kitchen Trash Bags 20 ct,6.16,9.85,,5
+451,Cedar Lane Sponges 4 ct,3.68,5.69,,5
+452,Blue Mill Sponges 4 ct,4.21,6.45,,5
+453,North Grove Sponges 4 ct,3.33,5.75,,5
+454,Sage Creek Sponges 4 ct,4.95,6.85,,5
+455,Copper Valley Sponges 4 ct,3.05,6.09,,5
+456,Juniper Trail Sponges 4 ct,4.53,6.45,,5
+457,Silver Orchard Sponges 4 ct,4.22,5.55,,5
+458,West Hearth Sponges 4 ct,4.16,5.55,,5
+459,Prairie Bend Sponges 4 ct,3.40,6.19,,5
+460,Oak Corner Sponges 4 ct,3.47,6.19,,5
+461,Cedar Lane Aluminum Foil 50 ft,6.59,11.49,,5
+462,Blue Mill Aluminum Foil 50 ft,8.35,11.19,,5
+463,North Grove Aluminum Foil 50 ft,6.47,11.45,,5
+464,Sage Creek Aluminum Foil 50 ft,6.96,11.05,,5
+465,Copper Valley Aluminum Foil 50 ft,8.76,12.09,,5
+466,Juniper Trail Aluminum Foil 50 ft,9.07,11.65,,5
+467,Silver Orchard Aluminum Foil 50 ft,8.52,12.29,,5
+468,West Hearth Aluminum Foil 50 ft,7.60,12.09,,5
+469,Prairie Bend Aluminum Foil 50 ft,7.52,11.99,,5
+470,Oak Corner Aluminum Foil 50 ft,8.16,12.39,,5
+471,Cedar Lane Freezer Bags 25 ct,8.18,11.69,,5
+472,Blue Mill Freezer Bags 25 ct,7.13,11.69,,5
+473,North Grove Freezer Bags 25 ct,5.83,11.25,,5
+474,Sage Creek Freezer Bags 25 ct,6.00,11.59,,5
+475,Copper Valley Freezer Bags 25 ct,7.52,12.49,,5
+476,Juniper Trail Freezer Bags 25 ct,7.75,11.25,,5
+477,Silver Orchard Freezer Bags 25 ct,6.75,11.49,,5
+478,West Hearth Freezer Bags 25 ct,6.96,12.19,,5
+479,Prairie Bend Freezer Bags 25 ct,6.53,11.55,,5
+480,Oak Corner Freezer Bags 25 ct,8.26,11.89,,5
+481,Cedar Lane All-Purpose Cleaner 24 fl oz,1.38,2.69,,5
+482,Blue Mill All-Purpose Cleaner 24 fl oz,1.96,2.85,,5
+483,North Grove All-Purpose Cleaner 24 fl oz,1.31,2.25,,5
+484,Sage Creek All-Purpose Cleaner 24 fl oz,0.86,1.65,,5
+485,Copper Valley All-Purpose Cleaner 24 fl oz,1.57,2.45,,5
+486,Juniper Trail All-Purpose Cleaner 24 fl oz,1.42,1.95,,5
+487,Silver Orchard All-Purpose Cleaner 24 fl oz,1.32,2.15,,5
+488,West Hearth All-Purpose Cleaner 24 fl oz,1.42,2.09,,5
+489,Prairie Bend All-Purpose Cleaner 24 fl oz,1.41,2.09,,5
+490,Oak Corner All-Purpose Cleaner 24 fl oz,1.77,2.69,,5
+491,Cedar Lane Facial Tissues 3 boxes,4.23,5.45,,5
+492,Blue Mill Facial Tissues 3 boxes,3.39,5.15,,5
+493,North Grove Facial Tissues 3 boxes,3.18,4.39,,5
+494,Sage Creek Facial Tissues 3 boxes,2.64,5.29,,5
+495,Copper Valley Facial Tissues 3 boxes,3.88,5.19,,5
+496,Juniper Trail Facial Tissues 3 boxes,3.37,4.69,,5
+497,Silver Orchard Facial Tissues 3 boxes,3.72,5.25,,5
+498,West Hearth Facial Tissues 3 boxes,2.89,4.79,,5
+499,Prairie Bend Facial Tissues 3 boxes,3.56,4.75,,5
+500,Oak Corner Facial Tissues 3 boxes,3.56,5.49,,5
+501,Cedar Lane Parchment Paper 45 ft,4.95,6.85,,5
+502,Blue Mill Parchment Paper 45 ft,4.45,7.85,,5
+503,North Grove Parchment Paper 45 ft,5.08,6.79,,5
+504,Sage Creek Parchment Paper 45 ft,3.52,6.79,,5
+505,Copper Valley Parchment Paper 45 ft,4.40,7.65,,5
+506,Juniper Trail Parchment Paper 45 ft,5.63,7.69,,5
+507,Silver Orchard Parchment Paper 45 ft,5.34,8.19,,5
+508,West Hearth Parchment Paper 45 ft,4.61,7.09,,5
+509,Prairie Bend Parchment Paper 45 ft,4.70,7.55,,5
+510,Oak Corner Parchment Paper 45 ft,4.26,7.65,,5
+511,Cedar Lane Ground Beef 1 lb,5.01,8.99,2026-11-24,6
+512,Blue Mill Ground Beef 1 lb,7.39,9.75,2026-12-05,6
+513,North Grove Ground Beef 1 lb,7.23,10.29,2026-12-03,6
+514,Sage Creek Ground Beef 1 lb,5.57,9.35,2026-12-03,6
+515,Copper Valley Ground Beef 1 lb,4.89,9.25,2026-11-24,6
+516,Juniper Trail Ground Beef 1 lb,6.15,8.99,2026-11-19,6
+517,Silver Orchard Ground Beef 1 lb,6.32,10.09,2026-12-08,6
+518,West Hearth Ground Beef 1 lb,6.40,9.15,2026-12-08,6
+519,Prairie Bend Ground Beef 1 lb,5.98,10.05,2026-11-25,6
+520,Oak Corner Ground Beef 1 lb,7.39,10.09,2026-12-01,6
+521,Cedar Lane Chicken Thighs 1.5 lb,4.91,6.49,2026-12-02,6
+522,Blue Mill Chicken Thighs 1.5 lb,5.14,6.69,2026-12-08,6
+523,North Grove Chicken Thighs 1.5 lb,3.55,6.55,2026-12-07,6
+524,Sage Creek Chicken Thighs 1.5 lb,3.79,7.09,2026-12-07,6
+525,Copper Valley Chicken Thighs 1.5 lb,4.22,7.59,2026-12-07,6
+526,Juniper Trail Chicken Thighs 1.5 lb,3.90,7.05,2026-12-02,6
+527,Silver Orchard Chicken Thighs 1.5 lb,3.53,6.75,2026-12-05,6
+528,West Hearth Chicken Thighs 1.5 lb,5.07,7.45,2026-12-03,6
+529,Prairie Bend Chicken Thighs 1.5 lb,4.12,6.69,2026-11-25,6
+530,Oak Corner Chicken Thighs 1.5 lb,3.67,7.19,2026-12-06,6
+531,Cedar Lane Atlantic Salmon 12 oz,3.89,7.45,2026-12-06,6
+532,Blue Mill Atlantic Salmon 12 oz,5.24,8.29,2026-11-30,6
+533,North Grove Atlantic Salmon 12 oz,3.98,7.35,2026-12-04,6
+534,Sage Creek Atlantic Salmon 12 oz,4.56,8.59,2026-12-04,6
+535,Copper Valley Atlantic Salmon 12 oz,5.11,8.25,2026-11-25,6
+536,Juniper Trail Atlantic Salmon 12 oz,5.09,8.39,2026-11-28,6
+537,Silver Orchard Atlantic Salmon 12 oz,4.73,7.85,2026-12-01,6
+538,West Hearth Atlantic Salmon 12 oz,3.91,7.45,2026-11-24,6
+539,Prairie Bend Atlantic Salmon 12 oz,4.52,7.55,2026-12-02,6
+540,Oak Corner Atlantic Salmon 12 oz,4.40,7.49,2026-12-08,6
+541,Cedar Lane Ground Turkey 1 lb,8.71,12.19,2026-11-30,6
+542,Blue Mill Ground Turkey 1 lb,8.24,11.89,2026-12-07,6
+543,North Grove Ground Turkey 1 lb,6.31,12.19,2026-11-24,6
+544,Sage Creek Ground Turkey 1 lb,8.07,11.25,2026-11-26,6
+545,Copper Valley Ground Turkey 1 lb,8.98,11.99,2026-11-30,6
+546,Juniper Trail Ground Turkey 1 lb,5.79,11.15,2026-12-04,6
+547,Silver Orchard Ground Turkey 1 lb,8.66,12.05,2026-11-24,6
+548,West Hearth Ground Turkey 1 lb,7.01,11.15,2026-12-05,6
+549,Prairie Bend Ground Turkey 1 lb,6.19,10.95,2026-11-23,6
+550,Oak Corner Ground Turkey 1 lb,8.72,11.19,2026-12-02,6
+551,Cedar Lane Pork Chops 1 lb,8.31,13.69,2026-11-25,6
+552,Blue Mill Pork Chops 1 lb,7.74,13.35,2026-12-03,6
+553,North Grove Pork Chops 1 lb,6.55,12.39,2026-11-24,6
+554,Sage Creek Pork Chops 1 lb,8.21,12.75,2026-12-01,6
+555,Copper Valley Pork Chops 1 lb,7.93,12.25,2026-11-24,6
+556,Juniper Trail Pork Chops 1 lb,8.00,12.89,2026-12-08,6
+557,Silver Orchard Pork Chops 1 lb,9.71,12.79,2026-11-24,6
+558,West Hearth Pork Chops 1 lb,7.21,12.79,2026-12-07,6
+559,Prairie Bend Pork Chops 1 lb,8.19,13.79,2026-11-19,6
+560,Oak Corner Pork Chops 1 lb,9.31,12.75,2026-12-08,6
+561,Cedar Lane Italian Sausage 1 lb,4.91,6.45,2026-12-01,6
+562,Blue Mill Italian Sausage 1 lb,2.83,5.59,2026-11-24,6
+563,North Grove Italian Sausage 1 lb,4.55,6.19,2026-11-30,6
+564,Sage Creek Italian Sausage 1 lb,3.12,5.59,2026-12-04,6
+565,Copper Valley Italian Sausage 1 lb,4.34,6.09,2026-11-29,6
+566,Juniper Trail Italian Sausage 1 lb,4.54,6.25,2026-12-02,6
+567,Silver Orchard Italian Sausage 1 lb,3.07,5.99,2026-11-28,6
+568,West Hearth Italian Sausage 1 lb,4.38,6.75,2026-11-25,6
+569,Prairie Bend Italian Sausage 1 lb,4.74,6.19,2026-12-04,6
+570,Oak Corner Italian Sausage 1 lb,3.87,5.75,2026-12-04,6
+571,Cedar Lane Tilapia Fillets 1 lb,5.09,7.25,2026-11-25,6
+572,Blue Mill Tilapia Fillets 1 lb,4.75,7.45,2026-12-04,6
+573,North Grove Tilapia Fillets 1 lb,3.67,7.45,2026-12-02,6
+574,Sage Creek Tilapia Fillets 1 lb,4.60,6.65,2026-11-27,6
+575,Copper Valley Tilapia Fillets 1 lb,5.63,7.59,2026-11-25,6
+576,Juniper Trail Tilapia Fillets 1 lb,5.44,7.15,2026-11-29,6
+577,Silver Orchard Tilapia Fillets 1 lb,4.59,7.45,2026-11-29,6
+578,West Hearth Tilapia Fillets 1 lb,4.12,7.15,2026-12-01,6
+579,Prairie Bend Tilapia Fillets 1 lb,4.71,7.35,2026-11-26,6
+580,Oak Corner Tilapia Fillets 1 lb,4.17,6.59,2026-12-02,6
+581,Cedar Lane Chicken Breast 2 lb,5.10,6.69,2026-12-03,6
+582,Blue Mill Chicken Breast 2 lb,4.10,6.35,2026-12-06,6
+583,North Grove Chicken Breast 2 lb,3.16,5.89,2026-12-03,6
+584,Sage Creek Chicken Breast 2 lb,3.74,6.65,2026-12-03,6
+585,Copper Valley Chicken Breast 2 lb,2.76,5.55,2026-12-02,6
+586,Juniper Trail Chicken Breast 2 lb,3.42,6.09,2026-11-28,6
+587,Silver Orchard Chicken Breast 2 lb,2.73,5.35,2026-11-26,6
+588,West Hearth Chicken Breast 2 lb,3.37,6.29,2026-11-29,6
+589,Prairie Bend Chicken Breast 2 lb,3.26,5.49,2026-12-02,6
+590,Oak Corner Chicken Breast 2 lb,3.42,5.99,2026-11-25,6
+591,Cedar Lane Boneless Sirloin 1 lb,5.40,9.79,2026-11-25,6
+592,Blue Mill Boneless Sirloin 1 lb,6.52,10.25,2026-11-28,6
+593,North Grove Boneless Sirloin 1 lb,7.30,10.45,2026-11-24,6
+594,Sage Creek Boneless Sirloin 1 lb,6.88,9.69,2026-12-06,6
+595,Copper Valley Boneless Sirloin 1 lb,5.80,9.69,2026-11-27,6
+596,Juniper Trail Boneless Sirloin 1 lb,5.54,10.49,2026-11-29,6
+597,Silver Orchard Boneless Sirloin 1 lb,7.20,9.45,2026-11-26,6
+598,West Hearth Boneless Sirloin 1 lb,5.37,10.15,2026-11-27,6
+599,Prairie Bend Boneless Sirloin 1 lb,5.28,9.79,2026-12-03,6
+600,Oak Corner Boneless Sirloin 1 lb,6.63,10.29,2026-11-27,6
+601,Cedar Lane Raw Shrimp 12 oz,6.28,8.45,2026-11-29,6
+602,Blue Mill Raw Shrimp 12 oz,5.54,8.55,2026-11-19,6
+603,North Grove Raw Shrimp 12 oz,6.31,8.29,2026-11-28,6
+604,Sage Creek Raw Shrimp 12 oz,5.25,9.55,2026-12-02,6
+605,Copper Valley Raw Shrimp 12 oz,5.00,8.19,2026-11-30,6
+606,Juniper Trail Raw Shrimp 12 oz,6.91,9.29,2026-11-30,6
+607,Silver Orchard Raw Shrimp 12 oz,4.36,8.59,2026-12-04,6
+608,West Hearth Raw Shrimp 12 oz,7.15,9.25,2026-11-26,6
+609,Prairie Bend Raw Shrimp 12 oz,5.43,9.55,2026-12-02,6
+610,Oak Corner Raw Shrimp 12 oz,7.15,9.39,2026-11-23,6
+611,Cedar Lane Frozen Peas 12 oz,4.79,6.49,2027-06-02,7
+612,Blue Mill Frozen Peas 12 oz,2.86,5.29,2027-07-31,7
+613,North Grove Frozen Peas 12 oz,4.59,6.25,2027-07-24,7
+614,Sage Creek Frozen Peas 12 oz,3.47,5.99,2027-02-26,7
+615,Copper Valley Frozen Peas 12 oz,4.21,6.05,2027-02-02,7
+616,Juniper Trail Frozen Peas 12 oz,3.81,6.29,2027-02-13,7
+617,Silver Orchard Frozen Peas 12 oz,3.75,5.99,2027-05-28,7
+618,West Hearth Frozen Peas 12 oz,5.06,6.69,2027-05-03,7
+619,Prairie Bend Frozen Peas 12 oz,3.90,6.29,2027-04-08,7
+620,Oak Corner Frozen Peas 12 oz,3.19,6.25,2027-07-28,7
+621,Cedar Lane Mixed Berries 16 oz,2.30,4.49,2027-08-22,7
+622,Blue Mill Mixed Berries 16 oz,1.94,3.69,2027-01-22,7
+623,North Grove Mixed Berries 16 oz,2.07,4.09,2027-06-13,7
+624,Sage Creek Mixed Berries 16 oz,2.73,3.75,2027-04-19,7
+625,Copper Valley Mixed Berries 16 oz,2.83,4.39,2027-02-24,7
+626,Juniper Trail Mixed Berries 16 oz,2.09,3.85,2027-03-15,7
+627,Silver Orchard Mixed Berries 16 oz,2.79,4.59,2027-02-18,7
+628,West Hearth Mixed Berries 16 oz,2.13,3.65,2027-05-18,7
+629,Prairie Bend Mixed Berries 16 oz,3.53,4.99,2027-10-22,7
+630,Oak Corner Mixed Berries 16 oz,2.31,4.05,2027-11-30,7
+631,Cedar Lane Margherita Pizza 12 in,4.58,8.69,2027-08-27,7
+632,Blue Mill Margherita Pizza 12 in,6.36,9.75,2027-03-29,7
+633,North Grove Margherita Pizza 12 in,7.45,9.69,2027-07-14,7
+634,Sage Creek Margherita Pizza 12 in,5.59,8.95,2027-10-11,7
+635,Copper Valley Margherita Pizza 12 in,5.75,9.05,2027-02-02,7
+636,Juniper Trail Margherita Pizza 12 in,7.13,9.75,2027-09-04,7
+637,Silver Orchard Margherita Pizza 12 in,5.51,9.85,2027-08-24,7
+638,West Hearth Margherita Pizza 12 in,6.37,9.49,2027-06-03,7
+639,Prairie Bend Margherita Pizza 12 in,6.76,8.95,2027-01-18,7
+640,Oak Corner Margherita Pizza 12 in,5.55,9.19,2027-04-25,7
+641,Cedar Lane Vanilla Ice Cream 1 pt,3.65,6.49,2027-08-17,7
+642,Blue Mill Vanilla Ice Cream 1 pt,4.53,6.49,2027-02-22,7
+643,North Grove Vanilla Ice Cream 1 pt,3.68,5.85,2027-08-31,7
+644,Sage Creek Vanilla Ice Cream 1 pt,3.25,5.85,2027-04-02,7
+645,Copper Valley Vanilla Ice Cream 1 pt,3.60,5.89,2026-11-22,7
+646,Juniper Trail Vanilla Ice Cream 1 pt,3.31,5.79,2027-03-09,7
+647,Silver Orchard Vanilla Ice Cream 1 pt,3.60,5.39,2027-08-01,7
+648,West Hearth Vanilla Ice Cream 1 pt,4.22,6.55,2027-07-26,7
+649,Prairie Bend Vanilla Ice Cream 1 pt,3.46,5.25,2027-10-19,7
+650,Oak Corner Vanilla Ice Cream 1 pt,4.04,5.25,2027-07-09,7
+651,Cedar Lane Frozen Waffles 10 ct,6.86,10.69,2027-11-08,7
+652,Blue Mill Frozen Waffles 10 ct,5.88,10.29,2027-06-12,7
+653,North Grove Frozen Waffles 10 ct,7.11,10.65,2027-11-10,7
+654,Sage Creek Frozen Waffles 10 ct,6.81,10.79,2027-06-29,7
+655,Copper Valley Frozen Waffles 10 ct,6.95,9.89,2027-12-11,7
+656,Juniper Trail Frozen Waffles 10 ct,7.19,10.69,2027-02-07,7
+657,Silver Orchard Frozen Waffles 10 ct,5.79,9.49,2027-01-15,7
+658,West Hearth Frozen Waffles 10 ct,6.69,9.75,2027-06-13,7
+659,Prairie Bend Frozen Waffles 10 ct,6.89,10.09,2027-01-13,7
+660,Oak Corner Frozen Waffles 10 ct,5.65,9.95,2027-10-02,7
+661,Cedar Lane Edamame 12 oz,7.26,10.65,2027-02-27,7
+662,Blue Mill Edamame 12 oz,7.75,11.35,2027-05-10,7
+663,North Grove Edamame 12 oz,6.53,10.99,2027-07-07,7
+664,Sage Creek Edamame 12 oz,7.32,11.49,2027-02-28,7
+665,Copper Valley Edamame 12 oz,6.21,11.15,2027-07-03,7
+666,Juniper Trail Edamame 12 oz,5.62,10.25,2027-05-23,7
+667,Silver Orchard Edamame 12 oz,5.84,11.35,2027-12-16,7
+668,West Hearth Edamame 12 oz,5.54,10.89,2027-03-15,7
+669,Prairie Bend Edamame 12 oz,7.83,10.55,2027-02-21,7
+670,Oak Corner Edamame 12 oz,7.13,10.89,2027-11-01,7
+671,Cedar Lane Cheese Ravioli 18 oz,3.35,6.69,2026-11-23,7
+672,Blue Mill Cheese Ravioli 18 oz,3.87,7.69,2027-01-27,7
+673,North Grove Cheese Ravioli 18 oz,5.47,7.15,2027-01-11,7
+674,Sage Creek Cheese Ravioli 18 oz,5.02,6.69,2027-08-11,7
+675,Copper Valley Cheese Ravioli 18 oz,4.80,7.05,2027-09-06,7
+676,Juniper Trail Cheese Ravioli 18 oz,6.03,7.95,2027-08-06,7
+677,Silver Orchard Cheese Ravioli 18 oz,4.75,6.59,2027-02-18,7
+678,West Hearth Cheese Ravioli 18 oz,5.08,7.59,2027-02-02,7
+679,Prairie Bend Cheese Ravioli 18 oz,3.68,6.89,2027-11-04,7
+680,Oak Corner Cheese Ravioli 18 oz,4.18,6.69,2027-03-15,7
+681,Cedar Lane Mango Chunks 16 oz,4.12,7.09,2027-05-06,7
+682,Blue Mill Mango Chunks 16 oz,4.41,6.85,2027-03-24,7
+683,North Grove Mango Chunks 16 oz,3.55,6.79,2027-05-30,7
+684,Sage Creek Mango Chunks 16 oz,4.98,6.59,2027-08-11,7
+685,Copper Valley Mango Chunks 16 oz,4.73,6.15,2027-12-06,7
+686,Juniper Trail Mango Chunks 16 oz,4.26,5.85,2027-11-17,7
+687,Silver Orchard Mango Chunks 16 oz,4.67,6.65,2027-01-22,7
+688,West Hearth Mango Chunks 16 oz,3.39,5.75,2026-11-19,7
+689,Prairie Bend Mango Chunks 16 oz,3.69,7.15,2027-09-17,7
+690,Oak Corner Mango Chunks 16 oz,3.97,6.35,2027-06-01,7
+691,Cedar Lane Sweet Potato Fries 20 oz,4.13,7.65,2027-03-08,7
+692,Blue Mill Sweet Potato Fries 20 oz,4.60,7.65,2027-07-09,7
+693,North Grove Sweet Potato Fries 20 oz,5.43,8.39,2027-01-31,7
+694,Sage Creek Sweet Potato Fries 20 oz,4.89,7.55,2027-01-25,7
+695,Copper Valley Sweet Potato Fries 20 oz,4.40,8.35,2027-02-25,7
+696,Juniper Trail Sweet Potato Fries 20 oz,3.97,7.69,2027-12-22,7
+697,Silver Orchard Sweet Potato Fries 20 oz,4.82,7.79,2027-09-11,7
+698,West Hearth Sweet Potato Fries 20 oz,4.59,8.05,2027-06-28,7
+699,Prairie Bend Sweet Potato Fries 20 oz,4.90,8.19,2027-03-24,7
+700,Oak Corner Sweet Potato Fries 20 oz,5.97,8.45,2027-05-02,7
+701,Cedar Lane Vegetable Dumplings 12 ct,4.98,8.59,2027-01-28,7
+702,Blue Mill Vegetable Dumplings 12 ct,5.81,7.99,2027-09-21,7
+703,North Grove Vegetable Dumplings 12 ct,4.93,7.65,2027-03-18,7
+704,Sage Creek Vegetable Dumplings 12 ct,4.00,7.89,2027-02-01,7
+705,Copper Valley Vegetable Dumplings 12 ct,6.26,8.65,2027-01-17,7
+706,Juniper Trail Vegetable Dumplings 12 ct,5.44,7.59,2027-06-10,7
+707,Silver Orchard Vegetable Dumplings 12 ct,5.61,8.55,2027-04-04,7
+708,West Hearth Vegetable Dumplings 12 ct,5.47,7.89,2027-03-31,7
+709,Prairie Bend Vegetable Dumplings 12 ct,4.68,7.59,2027-04-15,7
+710,Oak Corner Vegetable Dumplings 12 ct,5.28,8.65,2027-06-19,7
+711,Cedar Lane Jasmine Rice 2 lb,3.82,5.15,2027-03-09,8
+712,Blue Mill Jasmine Rice 2 lb,3.65,4.99,2027-04-08,8
+713,North Grove Jasmine Rice 2 lb,2.88,5.05,2027-01-24,8
+714,Sage Creek Jasmine Rice 2 lb,2.88,5.49,2028-06-17,8
+715,Copper Valley Jasmine Rice 2 lb,3.27,5.19,2027-02-21,8
+716,Juniper Trail Jasmine Rice 2 lb,3.47,4.85,2027-07-24,8
+717,Silver Orchard Jasmine Rice 2 lb,2.94,5.09,2027-02-24,8
+718,West Hearth Jasmine Rice 2 lb,3.37,5.05,2028-01-28,8
+719,Prairie Bend Jasmine Rice 2 lb,4.44,6.15,2028-02-11,8
+720,Oak Corner Jasmine Rice 2 lb,2.44,4.89,2027-11-24,8
+721,Cedar Lane Black Beans 15 oz,4.52,8.79,2027-07-03,8
+722,Blue Mill Black Beans 15 oz,4.83,9.39,2027-10-20,8
+723,North Grove Black Beans 15 oz,4.86,8.39,2028-05-20,8
+724,Sage Creek Black Beans 15 oz,6.89,8.85,2027-06-16,8
+725,Copper Valley Black Beans 15 oz,4.78,8.39,2027-07-10,8
+726,Juniper Trail Black Beans 15 oz,4.45,8.89,2027-03-23,8
+727,Silver Orchard Black Beans 15 oz,4.74,8.55,2028-03-15,8
+728,West Hearth Black Beans 15 oz,6.23,8.69,2027-03-14,8
+729,Prairie Bend Black Beans 15 oz,5.86,8.05,2027-11-10,8
+730,Oak Corner Black Beans 15 oz,4.53,8.55,2027-10-29,8
+731,Cedar Lane Crushed Tomatoes 28 oz,0.85,1.49,2026-11-21,8
+732,Blue Mill Crushed Tomatoes 28 oz,0.77,1.49,2026-11-23,8
+733,North Grove Crushed Tomatoes 28 oz,0.74,1.15,2027-08-22,8
+734,Sage Creek Crushed Tomatoes 28 oz,0.63,0.99,2027-11-16,8
+735,Copper Valley Crushed Tomatoes 28 oz,0.75,0.99,2028-05-27,8
+736,Juniper Trail Crushed Tomatoes 28 oz,1.16,1.85,2027-05-09,8
+737,Silver Orchard Crushed Tomatoes 28 oz,0.97,1.45,2028-01-05,8
+738,West Hearth Crushed Tomatoes 28 oz,0.54,0.99,2027-03-04,8
+739,Prairie Bend Crushed Tomatoes 28 oz,0.94,1.35,2028-01-06,8
+740,Oak Corner Crushed Tomatoes 28 oz,0.66,0.99,2027-03-22,8
+741,Cedar Lane Penne 16 oz,7.83,13.09,2027-08-20,8
+742,Blue Mill Penne 16 oz,7.39,11.99,2027-03-13,8
+743,North Grove Penne 16 oz,7.39,13.19,2028-07-25,8
+744,Sage Creek Penne 16 oz,7.93,12.65,2027-06-05,8
+745,Copper Valley Penne 16 oz,7.58,12.65,2027-09-22,8
+746,Juniper Trail Penne 16 oz,6.91,12.89,2027-04-16,8
+747,Silver Orchard Penne 16 oz,8.99,12.09,2027-08-08,8
+748,West Hearth Penne 16 oz,8.99,12.89,2028-05-04,8
+749,Prairie Bend Penne 16 oz,7.44,13.15,2027-07-04,8
+750,Oak Corner Penne 16 oz,7.78,12.85,2027-10-15,8
+751,Cedar Lane Chicken Broth 32 fl oz,5.74,8.39,2027-12-06,8
+752,Blue Mill Chicken Broth 32 fl oz,6.39,8.39,2028-05-08,8
+753,North Grove Chicken Broth 32 fl oz,4.72,9.09,2027-08-04,8
+754,Sage Creek Chicken Broth 32 fl oz,4.86,9.25,2027-07-28,8
+755,Copper Valley Chicken Broth 32 fl oz,7.24,9.39,2027-09-09,8
+756,Juniper Trail Chicken Broth 32 fl oz,6.01,9.25,2027-09-21,8
+757,Silver Orchard Chicken Broth 32 fl oz,6.57,9.69,2027-10-31,8
+758,West Hearth Chicken Broth 32 fl oz,6.78,9.59,2027-08-17,8
+759,Prairie Bend Chicken Broth 32 fl oz,4.65,8.85,2027-04-27,8
+760,Oak Corner Chicken Broth 32 fl oz,5.74,9.49,2028-06-20,8
+761,Cedar Lane Rolled Oats 18 oz,1.43,2.39,2028-06-11,8
+762,Blue Mill Rolled Oats 18 oz,1.19,1.75,2027-03-02,8
+763,North Grove Rolled Oats 18 oz,1.49,2.19,2028-02-10,8
+764,Sage Creek Rolled Oats 18 oz,0.75,1.15,2027-06-12,8
+765,Copper Valley Rolled Oats 18 oz,1.54,2.59,2027-12-03,8
+766,Juniper Trail Rolled Oats 18 oz,0.82,1.35,2027-06-28,8
+767,Silver Orchard Rolled Oats 18 oz,1.40,1.95,2028-02-21,8
+768,West Hearth Rolled Oats 18 oz,1.20,1.75,2027-07-27,8
+769,Prairie Bend Rolled Oats 18 oz,0.72,1.25,2027-06-18,8
+770,Oak Corner Rolled Oats 18 oz,1.27,1.69,2027-06-26,8
+771,Cedar Lane Olive Oil 17 fl oz,2.65,5.15,2027-08-20,8
+772,Blue Mill Olive Oil 17 fl oz,3.88,5.55,2027-06-07,8
+773,North Grove Olive Oil 17 fl oz,3.46,5.45,2028-04-28,8
+774,Sage Creek Olive Oil 17 fl oz,3.78,5.99,2026-11-18,8
+775,Copper Valley Olive Oil 17 fl oz,3.79,5.35,2028-07-01,8
+776,Juniper Trail Olive Oil 17 fl oz,3.89,6.09,2027-09-28,8
+777,Silver Orchard Olive Oil 17 fl oz,4.63,6.09,2027-09-25,8
+778,West Hearth Olive Oil 17 fl oz,3.09,5.45,2027-05-12,8
+779,Prairie Bend Olive Oil 17 fl oz,3.74,5.09,2027-04-01,8
+780,Oak Corner Olive Oil 17 fl oz,3.65,5.35,2027-05-06,8
+781,Cedar Lane Almond Butter 12 oz,9.68,14.75,2027-07-07,8
+782,Blue Mill Almond Butter 12 oz,11.47,14.75,2027-11-27,8
+783,North Grove Almond Butter 12 oz,7.47,14.49,2028-02-04,8
+784,Sage Creek Almond Butter 12 oz,7.66,14.25,2028-01-30,8
+785,Copper Valley Almond Butter 12 oz,7.87,14.79,2027-12-03,8
+786,Juniper Trail Almond Butter 12 oz,7.19,13.59,2027-06-27,8
+787,Silver Orchard Almond Butter 12 oz,9.82,14.65,2027-03-13,8
+788,West Hearth Almond Butter 12 oz,9.28,14.69,2027-03-11,8
+789,Prairie Bend Almond Butter 12 oz,6.77,13.65,2028-06-01,8
+790,Oak Corner Almond Butter 12 oz,9.10,14.25,2028-06-15,8
+791,Cedar Lane Canned Tuna 5 oz,4.96,8.85,2028-07-02,8
+792,Blue Mill Canned Tuna 5 oz,7.79,10.05,2027-03-12,8
+793,North Grove Canned Tuna 5 oz,6.35,9.05,2026-11-23,8
+794,Sage Creek Canned Tuna 5 oz,4.73,8.89,2027-12-03,8
+795,Copper Valley Canned Tuna 5 oz,5.15,9.55,2027-03-17,8
+796,Juniper Trail Canned Tuna 5 oz,5.77,9.85,2028-01-11,8
+797,Silver Orchard Canned Tuna 5 oz,7.31,10.09,2027-07-26,8
+798,West Hearth Canned Tuna 5 oz,6.24,9.85,2027-08-15,8
+799,Prairie Bend Canned Tuna 5 oz,5.71,9.05,2028-05-03,8
+800,Oak Corner Canned Tuna 5 oz,4.92,9.49,2027-07-04,8
+801,Cedar Lane Lentils 1 lb,6.51,11.89,2027-04-28,8
+802,Blue Mill Lentils 1 lb,7.45,12.39,2028-02-09,8
+803,North Grove Lentils 1 lb,6.55,12.69,2027-01-22,8
+804,Sage Creek Lentils 1 lb,6.31,12.55,2028-01-20,8
+805,Copper Valley Lentils 1 lb,8.16,12.09,2028-07-28,8
+806,Juniper Trail Lentils 1 lb,9.19,12.19,2028-02-13,8
+807,Silver Orchard Lentils 1 lb,7.26,12.95,2028-05-30,8
+808,West Hearth Lentils 1 lb,6.33,11.79,2028-05-27,8
+809,Prairie Bend Lentils 1 lb,9.18,12.09,2028-07-16,8
+810,Oak Corner Lentils 1 lb,8.94,11.59,2027-12-19,8
+811,Cedar Lane Sea Salt Potato Chips 8 oz,1.13,2.15,2027-02-14,9
+812,Blue Mill Sea Salt Potato Chips 8 oz,1.17,2.05,2027-03-05,9
+813,North Grove Sea Salt Potato Chips 8 oz,1.90,2.59,2027-09-15,9
+814,Sage Creek Sea Salt Potato Chips 8 oz,2.06,2.95,2026-12-25,9
+815,Copper Valley Sea Salt Potato Chips 8 oz,1.81,2.75,2027-09-22,9
+816,Juniper Trail Sea Salt Potato Chips 8 oz,1.45,2.85,2027-10-29,9
+817,Silver Orchard Sea Salt Potato Chips 8 oz,1.18,1.99,2026-11-19,9
+818,West Hearth Sea Salt Potato Chips 8 oz,1.88,3.05,2027-07-21,9
+819,Prairie Bend Sea Salt Potato Chips 8 oz,1.63,2.55,2027-03-07,9
+820,Oak Corner Sea Salt Potato Chips 8 oz,1.38,1.85,2027-06-01,9
+821,Cedar Lane Pretzel Twists 12 oz,1.07,2.09,2027-06-15,9
+822,Blue Mill Pretzel Twists 12 oz,1.24,1.75,2027-07-01,9
+823,North Grove Pretzel Twists 12 oz,1.52,2.59,2027-02-28,9
+824,Sage Creek Pretzel Twists 12 oz,1.13,2.29,2027-08-20,9
+825,Copper Valley Pretzel Twists 12 oz,2.08,3.05,2027-08-06,9
+826,Juniper Trail Pretzel Twists 12 oz,1.98,2.85,2027-08-26,9
+827,Silver Orchard Pretzel Twists 12 oz,1.69,2.45,2027-07-08,9
+828,West Hearth Pretzel Twists 12 oz,0.92,1.75,2027-09-22,9
+829,Prairie Bend Pretzel Twists 12 oz,1.35,2.09,2027-04-05,9
+830,Oak Corner Pretzel Twists 12 oz,1.75,2.65,2027-08-12,9
+831,Cedar Lane Trail Mix 10 oz,2.58,4.15,2027-08-06,9
+832,Blue Mill Trail Mix 10 oz,2.42,3.69,2027-02-20,9
+833,North Grove Trail Mix 10 oz,1.79,2.99,2027-05-24,9
+834,Sage Creek Trail Mix 10 oz,1.99,3.29,2027-04-25,9
+835,Copper Valley Trail Mix 10 oz,2.42,3.39,2027-01-13,9
+836,Juniper Trail Trail Mix 10 oz,2.16,2.99,2027-04-08,9
+837,Silver Orchard Trail Mix 10 oz,1.92,3.69,2027-05-29,9
+838,West Hearth Trail Mix 10 oz,2.10,4.09,2027-10-15,9
+839,Prairie Bend Trail Mix 10 oz,1.78,3.19,2027-08-20,9
+840,Oak Corner Trail Mix 10 oz,2.73,4.05,2027-01-06,9
+841,Cedar Lane Granola Bars 6 ct,1.76,3.49,2027-10-23,9
+842,Blue Mill Granola Bars 6 ct,1.93,3.59,2027-04-28,9
+843,North Grove Granola Bars 6 ct,1.78,3.49,2027-07-27,9
+844,Sage Creek Granola Bars 6 ct,2.33,3.89,2027-04-29,9
+845,Copper Valley Granola Bars 6 ct,2.13,2.85,2027-03-28,9
+846,Juniper Trail Granola Bars 6 ct,2.31,2.99,2027-02-08,9
+847,Silver Orchard Granola Bars 6 ct,2.18,3.59,2027-10-27,9
+848,West Hearth Granola Bars 6 ct,1.94,3.45,2027-06-14,9
+849,Prairie Bend Granola Bars 6 ct,1.97,3.05,2027-04-21,9
+850,Oak Corner Granola Bars 6 ct,1.27,2.55,2027-02-11,9
+851,Cedar Lane Rice Crackers 5 oz,6.18,9.19,2027-09-23,9
+852,Blue Mill Rice Crackers 5 oz,4.48,8.19,2027-10-08,9
+853,North Grove Rice Crackers 5 oz,5.68,9.09,2027-08-16,9
+854,Sage Creek Rice Crackers 5 oz,6.37,8.45,2026-11-23,9
+855,Copper Valley Rice Crackers 5 oz,5.52,9.05,2027-10-01,9
+856,Juniper Trail Rice Crackers 5 oz,4.66,9.15,2027-07-12,9
+857,Silver Orchard Rice Crackers 5 oz,5.37,7.75,2027-01-09,9
+858,West Hearth Rice Crackers 5 oz,4.14,8.19,2027-02-14,9
+859,Prairie Bend Rice Crackers 5 oz,5.92,8.05,2027-09-21,9
+860,Oak Corner Rice Crackers 5 oz,4.89,8.19,2026-11-17,9
+861,Cedar Lane Roasted Almonds 12 oz,4.31,6.15,2027-06-07,9
+862,Blue Mill Roasted Almonds 12 oz,3.49,5.55,2027-01-27,9
+863,North Grove Roasted Almonds 12 oz,3.87,5.45,2027-03-25,9
+864,Sage Creek Roasted Almonds 12 oz,3.78,6.09,2027-03-27,9
+865,Copper Valley Roasted Almonds 12 oz,2.70,5.39,2027-02-05,9
+866,Juniper Trail Roasted Almonds 12 oz,4.02,5.39,2027-04-03,9
+867,Silver Orchard Roasted Almonds 12 oz,2.95,5.95,2027-02-25,9
+868,West Hearth Roasted Almonds 12 oz,3.02,5.39,2027-03-08,9
+869,Prairie Bend Roasted Almonds 12 oz,2.85,5.19,2027-03-31,9
+870,Oak Corner Roasted Almonds 12 oz,3.21,5.59,2027-03-05,9
+871,Cedar Lane Tortilla Chips 11 oz,5.24,8.65,2027-04-28,9
+872,Blue Mill Tortilla Chips 11 oz,5.81,7.69,2027-10-23,9
+873,North Grove Tortilla Chips 11 oz,4.67,8.65,2027-03-15,9
+874,Sage Creek Tortilla Chips 11 oz,4.05,8.19,2027-10-31,9
+875,Copper Valley Tortilla Chips 11 oz,4.23,7.99,2027-07-26,9
+876,Juniper Trail Tortilla Chips 11 oz,4.37,8.15,2027-05-10,9
+877,Silver Orchard Tortilla Chips 11 oz,5.77,8.05,2027-06-13,9
+878,West Hearth Tortilla Chips 11 oz,4.01,7.39,2027-10-26,9
+879,Prairie Bend Tortilla Chips 11 oz,3.88,7.45,2027-08-11,9
+880,Oak Corner Tortilla Chips 11 oz,4.26,7.55,2027-10-12,9
+881,Cedar Lane Dark Chocolate 3 oz,2.81,4.49,2027-10-18,9
+882,Blue Mill Dark Chocolate 3 oz,3.41,4.55,2027-10-13,9
+883,North Grove Dark Chocolate 3 oz,3.13,4.25,2027-04-17,9
+884,Sage Creek Dark Chocolate 3 oz,2.99,5.35,2027-02-18,9
+885,Copper Valley Dark Chocolate 3 oz,2.40,4.55,2027-04-10,9
+886,Juniper Trail Dark Chocolate 3 oz,3.51,5.15,2027-09-18,9
+887,Silver Orchard Dark Chocolate 3 oz,3.23,4.49,2027-08-03,9
+888,West Hearth Dark Chocolate 3 oz,2.93,4.95,2027-03-20,9
+889,Prairie Bend Dark Chocolate 3 oz,3.60,5.19,2027-06-23,9
+890,Oak Corner Dark Chocolate 3 oz,2.45,4.39,2027-10-07,9
+891,Cedar Lane Dried Mango 6 oz,3.91,5.75,2027-08-12,9
+892,Blue Mill Dried Mango 6 oz,2.96,4.75,2027-08-29,9
+893,North Grove Dried Mango 6 oz,4.47,5.75,2027-09-05,9
+894,Sage Creek Dried Mango 6 oz,2.81,4.95,2027-06-30,9
+895,Copper Valley Dried Mango 6 oz,2.27,4.55,2027-09-08,9
+896,Juniper Trail Dried Mango 6 oz,3.06,5.15,2027-02-08,9
+897,Silver Orchard Dried Mango 6 oz,2.44,4.85,2026-12-28,9
+898,West Hearth Dried Mango 6 oz,3.64,5.55,2027-08-22,9
+899,Prairie Bend Dried Mango 6 oz,4.08,5.75,2027-07-05,9
+900,Oak Corner Dried Mango 6 oz,3.79,5.45,2027-05-04,9
+901,Cedar Lane Microwave Popcorn 6 ct,3.70,5.79,2027-06-26,9
+902,Blue Mill Microwave Popcorn 6 ct,4.43,6.15,2027-05-14,9
+903,North Grove Microwave Popcorn 6 ct,4.18,5.89,2026-11-21,9
+904,Sage Creek Microwave Popcorn 6 ct,3.54,5.59,2027-01-18,9
+905,Copper Valley Microwave Popcorn 6 ct,4.02,5.75,2027-01-22,9
+906,Juniper Trail Microwave Popcorn 6 ct,3.26,4.99,2027-01-27,9
+907,Silver Orchard Microwave Popcorn 6 ct,3.95,5.45,2027-01-21,9
+908,West Hearth Microwave Popcorn 6 ct,3.61,5.69,2027-06-15,9
+909,Prairie Bend Microwave Popcorn 6 ct,3.31,4.89,2027-10-12,9
+910,Oak Corner Microwave Popcorn 6 ct,3.25,5.29,2027-10-02,9
+911,Cedar Lane Rotisserie Chicken 2 lb,2.84,5.39,2026-12-03,10
+912,Blue Mill Rotisserie Chicken 2 lb,3.86,5.69,2026-12-02,10
+913,North Grove Rotisserie Chicken 2 lb,2.64,4.65,2026-11-26,10
+914,Sage Creek Rotisserie Chicken 2 lb,3.80,5.59,2026-11-29,10
+915,Copper Valley Rotisserie Chicken 2 lb,2.29,4.59,2026-11-23,10
+916,Juniper Trail Rotisserie Chicken 2 lb,3.23,4.85,2026-11-27,10
+917,Silver Orchard Rotisserie Chicken 2 lb,3.53,5.89,2026-11-27,10
+918,West Hearth Rotisserie Chicken 2 lb,2.59,5.05,2026-12-02,10
+919,Prairie Bend Rotisserie Chicken 2 lb,4.25,5.55,2026-12-05,10
+920,Oak Corner Rotisserie Chicken 2 lb,2.86,5.55,2026-11-25,10
+921,Cedar Lane Turkey Slices 8 oz,5.82,7.65,2026-11-29,10
+922,Blue Mill Turkey Slices 8 oz,4.88,6.95,2026-12-05,10
+923,North Grove Turkey Slices 8 oz,5.63,8.09,2026-12-01,10
+924,Sage Creek Turkey Slices 8 oz,4.53,7.09,2026-12-02,10
+925,Copper Valley Turkey Slices 8 oz,4.50,8.29,2026-11-25,10
+926,Juniper Trail Turkey Slices 8 oz,6.29,8.09,2026-11-27,10
+927,Silver Orchard Turkey Slices 8 oz,4.78,8.25,2026-11-28,10
+928,West Hearth Turkey Slices 8 oz,5.50,7.29,2026-11-28,10
+929,Prairie Bend Turkey Slices 8 oz,5.15,7.79,2026-11-29,10
+930,Oak Corner Turkey Slices 8 oz,4.10,7.29,2026-12-02,10
+931,Cedar Lane Hummus 10 oz,9.26,13.19,2026-11-25,10
+932,Blue Mill Hummus 10 oz,7.56,14.19,2026-12-02,10
+933,North Grove Hummus 10 oz,7.75,13.85,2026-12-04,10
+934,Sage Creek Hummus 10 oz,7.48,12.95,2026-11-26,10
+935,Copper Valley Hummus 10 oz,8.70,13.15,2026-11-25,10
+936,Juniper Trail Hummus 10 oz,9.13,13.75,2026-11-26,10
+937,Silver Orchard Hummus 10 oz,7.08,13.15,2026-12-04,10
+938,West Hearth Hummus 10 oz,9.79,13.19,2026-12-02,10
+939,Prairie Bend Hummus 10 oz,9.21,13.69,2026-12-01,10
+940,Oak Corner Hummus 10 oz,7.82,13.19,2026-12-03,10
+941,Cedar Lane Pasta Salad 12 oz,6.91,10.05,2026-11-25,10
+942,Blue Mill Pasta Salad 12 oz,7.01,11.05,2026-11-24,10
+943,North Grove Pasta Salad 12 oz,5.94,10.19,2026-11-27,10
+944,Sage Creek Pasta Salad 12 oz,5.43,10.99,2026-11-25,10
+945,Copper Valley Pasta Salad 12 oz,7.83,10.05,2026-11-24,10
+946,Juniper Trail Pasta Salad 12 oz,5.31,10.25,2026-11-17,10
+947,Silver Orchard Pasta Salad 12 oz,8.36,11.05,2026-12-02,10
+948,West Hearth Pasta Salad 12 oz,6.76,11.15,2026-11-27,10
+949,Prairie Bend Pasta Salad 12 oz,7.96,10.79,2026-12-02,10
+950,Oak Corner Pasta Salad 12 oz,5.26,10.09,2026-12-01,10
+951,Cedar Lane Chicken Caesar Wrap,8.23,13.79,2026-12-04,10
+952,Blue Mill Chicken Caesar Wrap,9.78,13.95,2026-11-24,10
+953,North Grove Chicken Caesar Wrap,9.03,13.85,2026-11-26,10
+954,Sage Creek Chicken Caesar Wrap,7.83,14.19,2026-11-24,10
+955,Copper Valley Chicken Caesar Wrap,9.87,13.79,2026-12-01,10
+956,Juniper Trail Chicken Caesar Wrap,10.55,13.99,2026-12-04,10
+957,Silver Orchard Chicken Caesar Wrap,6.61,13.39,2026-11-26,10
+958,West Hearth Chicken Caesar Wrap,7.72,13.75,2026-11-29,10
+959,Prairie Bend Chicken Caesar Wrap,9.99,13.65,2026-11-30,10
+960,Oak Corner Chicken Caesar Wrap,6.99,14.05,2026-11-26,10
+961,Cedar Lane Quinoa Bowl 12 oz,1.99,2.85,2026-12-01,10
+962,Blue Mill Quinoa Bowl 12 oz,1.74,3.49,2026-11-30,10
+963,North Grove Quinoa Bowl 12 oz,2.67,3.89,2026-11-30,10
+964,Sage Creek Quinoa Bowl 12 oz,2.39,3.49,2026-12-05,10
+965,Copper Valley Quinoa Bowl 12 oz,2.15,3.15,2026-11-27,10
+966,Juniper Trail Quinoa Bowl 12 oz,1.77,3.29,2026-12-01,10
+967,Silver Orchard Quinoa Bowl 12 oz,2.84,3.69,2026-11-24,10
+968,West Hearth Quinoa Bowl 12 oz,2.08,3.09,2026-11-24,10
+969,Prairie Bend Quinoa Bowl 12 oz,2.30,3.09,2026-12-03,10
+970,Oak Corner Quinoa Bowl 12 oz,2.62,3.49,2026-12-05,10
+971,Cedar Lane Pesto Tortellini 14 oz,2.66,4.59,2026-12-05,10
+972,Blue Mill Pesto Tortellini 14 oz,3.20,4.69,2026-11-24,10
+973,North Grove Pesto Tortellini 14 oz,2.80,4.79,2026-11-28,10
+974,Sage Creek Pesto Tortellini 14 oz,2.19,4.45,2026-12-02,10
+975,Copper Valley Pesto Tortellini 14 oz,3.03,4.59,2026-11-29,10
+976,Juniper Trail Pesto Tortellini 14 oz,3.09,5.09,2026-11-23,10
+977,Silver Orchard Pesto Tortellini 14 oz,2.22,4.39,2026-11-25,10
+978,West Hearth Pesto Tortellini 14 oz,3.47,4.59,2026-11-29,10
+979,Prairie Bend Pesto Tortellini 14 oz,2.80,4.95,2026-11-30,10
+980,Oak Corner Pesto Tortellini 14 oz,3.49,5.55,2026-11-29,10
+981,Cedar Lane Fresh Salsa 16 oz,5.30,7.55,2026-11-30,10
+982,Blue Mill Fresh Salsa 16 oz,5.43,7.29,2026-11-28,10
+983,North Grove Fresh Salsa 16 oz,3.45,6.75,2026-12-05,10
+984,Sage Creek Fresh Salsa 16 oz,5.33,7.45,2026-11-27,10
+985,Copper Valley Fresh Salsa 16 oz,5.15,6.75,2026-11-24,10
+986,Juniper Trail Fresh Salsa 16 oz,4.95,7.09,2026-12-05,10
+987,Silver Orchard Fresh Salsa 16 oz,5.81,7.95,2026-11-24,10
+988,West Hearth Fresh Salsa 16 oz,4.12,7.95,2026-12-05,10
+989,Prairie Bend Fresh Salsa 16 oz,4.44,6.75,2026-11-21,10
+990,Oak Corner Fresh Salsa 16 oz,3.87,6.89,2026-11-24,10
+991,Cedar Lane Roast Beef Slices 7 oz,4.32,8.29,2026-12-05,10
+992,Blue Mill Roast Beef Slices 7 oz,5.51,8.39,2026-11-25,10
+993,North Grove Roast Beef Slices 7 oz,5.68,8.65,2026-11-26,10
+994,Sage Creek Roast Beef Slices 7 oz,5.51,8.05,2026-11-29,10
+995,Copper Valley Roast Beef Slices 7 oz,4.91,9.19,2026-11-24,10
+996,Juniper Trail Roast Beef Slices 7 oz,5.06,8.25,2026-11-24,10
+997,Silver Orchard Roast Beef Slices 7 oz,6.04,8.39,2026-11-29,10
+998,West Hearth Roast Beef Slices 7 oz,6.85,8.79,2026-12-03,10
+999,Prairie Bend Roast Beef Slices 7 oz,4.02,8.05,2026-12-05,10
+1000,Oak Corner Roast Beef Slices 7 oz,6.96,9.19,2026-11-27,10

@@ -1,59 +1,63 @@
 CREATE TABLE CATEGORY (
-CategoryID INT NOT NULL AUTO_INCREMENT,
-CategoryName VARCHAR(100) NOT NULL,
-Description VARCHAR(255) DEFAULT NULL,
-PRIMARY KEY (CategoryID),
-CONSTRAINT uq_category_name UNIQUE (CategoryName)
+    CategoryID INT NOT NULL AUTO_INCREMENT,
+    CategoryName VARCHAR(100) NOT NULL,
+    Description VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (CategoryID),
+    CONSTRAINT uq_category_name UNIQUE (CategoryName)
 ) ENGINE = InnoDB;
+
 CREATE TABLE PRODUCT (
-ProductID INT NOT NULL AUTO_INCREMENT,
-ProductName VARCHAR(100) NOT NULL,
-PurchasePrice DECIMAL(10,2) NOT NULL,
-SellPrice DECIMAL(10,2) NOT NULL,
-ExpirationDate DATE DEFAULT NULL,
-CategoryID INT NOT NULL,
-PRIMARY KEY (ProductID),
-CONSTRAINT chk_product_purchase CHECK (PurchasePrice >= 0),
-CONSTRAINT chk_product_sell CHECK (SellPrice >= 0),
-CONSTRAINT fk_product_category FOREIGN KEY (CategoryID)
-REFERENCES CATEGORY (CategoryID) ON DELETE RESTRICT
+    ProductID INT NOT NULL AUTO_INCREMENT,
+    ProductName VARCHAR(100) NOT NULL,
+    PurchasePrice DECIMAL(10,2) NOT NULL,
+    SellPrice DECIMAL(10,2) NOT NULL,
+    ExpirationDate DATE DEFAULT NULL,
+    CategoryID INT NOT NULL,
+    PRIMARY KEY (ProductID),
+    CONSTRAINT chk_product_purchase CHECK (PurchasePrice >= 0),
+    CONSTRAINT chk_product_sell CHECK (SellPrice >= 0),
+    CONSTRAINT fk_product_category FOREIGN KEY (CategoryID)
+        REFERENCES CATEGORY (CategoryID) ON DELETE RESTRICT
 ) ENGINE = InnoDB;
+
 CREATE TABLE INVENTORY (
-InventoryID INT NOT NULL AUTO_INCREMENT,
-ProductID INT NOT NULL,
-Quantity INT NOT NULL DEFAULT 0,
-MinStock INT NOT NULL DEFAULT 0,
-LastUpdated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-ON UPDATE CURRENT_TIMESTAMP,
-PRIMARY KEY (InventoryID),
-CONSTRAINT uq_inventory_product UNIQUE (ProductID),
-CONSTRAINT chk_inventory_quantity CHECK (Quantity >= 0),
-CONSTRAINT chk_inventory_min_stock CHECK (MinStock >= 0),
-CONSTRAINT fk_inventory_product FOREIGN KEY (ProductID)
-REFERENCES PRODUCT (ProductID) ON DELETE CASCADE
+    InventoryID INT NOT NULL AUTO_INCREMENT,
+    ProductID INT NOT NULL,
+    Quantity INT NOT NULL DEFAULT 0,
+    MinStock INT NOT NULL DEFAULT 0,
+    LastUpdated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (InventoryID),
+    CONSTRAINT uq_inventory_product UNIQUE (ProductID),
+    CONSTRAINT chk_inventory_quantity CHECK (Quantity >= 0),
+    CONSTRAINT chk_inventory_min_stock CHECK (MinStock >= 0),
+    CONSTRAINT fk_inventory_product FOREIGN KEY (ProductID)
+        REFERENCES PRODUCT (ProductID) ON DELETE CASCADE
 ) ENGINE = InnoDB;
+
 CREATE TABLE SALE (
-SaleID INT NOT NULL AUTO_INCREMENT,
-SaleDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-TotalCost DECIMAL(10,2) NOT NULL DEFAULT 0.00,
-TotalRevenue DECIMAL(10,2) NOT NULL DEFAULT 0.00,
-PRIMARY KEY (SaleID),
-CONSTRAINT chk_sale_cost CHECK (TotalCost >= 0),
-CONSTRAINT chk_sale_revenue CHECK (TotalRevenue >= 0)
+    SaleID INT NOT NULL AUTO_INCREMENT,
+    SaleDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    TotalCost DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    TotalRevenue DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    PRIMARY KEY (SaleID),
+    CONSTRAINT chk_sale_cost CHECK (TotalCost >= 0),
+    CONSTRAINT chk_sale_revenue CHECK (TotalRevenue >= 0)
 ) ENGINE = InnoDB;
+
 CREATE TABLE SALEITEM (
-SaleItemID INT NOT NULL AUTO_INCREMENT,
-SaleID INT NOT NULL,
-ProductID INT NOT NULL,
-QuantitySold INT NOT NULL,
-UnitPrice DECIMAL(10,2) NOT NULL,
-UnitCost DECIMAL(10,2) NOT NULL,
-PRIMARY KEY (SaleItemID),
-CONSTRAINT chk_saleitem_quantity CHECK (QuantitySold > 0),
-CONSTRAINT chk_saleitem_price CHECK (UnitPrice >= 0),
-CONSTRAINT chk_saleitem_cost CHECK (UnitCost >= 0),
-CONSTRAINT fk_saleitem_sale FOREIGN KEY (SaleID)
-REFERENCES SALE (SaleID) ON DELETE CASCADE,
-CONSTRAINT fk_saleitem_product FOREIGN KEY (ProductID)
-REFERENCES PRODUCT (ProductID) ON DELETE RESTRICT
+    SaleItemID INT NOT NULL AUTO_INCREMENT,
+    SaleID INT NOT NULL,
+    ProductID INT NOT NULL,
+    QuantitySold INT NOT NULL,
+    UnitPrice DECIMAL(10,2) NOT NULL,
+    UnitCost DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (SaleItemID),
+    CONSTRAINT chk_saleitem_quantity CHECK (QuantitySold > 0),
+    CONSTRAINT chk_saleitem_price CHECK (UnitPrice >= 0),
+    CONSTRAINT chk_saleitem_cost CHECK (UnitCost >= 0),
+    CONSTRAINT fk_saleitem_sale FOREIGN KEY (SaleID)
+        REFERENCES SALE (SaleID) ON DELETE CASCADE,
+    CONSTRAINT fk_saleitem_product FOREIGN KEY (ProductID)
+        REFERENCES PRODUCT (ProductID) ON DELETE RESTRICT
 ) ENGINE = InnoDB;

@@ -1,91 +1,102 @@
 <?php
-require 'db.php';
+require __DIR__ . '/../server/app.php';
+require __DIR__ . '/../server/layout.php';
+requireAccount();
+require __DIR__ . '/db.php';
 
-$message = '';
-$error   = '';
-
-// Values used to pre-fill the form (blank, or an existing record when editing)
+$error = '';
+$products = [];
 $form = ['productId' => '', 'quantity' => '', 'minStock' => ''];
-
-// ---------- CREATE / UPDATE ----------
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $productId = filter_var($_POST['productId'] ?? '', FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
-    $quantity  = filter_var($_POST['quantity']  ?? '', FILTER_VALIDATE_INT, ['options' => ['min_range' => 0]]);
-    $minStock  = filter_var($_POST['minStock']  ?? '', FILTER_VALIDATE_INT, ['options' => ['min_range' => 0]]);
-
-    if ($productId === false || $quantity === false || $minStock === false) {
-        $error = "Please choose a product and enter whole numbers (0 or more) for both quantities.";
-        $form = [
-            'productId' => $_POST['productId'] ?? '',
-            'quantity'  => $_POST['quantity']  ?? '',
-            'minStock'  => $_POST['minStock']  ?? '',
-        ];
-    } else {
-        try {
-            $stmt = $pdo->prepare("SELECT InventoryID FROM INVENTORY WHERE ProductID = ?");
-            $stmt->execute([$productId]);
-
-            if ($stmt->fetch()) {
-                $pdo->prepare("UPDATE INVENTORY SET Quantity = ?, MinStock = ? WHERE ProductID = ?")
-                    ->execute([$quantity, $minStock, $productId]);
-                $msg = 'updated';
-            } else {
-                $pdo->prepare("INSERT INTO INVENTORY (ProductID, Quantity, MinStock) VALUES (?, ?, ?)")
-                    ->execute([$productId, $quantity, $minStock]);
-                $msg = 'created';
-            }
-            // Post/Redirect/Get so a refresh doesn't resubmit the form
-            header("Location: inventory-results.php?msg=$msg");
-            exit;
-        } catch (PDOException $e) {
-            $error = "Database error: " . $e->getMessage();
-        }
-    }
+$editing = isset($_GET['edit']);
+$editId = integer(INPUT_GET, 'edit');
+$record = false;
+$submitted = postRequest();
+if ($submitted) {
+    requireCsrf();
 }
 
-// ---------- Pre-fill when arriving from an "Edit" link ----------
-$editing = false;
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['edit'])) {
-    $editId = filter_var($_GET['edit'], FILTER_VALIDATE_INT);
-    if ($editId) {
-        $stmt = $pdo->prepare("SELECT ProductID, Quantity, MinStock FROM INVENTORY WHERE InventoryID = ?");
+try {
+    if ($editing && $editId !== null) {
+        if ($submitted) {
+            $pdo->beginTransaction();
+        }
+        $sql = "SELECT ProductID, Quantity, MinStock FROM INVENTORY WHERE InventoryID = ?";
+        $stmt = $pdo->prepare($submitted ? $sql . " FOR UPDATE" : $sql);
         $stmt->execute([$editId]);
-        if ($row = $stmt->fetch()) {
-            $form = ['productId' => $row['ProductID'], 'quantity' => $row['Quantity'], 'minStock' => $row['MinStock']];
-            $editing = true;
+        $record = $stmt->fetch();
+    }
+
+    if ($editing && !$record) {
+        http_response_code(404);
+        $error = "That inventory record no longer exists.";
+    } elseif ($submitted) {
+        $productId = $editing ? $record['ProductID'] : integer(INPUT_POST, 'productId');
+        $quantity = integer(INPUT_POST, 'quantity', 0);
+        $minStock = integer(INPUT_POST, 'minStock', 0);
+        $form = [
+            'productId' => $productId ?? '',
+            'quantity' => (string)filter_input(INPUT_POST, 'quantity'),
+            'minStock' => (string)filter_input(INPUT_POST, 'minStock'),
+        ];
+
+        if (!$productId || $quantity === null || $minStock === null) {
+            http_response_code(422);
+            $error = "Please choose a product and enter whole numbers (0 or more) for both quantities.";
+        } elseif ($editing) {
+            $pdo->prepare("UPDATE INVENTORY SET Quantity = ?, MinStock = ?, LastUpdated = CURRENT_TIMESTAMP WHERE InventoryID = ?")
+                ->execute([$quantity, $minStock, $editId]);
+            $msg = 'updated';
         } else {
-            $error = "That inventory record no longer exists.";
+            $pdo->beginTransaction();
+            // Serialize inventory creation for the same product across form submissions.
+            $stmt = $pdo->prepare("SELECT ProductID FROM PRODUCT WHERE ProductID = ? FOR UPDATE");
+            $stmt->execute([$productId]);
+            if (!$stmt->fetch()) {
+                $error = "That product no longer exists.";
+            } else {
+                $stmt = $pdo->prepare("SELECT InventoryID FROM INVENTORY WHERE ProductID = ? FOR UPDATE");
+                $stmt->execute([$productId]);
+
+                if ($stmt->fetch()) {
+                    $pdo->prepare("UPDATE INVENTORY SET Quantity = ?, MinStock = ?, LastUpdated = CURRENT_TIMESTAMP WHERE ProductID = ?")
+                        ->execute([$quantity, $minStock, $productId]);
+                    $msg = 'updated';
+                } else {
+                    $pdo->prepare("INSERT INTO INVENTORY (ProductID, Quantity, MinStock, LastUpdated) VALUES (?, ?, ?, CURRENT_TIMESTAMP)")
+                        ->execute([$productId, $quantity, $minStock]);
+                    $msg = 'created';
+                }
+            }
         }
+
+        if (isset($msg)) {
+            $pdo->commit();
+            redirect("inventory-results.php?msg=$msg");
+        }
+    } elseif ($editing) {
+        $form = ['productId' => $record['ProductID'], 'quantity' => $record['Quantity'], 'minStock' => $record['MinStock']];
+    }
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    http_response_code(500);
+    $error = $submitted ? "Could not save inventory." : "Could not load the inventory record.";
+} finally {
+    if ($pdo->inTransaction()) {
+        $pdo->rollBack();
     }
 }
 
-// Products for the dropdown
-$products = $pdo->query("SELECT ProductID, ProductName FROM PRODUCT ORDER BY ProductName")->fetchAll();
+if (!$editing || $record) {
+    try {
+        $products = $pdo->query("SELECT ProductID, ProductName FROM PRODUCT ORDER BY ProductName")->fetchAll();
+    } catch (PDOException $e) {
+        error_log($e->getMessage());
+        http_response_code(500);
+        $error = "Could not load products.";
+    }
+}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StockSmart - Inventory Update</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-  <div class="brand">
-    <h1>StockSmart</h1>
-    <h2>Inventory Update</h2>
-    <h3>Never run out. Never run over.</h3>
-  </div>
-  <nav>
-    <a href="index.html">Dashboard</a>
-    <a href="products.html">Products</a>
-    <a href="inventory.php" class="active">Inventory</a>
-    <a href="sales.html">Sales</a>
-    <a href="reports.html">Reports</a>
-  </nav>
-</header>
+<?php pageStart('Inventory Update', 'Inventory Update', 'inventory'); ?>
 
 <main>
   <aside class="sections">
@@ -98,12 +109,16 @@ $products = $pdo->query("SELECT ProductID, ProductName FROM PRODUCT ORDER BY Pro
 
     <?php if ($error): ?>
       <p style="color: #b00020; font-weight: bold;"><?= htmlspecialchars($error) ?></p>
+    <?php elseif (!$products): ?>
+      <p>Add a product before updating inventory.</p>
     <?php endif; ?>
 
-    <form action="inventory.php" method="POST">
+    <?php if ($products && (!$editing || $record)): ?>
+    <form action="inventory.php<?= $editing ? '?edit=' . $editId : '' ?>" method="POST">
+      <?= csrfField() ?>
 
       <label for="productId">Product:</label>
-      <select id="productId" name="productId" required>
+      <select id="productId" name="productId" <?= $editing ? 'disabled' : 'required' ?>>
         <option value="">Select Product</option>
         <?php foreach ($products as $prod): ?>
           <option value="<?= (int)$prod['ProductID'] ?>"
@@ -126,11 +141,12 @@ $products = $pdo->query("SELECT ProductID, ProductName FROM PRODUCT ORDER BY Pro
 
       <button type="submit"><?= $editing ? 'Save Changes' : 'Update Inventory' ?></button>
       <?php if ($editing): ?>
-        <a href="inventory.php"><button type="button">Cancel</button></a>
+        <a href="inventory-results.php">Cancel</a>
       <?php else: ?>
         <button type="reset">Clear Form</button>
       <?php endif; ?>
     </form>
+    <?php endif; ?>
   </section>
 </main>
 

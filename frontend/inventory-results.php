@@ -1,19 +1,36 @@
 <?php
-require 'db.php';
+require __DIR__ . '/../server/app.php';
+require __DIR__ . '/../server/layout.php';
+requireAccount();
+require __DIR__ . '/db.php';
 
 $error = '';
 
 // ---------- DELETE ----------
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
-    $id = filter_var($_POST['inventoryId'] ?? '', FILTER_VALIDATE_INT);
+if (postRequest() && input(INPUT_POST, 'action') === 'delete') {
+    if (!$isManager) {
+        http_response_code(403);
+        exit('Manager access is required.');
+    }
+    requireCsrf();
+    $id = integer(INPUT_POST, 'inventoryId');
     if ($id) {
         try {
-            $pdo->prepare("DELETE FROM INVENTORY WHERE InventoryID = ?")->execute([$id]);
-            header("Location: inventory-results.php?msg=deleted");
-            exit;
+            $stmt = $pdo->prepare("DELETE FROM INVENTORY WHERE InventoryID = ?");
+            $stmt->execute([$id]);
+            if ($stmt->rowCount() === 1) {
+                redirect('inventory-results.php?msg=deleted');
+            }
+            http_response_code(404);
+            $error = "That inventory record no longer exists.";
         } catch (PDOException $e) {
-            $error = "Could not delete: " . $e->getMessage();
+            error_log($e->getMessage());
+            http_response_code(500);
+            $error = "Could not delete the inventory record.";
         }
+    } else {
+        http_response_code(400);
+        $error = "Choose a valid inventory record to delete.";
     }
 }
 
@@ -23,11 +40,11 @@ $messages = [
     'updated' => 'Inventory record updated.',
     'deleted' => 'Inventory record deleted.',
 ];
-$message = $messages[$_GET['msg'] ?? ''] ?? '';
+$message = $messages[(string)filter_input(INPUT_GET, 'msg')] ?? '';
 
 // ---------- READ (with optional filters) ----------
-$search   = trim($_GET['searchName'] ?? '');
-$category = filter_var($_GET['category'] ?? '', FILTER_VALIDATE_INT);
+$search   = trim((string)filter_input(INPUT_GET, 'searchName'));
+$category = integer(INPUT_GET, 'category');
 $lowOnly  = isset($_GET['lowOnly']);
 
 $sql = "
@@ -56,36 +73,15 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $inventoryList = $stmt->fetchAll();
-    $categories = $pdo->query("SELECT CategoryID, CategoryName FROM CATEGORY ORDER BY CategoryName")->fetchAll();
+    $categories = categories($pdo);
 } catch (PDOException $e) {
-    $error = "Query failed: " . $e->getMessage();
+    error_log($e->getMessage());
+    http_response_code(500);
+    $error = "Could not load inventory results.";
     $categories = [];
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StockSmart - Inventory Query Results</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-  <div class="brand">
-    <h1>StockSmart</h1>
-    <h2>Inventory Update</h2>
-    <h3>Never run out. Never run over.</h3>
-  </div>
-  <nav>
-    <a href="index.html">Dashboard</a>
-    <a href="products.html">Products</a>
-    <a href="inventory.php" class="active">Inventory</a>
-    <a href="sales.html">Sales</a>
-    <a href="reports.html">Reports</a>
-  </nav>
-</header>
+<?php pageStart('Inventory Query Results', 'Inventory Update', 'inventory'); ?>
 
 <main>
   <aside class="sections">
@@ -110,11 +106,7 @@ try {
       <label for="category">Category:</label>
       <select id="category" name="category">
         <option value="">All Categories</option>
-        <?php foreach ($categories as $cat): ?>
-          <option value="<?= (int)$cat['CategoryID'] ?>" <?= ($category === (int)$cat['CategoryID']) ? 'selected' : '' ?>>
-            <?= htmlspecialchars($cat['CategoryName']) ?>
-          </option>
-        <?php endforeach; ?>
+        <?php categoryOptions($categories, $category); ?>
       </select>
 
       <label><input type="checkbox" name="lowOnly" value="1" <?= $lowOnly ? 'checked' : '' ?>> Low stock only</label>
@@ -151,12 +143,15 @@ try {
           <td><?= htmlspecialchars($row['LastUpdated']) ?></td>
           <td>
             <a href="inventory.php?edit=<?= (int)$row['InventoryID'] ?>">Edit</a>
+            <?php if ($isManager): ?>
             <form action="inventory-results.php" method="POST" style="display:inline"
                   onsubmit="return confirm('Delete this inventory record?');">
+              <?= csrfField() ?>
               <input type="hidden" name="action" value="delete">
               <input type="hidden" name="inventoryId" value="<?= (int)$row['InventoryID'] ?>">
               <button type="submit">Delete</button>
             </form>
+            <?php endif; ?>
           </td>
         </tr>
         <?php endforeach; ?>

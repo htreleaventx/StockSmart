@@ -1,10 +1,9 @@
 <?php
-// ---- Connection settings: change these to match YOUR local MySQL ----
-$host = '127.0.0.1';   // use 127.0.0.1 (TCP), NOT 'localhost' (which tries a Unix socket -> error 2002)
-$port = 3306;          // MAMP default is 8889
-$db   = 'stocksmart';
-$user = 'root';
-$pass = PLACEHOLDER_FOR_PASSWORD;
+$host = getenv('STOCKSMART_DB_HOST') ?: '127.0.0.1';
+$port = getenv('STOCKSMART_DB_PORT') ?: '3306';
+$db   = getenv('STOCKSMART_DB_NAME') ?: 'stocksmart';
+$user = getenv('STOCKSMART_DB_USER') ?: 'root';
+$pass = (string)getenv('STOCKSMART_DB_PASSWORD');
 
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$db;charset=utf8mb4", $user, $pass, [
@@ -13,6 +12,7 @@ try {
         PDO::ATTR_EMULATE_PREPARES   => false,
     ]);
 } catch (PDOException $e) {
+    error_log($e->getMessage());
     http_response_code(500);
-    die("Database connection failed: " . htmlspecialchars($e->getMessage()));
+    exit('Could not connect to the StockSmart database.');
 }
