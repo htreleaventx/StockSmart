@@ -1,5 +1,7 @@
 # StockSmart
 
+## https://stocksmart-production-2bd6ff93.up.railway.app/
+
 CS 4347 - Database Systems, Fall 2026, Group 14 Project:
 
 Grocery Inventory and Profit Management System that allows a business to efficiently track and manage its grocery products. 
