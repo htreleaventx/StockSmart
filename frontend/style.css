@@ -124,7 +124,7 @@ main {
   grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
   gap: clamp(16px, 2.5vw, 28px);
   padding: 0 clamp(16px, 3vw, 40px) 36px;
-  margin-top: 10px;
+  margin-top: -70px;
   align-items: start;
 }
 
@@ -170,8 +170,8 @@ main {
 
 .content {
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.95) 55%, rgba(255, 255, 255, 0.35) 100%),
-    url("veggies.jpg") right center / auto 100% no-repeat;
+    linear-gradient(90deg, rgba(255, 255, 255, 0.95) 55%, rgba(255, 255, 255, 0.45) 100%),
+    url("veggies.jpg") right top / cover no-repeat;
   border-radius: 20px;
   padding: clamp(20px, 3vw, 32px);
   box-shadow: 0 4px 14px rgba(7, 59, 49, 0.15);
@@ -296,6 +296,7 @@ td {
 thead th {
   background: var(--ink);
   color: #fff;
+  white-space: nowrap;
 }
 
 tbody tr:last-child > * {
@@ -345,9 +346,10 @@ table.totals th {
     flex: 1 1 130px;
     padding: 12px 10px;
   }
-
+  
   main {
     grid-template-columns: 1fr;
+    margin-top: 10px;
     padding: 20px;
   }
 
