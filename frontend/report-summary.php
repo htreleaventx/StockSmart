@@ -4,34 +4,43 @@ require __DIR__ . '/../server/layout.php';
 requireAccount(true);
 require __DIR__ . '/db.php';
 
-// Handle saving the currently viewed report into session
-if (postRequest() && input(INPUT_POST, 'action') === 'save_report') {
+$_SESSION['saved_reports'] ??= [];
+
+// Handle saving or removing a report bookmark
+if (postRequest()) {
     requireCsrf();
-    $saveType = input(INPUT_POST, 'reportType');
-    $saveStart = input(INPUT_POST, 'startDate');
-    $saveEnd = input(INPUT_POST, 'endDate');
-    if (in_array($saveType, ['weekly', 'monthly'], true) && validDate($saveStart) && validDate($saveEnd)) {
-        $_SESSION['saved_report'] = [
-            'reportType' => $saveType,
-            'startDate'  => $saveStart,
-            'endDate'    => $saveEnd,
+    $action = input(INPUT_POST, 'action');
+    $rType  = input(INPUT_POST, 'reportType');
+    $rStart = input(INPUT_POST, 'startDate');
+    $rEnd   = input(INPUT_POST, 'endDate');
+    $key    = "$rType|$rStart|$rEnd";
+
+    if ($action === 'save_report' && in_array($rType, ['weekly', 'monthly'], true) && validDate($rStart) && validDate($rEnd)) {
+        $_SESSION['saved_reports'][$key] = [
+            'reportType' => $rType,
+            'startDate'  => $rStart,
+            'endDate'    => $rEnd,
         ];
+        redirect('report-summary.php?' . http_build_query([
+            'reportType' => $rType,
+            'startDate'  => $rStart,
+            'endDate'    => $rEnd,
+            'saved'      => '1',
+        ]));
+    } elseif ($action === 'remove_report') {
+        unset($_SESSION['saved_reports'][$key]);
+        redirect('report-summary.php');
     }
-    redirect('report-summary.php?' . http_build_query([
-        'reportType' => $saveType,
-        'startDate'  => $saveStart,
-        'endDate'    => $saveEnd,
-        'saved'      => '1',
-    ]));
 }
 
-$saved = $_SESSION['saved_report'] ?? null;
+$savedList = $_SESSION['saved_reports'];
 $hasParams = isset($_GET['reportType']) || isset($_GET['startDate']) || isset($_GET['endDate']);
 
-if (!$hasParams && $saved) {
-    $report = $saved['reportType'];
-    $start  = $saved['startDate'];
-    $end    = $saved['endDate'];
+if (!$hasParams && !empty($savedList)) {
+    $latest = end($savedList);
+    $report = $latest['reportType'];
+    $start  = $latest['startDate'];
+    $end    = $latest['endDate'];
 } else {
     $report = input(INPUT_GET, 'reportType') ?: 'weekly';
     $today  = $pdo->query('SELECT CURRENT_DATE')->fetchColumn();
@@ -39,14 +48,12 @@ if (!$hasParams && $saved) {
     $end    = input(INPUT_GET, 'endDate') ?: $today;
 }
 
-$isAlreadySaved = $saved
-    && $saved['reportType'] === $report
-    && $saved['startDate'] === $start
-    && $saved['endDate'] === $end;
+$currentKey     = "$report|$start|$end";
+$isAlreadySaved = isset($savedList[$currentKey]);
 
 $periods = [];
-$error = '';
-$message = input(INPUT_GET, 'saved') === '1' ? 'Report saved! It will stay loaded when you navigate back to Report Summary.' : '';
+$error   = '';
+$message = input(INPUT_GET, 'saved') === '1' ? 'Report saved to your quick-access list below.' : '';
 $minReportDate = '2020-01-01';
 $maxReportDate = date('Y-m-d', strtotime('+1 year'));
 
@@ -93,9 +100,31 @@ if (!in_array($report, ['weekly', 'monthly'], true)
           <button type="submit" style="margin: 0; padding: 8px 18px; font-size: 0.9rem;">Save Report</button>
         </form>
       <?php elseif (!$error && $isAlreadySaved): ?>
-        <span class="btn-pill" style="margin: 0; cursor: default;">✓ Saved Report</span>
+        <span class="btn-pill" style="margin: 0; cursor: default;">✓ Saved</span>
       <?php endif; ?>
     </div>
+
+    <?php if (!empty($savedList)): ?>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0 6px;">
+        <span class="note" style="margin: 0; font-weight: 700;">Saved Reports:</span>
+        <?php foreach ($savedList as $key => $item): ?>
+          <?php $activePill = ($key === $currentKey); ?>
+          <span style="display: inline-flex; align-items: center; background: <?= $activePill ? 'var(--ink)' : '#e9f6d3' ?>; color: <?= $activePill ? '#fff' : 'var(--ink)' ?>; border: 1.5px solid var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 0.82rem; font-weight: 700;">
+            <a href="report-summary.php?<?= http_build_query($item) ?>" style="color: inherit; text-decoration: none; margin-right: 6px;">
+              <?= e(ucfirst($item['reportType'])) ?>: <?= e($item['startDate']) ?> → <?= e($item['endDate']) ?>
+            </a>
+            <form method="post" style="display: inline; margin: 0;">
+              <?= csrfField() ?>
+              <input type="hidden" name="action" value="remove_report">
+              <input type="hidden" name="reportType" value="<?= e($item['reportType']) ?>">
+              <input type="hidden" name="startDate" value="<?= e($item['startDate']) ?>">
+              <input type="hidden" name="endDate" value="<?= e($item['endDate']) ?>">
+              <button type="submit" title="Remove saved report" style="background: none; border: none; color: inherit; padding: 0 2px; margin: 0; font-size: 0.85rem; cursor: pointer;">✕</button>
+            </form>
+          </span>
+        <?php endforeach; ?>
+      </div>
+    <?php endif; ?>
 
     <?php pageMessage($error, $message); ?>
     <?php if (!$error): ?>
