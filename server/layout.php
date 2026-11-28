@@ -9,8 +9,65 @@ function pageStart(string $title, string $heading, string $section = ''): void
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StockSmart - <?= e($title) ?></title>
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('select').forEach((sel) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'custom-select-wrap';
+        sel.parentNode.insertBefore(wrap, sel);
+        wrap.appendChild(sel);
+
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'custom-select-trigger';
+        if (sel.disabled) trigger.disabled = true;
+        wrap.appendChild(trigger);
+
+        const menu = document.createElement('div');
+        menu.className = 'custom-select-menu';
+        wrap.appendChild(menu);
+
+        const sync = () => {
+          const opt = sel.selectedOptions[0];
+          trigger.textContent = opt ? opt.textContent : 'Select...';
+          menu.querySelectorAll('.custom-select-option').forEach((el, i) => {
+            el.classList.toggle('selected', i === sel.selectedIndex);
+          });
+        };
+
+        Array.from(sel.options).forEach((opt, idx) => {
+          const item = document.createElement('div');
+          item.className = 'custom-select-option';
+          item.textContent = opt.textContent;
+          item.addEventListener('click', () => {
+            sel.selectedIndex = idx;
+            sel.dispatchEvent(new Event('change', { bubbles: true }));
+            sync();
+            wrap.classList.remove('open');
+          });
+          menu.appendChild(item);
+        });
+
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('.custom-select-wrap.open').forEach((w) => {
+            if (w !== wrap) w.classList.remove('open');
+          });
+          wrap.classList.toggle('open');
+        });
+
+        sel.form?.addEventListener('reset', () => setTimeout(sync, 0));
+        sync();
+      });
+
+      document.addEventListener('click', () => {
+        document.querySelectorAll('.custom-select-wrap.open').forEach((w) => w.classList.remove('open'));
+      });
+    });
+  </script>
 </head>
+
 <body>
 <header>
   <div class="brand">
