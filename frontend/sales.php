@@ -61,9 +61,15 @@ if (postRequest()) {
       <label for="productId">Product:</label>
       <select id="productId" name="productId" required>
         <option value="">Select Product</option>
-        <?php foreach ($products as $product): ?>
-          <option value="<?= (int) $product['ProductID'] ?>" data-price="<?= e($product['SellPrice']) ?>"
-                  data-cost="<?= e($product['PurchasePrice']) ?>"><?= e($product['ProductName']) ?></option>
+          <?php foreach ($products as $product): ?>
+          <?php $inStock = max(0, (int)$product['Quantity'] - ($_SESSION['cart'][$product['ProductID']] ?? 0)); ?>
+          <option value="<?= (int) $product['ProductID'] ?>"
+                  data-price="<?= e($product['SellPrice']) ?>"
+                  data-cost="<?= e($product['PurchasePrice']) ?>"
+                  data-stock="<?= $inStock ?>"
+                  <?= ((string)($productId ?? '') === (string)$product['ProductID']) ? 'selected' : '' ?>>
+            <?= e($product['ProductName']) ?> (<?= $inStock ?> in stock)
+          </option>
         <?php endforeach; ?>
       </select>
       <br><br>
@@ -98,7 +104,8 @@ if (postRequest()) {
 </main>
 
 <script>
-  const product = document.getElementById('productId');
+    const product = document.getElementById('productId');
+  const qty = document.getElementById('quantitySold');
   const price = document.getElementById('unitPrice');
   const cost = document.getElementById('unitCost');
 
@@ -106,8 +113,12 @@ if (postRequest()) {
     const option = product.selectedOptions[0];
     price.value = option?.dataset.price ?? '';
     cost.value = option?.dataset.cost ?? '';
+    if (option?.dataset.stock) {
+      qty.max = option.dataset.stock;
+    } else {
+      qty.removeAttribute('max');
+    }
   }
-
   product.addEventListener('change', showPrices);
   product.form.addEventListener('reset', () => setTimeout(showPrices, 0));
   showPrices();
