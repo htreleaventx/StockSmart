@@ -42,46 +42,49 @@ if (input(INPUT_GET, 'deleted') === '1') {
     <a href="product-results.php" class="active">Product Query Results</a>
   </aside>
 
-  <section class="content">
+    <section class="content">
     <h3>Product Query Results</h3>
 
     <?php pageMessage($error, $message); ?>
+    <p class="note"><strong><?= count($products) ?></strong> <?= count($products) === 1 ? 'product' : 'products' ?> found</p>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Product ID</th>
-        <th>Product Name</th>
-        <th>Category</th>
-        <th>Purchase Price</th>
-        <th>Selling Price</th>
-        <th>Unit Profit</th>
-        <th>Expiration Date</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php foreach ($products as $product): ?>
+    <div class="table-wrap">
+      <table>
+        <thead>
         <tr>
-          <td><?= e($product['ProductID']) ?></td>
-          <td><?= e($product['ProductName']) ?></td>
-          <td><?= e($product['CategoryName']) ?></td>
-          <td><?= e($product['PurchasePrice']) ?></td>
-          <td><?= e($product['SellPrice']) ?></td>
-          <td><?= e($product['UnitProfit']) ?></td>
-          <td><?= e($product['ExpirationDate'] ?? '—') ?></td>
-          <td>
-            <a href="products.php?edit=<?= (int) $product['ProductID'] ?>">Edit</a>
-            <form method="post" style="display:inline" onsubmit="return confirm('Delete this product?');">
-              <?= csrfField() ?>
-              <input type="hidden" name="productId" value="<?= (int) $product['ProductID'] ?>">
-              <button type="submit">Delete</button>
-            </form>
-          </td>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Purchase Price</th>
+          <th>Selling Price</th>
+          <th>Unit Profit</th>
+          <th>Expiration Date</th>
+          <th>Actions</th>
         </tr>
-      <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <?php foreach ($products as $product): ?>
+          <tr>
+            <td><?= e($product['ProductID']) ?></td>
+            <td><?= e($product['ProductName']) ?></td>
+            <td><?= e($product['CategoryName']) ?></td>
+            <td><?= e($product['PurchasePrice']) ?></td>
+            <td><?= e($product['SellPrice']) ?></td>
+            <td><?= e($product['UnitProfit']) ?></td>
+            <td><?= e($product['ExpirationDate'] ?? '—') ?></td>
+            <td style="white-space: nowrap;">
+              <a href="products.php?edit=<?= (int) $product['ProductID'] ?>">Edit</a>
+              <form method="post" style="display:inline" onsubmit="return confirm('Delete this product?');">
+                <?= csrfField() ?>
+                <input type="hidden" name="productId" value="<?= (int) $product['ProductID'] ?>">
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   </section>
 </main>
 
