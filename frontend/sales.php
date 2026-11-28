@@ -18,9 +18,19 @@ if (postRequest()) {
     $productId = integer(INPUT_POST, 'productId');
     $quantity = integer(INPUT_POST, 'quantitySold');
     $total = ($quantity ?? 0) + ($_SESSION['cart'][$productId] ?? 0);
-    if (!$quantity || !isset($available[$productId]) || $total > $available[$productId]['Quantity']) {
+        if (!isset($available[$productId])) {
         http_response_code(422);
-        $error = 'Choose an available product and a quantity within its current stock.';
+        $error = 'Select an available product from the dropdown list.';
+    } elseif ($quantity === null) {
+        $maxAllowed = max(1, (int)$available[$productId]['Quantity'] - ($_SESSION['cart'][$productId] ?? 0));
+        http_response_code(422);
+        $error = "Enter a whole number quantity between 1 and $maxAllowed.";
+    } elseif ($total > $available[$productId]['Quantity']) {
+        $remaining = (int)$available[$productId]['Quantity'] - ($_SESSION['cart'][$productId] ?? 0);
+        http_response_code(422);
+        $error = $remaining > 0
+            ? "Enter a quantity between 1 and $remaining (only $remaining left in stock)."
+            : 'All available stock for this product is already in your current sale.';
     } else {
         try {
             saleAmounts($available[$productId], $total);
