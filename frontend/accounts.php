@@ -57,26 +57,30 @@ pageStart('User Management', 'User Management', 'dashboard');
       </div>
       <button type="submit">Save Account</button>
     </form>
-    <table>
-      <thead><tr><th>Username</th><th>Role</th><th>Actions</th></tr></thead>
-      <tbody>
-      <?php foreach ($accounts as $username => $account): ?>
-        <tr>
-          <td><?= e($username) ?></td>
-          <td><?= e(ucfirst($account['role'])) ?></td>
-          <td>
-            <?php if ($username !== $_SESSION['username']): ?>
-              <form method="post" onsubmit="return confirm('Delete this account?');">
-                <?= csrfField() ?>
-                <input type="hidden" name="username" value="<?= e($username) ?>">
-                <button type="submit" name="action" value="delete">Delete</button>
-              </form>
-            <?php endif; ?>
-          </td>
-        </tr>
-      <?php endforeach; ?>
-      </tbody>
-    </table>
+        <div class="table-wrap" style="margin-top: 20px;">
+      <table>
+        <thead><tr><th>Username</th><th>Role</th><th>Actions</th></tr></thead>
+        <tbody>
+        <?php foreach ($accounts as $username => $account): ?>
+          <tr>
+            <td><?= e($username) ?></td>
+            <td><?= e(ucfirst($account['role'])) ?></td>
+            <td>
+              <?php if ($username !== $_SESSION['username']): ?>
+                <form method="post" style="display:inline" onsubmit="return confirm('Delete this account?');">
+                  <?= csrfField() ?>
+                  <input type="hidden" name="username" value="<?= e($username) ?>">
+                  <button type="submit" name="action" value="delete">Delete</button>
+                </form>
+              <?php else: ?>
+                <span class="note">(Current user)</span>
+              <?php endif; ?>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   </section>
 </main>
 </body>
