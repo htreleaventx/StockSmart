@@ -74,6 +74,10 @@ if (postRequest()) {
       </select>
       <br><br>
 
+      <label for="availStock">Available Stock:</label>
+      <input type="text" id="availStock" readonly placeholder="Select a product">
+      <br><br>
+
       <label for="quantitySold">Quantity Sold:</label>
       <input type="number" id="quantitySold"
              name="quantitySold"
@@ -118,7 +122,9 @@ if (postRequest()) {
     } else {
       qty.removeAttribute('max');
     }
+    document.getElementById('availStock').value = option?.dataset.stock !== undefined ? option.dataset.stock : '';
   }
+  
   product.addEventListener('change', showPrices);
   product.form.addEventListener('reset', () => setTimeout(showPrices, 0));
   showPrices();
