@@ -168,10 +168,28 @@ main {
   color: #fff;
 }
 
+.sections form {
+  margin: 0;
+}
+
+.sections button[type="submit"] {
+  width: 100%;
+  margin: 0;
+  padding: 16px 22px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+.sections button[type="submit"]:hover {
+  background: #fff;
+}
+
 .content {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.96) 52%, rgba(255, 255, 255, 0.42) 100%),
-    url("veggies.jpg") right center / auto 100% repeat-y;
+    url("veggies.jpg") right top / 65% auto repeat-y;
   border-radius: 20px;
   padding: clamp(20px, 3vw, 32px);
   box-shadow: 0 4px 14px rgba(7, 59, 49, 0.15);
