@@ -74,32 +74,37 @@ if ($cart) {
     <h3>Current Sale</h3>
 
     <?php pageMessage($error, $message); ?>
-    <?php if (!$cart): ?><p class="note">No items in the current sale.</p><?php endif; ?>
+        <?php if (!$cart): ?><p class="note">No items in the current sale.</p><?php endif; ?>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Product</th>
-        <th>Quantity Sold</th>
-        <th>Unit Price</th>
-        <th>Unit Cost</th>
-        <th>Line Revenue</th>
-        <th>Line Cost</th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php foreach ($lines as [$product, $quantity, $lineRevenue, $lineCost]): ?>
+    <div class="table-wrap">
+      <table>
+        <thead>
         <tr>
-          <td><?= e($product['ProductName']) ?></td>
-          <td><?= e($quantity) ?></td>
-          <td><?= e($product['SellPrice']) ?></td>
-          <td><?= e($product['PurchasePrice']) ?></td>
-          <td><?= e(dollars($lineRevenue)) ?></td>
-          <td><?= e(dollars($lineCost)) ?></td>
+          <th>Product</th>
+          <th>Quantity Sold</th>
+          <th>Unit Price</th>
+          <th>Unit Cost</th>
+          <th>Line Revenue</th>
+          <th>Line Cost</th>
         </tr>
-      <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <?php if (!$lines): ?>
+          <tr><td colspan="6">Your cart is empty. Add items from the "Add Item to Sale" tab.</td></tr>
+        <?php endif; ?>
+        <?php foreach ($lines as [$product, $quantity, $lineRevenue, $lineCost]): ?>
+          <tr>
+            <td><?= e($product['ProductName']) ?></td>
+            <td><?= e($quantity) ?></td>
+            <td><?= e($product['SellPrice']) ?></td>
+            <td><?= e($product['PurchasePrice']) ?></td>
+            <td><?= e(dollars($lineRevenue)) ?></td>
+            <td><?= e(dollars($lineCost)) ?></td>
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
 
     <table class="totals">
       <tr>
