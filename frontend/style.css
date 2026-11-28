@@ -574,3 +574,54 @@ table.totals th {
   color: var(--ink);
   font-weight: 700;
 }
+
+/* ---------- In-Page Delete Confirmation Modal ---------- */
+.ss-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 59, 49, 0.55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.ss-modal {
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 24px 28px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 12px 32px rgba(7, 59, 49, 0.3);
+  text-align: center;
+}
+
+.ss-modal h4 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: 1.25rem;
+}
+
+.ss-modal p {
+  margin: 0 0 18px;
+  color: var(--ink-dark);
+  font-size: 0.98rem;
+}
+
+.ss-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ss-btn-danger {
+  background: #c0392b;
+  color: #fff;
+  border: 1.5px solid #c0392b;
+}
+
+.ss-btn-danger:hover {
+  background: #962d22;
+}
