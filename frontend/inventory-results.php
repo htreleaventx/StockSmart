@@ -98,70 +98,75 @@ try {
   <section class="content">
     <h3>Inventory Query Results</h3>
 
-    <?php pageMessage($error, $message); ?>
-
-    <form action="inventory-results.php" method="GET">
+    <?php pageMessage($error, $message); ?>    <form action="inventory-results.php" method="GET">
       <label for="searchName">Product Name:</label>
       <input type="text" id="searchName" name="searchName" value="<?= htmlspecialchars($search) ?>">
+      <br>
 
       <label for="category">Category:</label>
       <select id="category" name="category">
         <option value="">All Categories</option>
         <?php categoryOptions($categories, $category === false ? null : $category); ?>
       </select>
+      <br>
 
-      <label><input type="checkbox" name="lowOnly" value="1" <?= $lowOnly ? 'checked' : '' ?>> Low stock only</label>
+      <label style="width: auto; cursor: pointer;">
+        <input type="checkbox" name="lowOnly" value="1" <?= $lowOnly ? 'checked' : '' ?>> Low stock only
+      </label>
+      <br>
 
       <button type="submit">Filter</button>
-      <a href="inventory-results.php"><button type="button">Clear Filters</button></a>
+      <a href="inventory-results.php" class="btn-secondary">Clear Filters</a>
     </form>
 
     <?php if ($category !== false): ?>
-    <p class="note">Displaying live MySQL query results from the database.</p>
+    <p class="note"><strong><?= count($inventoryList) ?></strong> <?= count($inventoryList) === 1 ? 'record' : 'records' ?> found</p>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Inventory ID</th>
-        <th>Product</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Min Stock</th>
-        <th>Last Updated</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php if (count($inventoryList) > 0): ?>
-        <?php foreach ($inventoryList as $row): ?>
+    <div class="table-wrap">
+      <table>
+        <thead>
         <tr>
-          <td><?= (int)$row['InventoryID'] ?></td>
-          <td><?= htmlspecialchars($row['ProductName']) ?></td>
-          <td><?= htmlspecialchars($row['CategoryName']) ?></td>
-          <td <?= ($row['Quantity'] <= $row['MinStock']) ? 'style="color: red; font-weight: bold;"' : '' ?>>
-            <?= (int)$row['Quantity'] ?>
-          </td>
-          <td><?= (int)$row['MinStock'] ?></td>
-          <td><?= htmlspecialchars($row['LastUpdated']) ?></td>
-          <td>
-            <a href="inventory.php?edit=<?= (int)$row['InventoryID'] ?>">Edit</a>
-            <?php if ($isManager): ?>
-            <form action="inventory-results.php" method="POST" style="display:inline"
-                  onsubmit="return confirm('Delete this inventory record?');">
-              <?= csrfField() ?>
-              <input type="hidden" name="action" value="delete">
-              <input type="hidden" name="inventoryId" value="<?= (int)$row['InventoryID'] ?>">
-              <button type="submit">Delete</button>
-            </form>
-            <?php endif; ?>
-          </td>
+          <th>Inventory ID</th>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Min Stock</th>
+          <th>Last Updated</th>
+          <th>Actions</th>
         </tr>
-        <?php endforeach; ?>
-      <?php else: ?>
-        <tr><td colspan="7">No inventory records found.</td></tr>
-      <?php endif; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <?php if (count($inventoryList) > 0): ?>
+          <?php foreach ($inventoryList as $row): ?>
+          <tr>
+            <td><?= (int)$row['InventoryID'] ?></td>
+            <td><?= htmlspecialchars($row['ProductName']) ?></td>
+            <td><?= htmlspecialchars($row['CategoryName']) ?></td>
+            <td <?= ($row['Quantity'] <= $row['MinStock']) ? 'style="color: #b00020; font-weight: bold;"' : '' ?>>
+              <?= (int)$row['Quantity'] ?>
+            </td>
+            <td><?= (int)$row['MinStock'] ?></td>
+            <td><?= htmlspecialchars($row['LastUpdated']) ?></td>
+            <td style="white-space: nowrap;">
+              <a href="inventory.php?edit=<?= (int)$row['InventoryID'] ?>">Edit</a>
+              <?php if ($isManager): ?>
+              <form action="inventory-results.php" method="POST" style="display:inline"
+                    onsubmit="return confirm('Delete this inventory record?');">
+                <?= csrfField() ?>
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="inventoryId" value="<?= (int)$row['InventoryID'] ?>">
+                <button type="submit">Delete</button>
+              </form>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <tr><td colspan="7">No inventory records found.</td></tr>
+        <?php endif; ?>
+        </tbody>
+      </table>
+    </div>
     <?php endif; ?>
   </section>
 </main>
