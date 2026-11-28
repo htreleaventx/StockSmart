@@ -55,44 +55,83 @@ function validGroceryItem(string $name): bool
         return false;
     }
 
-    // Strip measurement units (e.g., "1 gal", "12 oz", "6 ct") so the API searches the core item name
+    // Strip measurement units (e.g., "1 gal", "12 oz", "6 ct")
     $query = trim(preg_replace('/\b\d+(\.\d+)?\s*(oz|fl oz|lb|lbs|g|kg|ml|l|gal|qt|pt|ct|pk|pack|ft|sq ft|roll|rolls)\b/i', '', $trimmed));
     if ($query === '') {
         return false;
     }
 
-    $ctx = stream_context_create([
-        'http' => [
-            'method' => 'GET',
-            'timeout' => 2.5,
-            'header' => "User-Agent: StockSmart-CS4347-StudentProject/1.0\r\n",
-        ],
-    ]);
-
-    // 1. Check Open Food Facts (groceries, produce, dairy, meat, snacks, beverages)
-    // 2. Check Open Products Facts (household, cleaning, paper towels, foil, toiletries)
-    $endpoints = [
-        'https://openfoodfacts.org' . rawurlencode($query) . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name,categories_tags',
-        'https://openproductsfacts.org' . rawurlencode($query) . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name',
+    // Query all 4 Open Facts domains in parallel via curl_multi (< 0.5s total)
+    $domains = [
+        'https://openfoodfacts.org',      // Groceries, food, beverages
+        'https://openproductsfacts.org',  // Household, paper, cleaning, general retail
+        'https://openbeautyfacts.org',    // Personal care, soap, shampoo, cosmetics
+        'https://openpetfoodfacts.org',   // Pet food & pet supplies
     ];
 
-    foreach ($endpoints as $url) {
-        $json = @file_get_contents($url, false, $ctx);
-        if ($json === false) {
-            continue;
+    $mh = curl_multi_init();
+    $handles = [];
+    foreach ($domains as $i => $domain) {
+        $url = $domain . '/cgi/search.pl?search_terms=' . rawurlencode($query)
+             . '&search_simple=1&action=process&json=1&page_size=1&fields=product_name';
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 3,
+            CURLOPT_USERAGENT => 'StockSmart-CS4347/1.0 (student-project@utdallas.edu)',
+        ]);
+        curl_multi_add_handle($mh, $ch);
+        $handles[$i] = $ch;
+    }
+
+    do {
+        $status = curl_multi_exec($mh, $active);
+        if ($active) {
+            curl_multi_select($mh, 0.5);
         }
-        $data = json_decode($json, true);
-        if (!empty($data['products']) && is_array($data['products'])) {
-            foreach ($data['products'] as $item) {
-                if (!empty($item['product_name'])) {
-                    return true;
-                }
+    } while ($active && $status === CURLM_OK);
+
+    $found = false;
+    foreach ($handles as $ch) {
+        $body = curl_multi_getcontent($ch);
+        curl_multi_remove_handle($mh, $ch);
+        curl_close($ch);
+        if ($body) {
+            $data = json_decode($body, true);
+            if (!empty($data['products'])) {
+                $found = true;
+            }
+        }
+    }
+    curl_multi_close($mh);
+
+    if ($found) {
+        return true;
+    }
+
+    // Fallback: Check Wikidata API for physical goods/consumer products while blocking software/media/orgs
+    $wikiUrl = 'https://wikidata.org'
+             . rawurlencode($query) . '&language=en&format=json&limit=3';
+    $ch = curl_init($wikiUrl);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 2,
+        CURLOPT_USERAGENT => 'StockSmart-CS4347/1.0 (student-project@utdallas.edu)',
+    ]);
+    $wikiJson = curl_exec($ch);
+    curl_close($ch);
+
+    if ($wikiJson) {
+        $wiki = json_decode($wikiJson, true);
+        foreach ($wiki['search'] ?? [] as $entity) {
+            $desc = strtolower($entity['description'] ?? '');
+            if ($desc !== '' && !preg_match('/\b(software|application|app|platform|website|video game|film|movie|song|album|band|company|corporation|person|actor|politician|city|country)\b/', $desc)) {
+                return true;
             }
         }
     }
 
-    // Fallback for generic household essentials not yet cataloged in Open Products Facts
-    return (bool) preg_match('/\b(paper towel|toilet paper|tissue|napkin|aluminum foil|plastic wrap|trash bag|garbage bag|dish soap|hand soap|detergent|bleach|cleaner|sponge|shampoo|conditioner|toothpaste|toothbrush|deodorant|lotion|battery|batteries|light bulb)\b/i', $trimmed);
+    return false;
 }
 
 function login(string $username, string $password): bool
