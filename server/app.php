@@ -22,18 +22,36 @@ function input(int $source, string $name): string
     return (string) filter_input($source, $name);
 }
 
-function integer(int $source, string $name, int $min = 1): ?int
+function integer(int $source, string $name, int $min = 1, int $max = 2147483647): ?int
 {
     $value = filter_input($source, $name, FILTER_VALIDATE_INT, [
-        'options' => ['min_range' => $min, 'max_range' => 2147483647],
+        'options' => ['min_range' => $min, 'max_range' => $max],
     ]);
     return is_int($value) ? $value : null;
 }
 
-function validDate(string $value): bool
+function validDate(string $value, ?string $minDate = null, ?string $maxDate = null): bool
 {
-    return preg_match('/\A([1-9]\d{3})-(\d{2})-(\d{2})\z/', $value, $parts)
-        && checkdate((int) $parts[2], (int) $parts[3], (int) $parts[1]);
+    if (!preg_match('/\A([1-9]\d{3})-(\d{2})-(\d{2})\z/', $value, $parts)
+        || !checkdate((int) $parts[2], (int) $parts[3], (int) $parts[1])) {
+        return false;
+    }
+    if ($minDate !== null && $value < $minDate) {
+        return false;
+    }
+    if ($maxDate !== null && $value > $maxDate) {
+        return false;
+    }
+    return true;
+}
+
+function validGroceryItem(string $name): bool
+{
+    if (!preg_match('/[a-zA-Z]/', $name) || !preg_match('/\A[a-zA-Z0-9\s\-\'&.,()%\/]+\z/', $name)) {
+        return false;
+    }
+    $blocked = '/\b(laptop|phone|iphone|macbook|ps5|xbox|television|tv|shirt|shoes|sneakers|car|tire|hammer|drill|furniture|sofa|chair|desk|book|toy|perfume|makeup)\b/i';
+    return !preg_match($blocked, $name);
 }
 
 function login(string $username, string $password): bool
