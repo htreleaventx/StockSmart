@@ -60,26 +60,37 @@ function validGroceryItem(string $name): bool
     if ($query === '') {
         return false;
     }
-
     // Query Open Food Facts API (free, no API key required)
     $url = 'https://openfoodfacts.org' . rawurlencode($query)
-         . '&search_simple=1&action=process&json=1&page_size=1&fields=product_name';
+         . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name,categories_tags';
 
     $ctx = stream_context_create([
         'http' => [
             'method' => 'GET',
-            'timeout' => 2.5,
+            'timeout' => 3.0,
             'header' => "User-Agent: StockSmart-CS4347-StudentProject/1.0\r\n",
         ],
     ]);
 
     $json = @file_get_contents($url, false, $ctx);
     if ($json === false) {
-        return true;
+        // Fallback if API is unreachable: require at least a common food/store unit or valid word
+        return (bool) preg_match('/\b(milk|bread|egg|apple|banana|chicken|beef|rice|pasta|cheese|yogurt|juice|water|cereal|soup|chip|cookie|soap|towel|paper)\b/i', $trimmed);
     }
 
     $data = json_decode($json, true);
-    return isset($data['count']) && (int)$data['count'] > 0;
+    if (empty($data['products']) || !is_array($data['products'])) {
+        return false;
+    }
+
+    // Confirm at least one returned result is a categorized food/grocery product
+    foreach ($data['products'] as $item) {
+        if (!empty($item['product_name']) && !empty($item['categories_tags'])) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function login(string $username, string $password): bool
