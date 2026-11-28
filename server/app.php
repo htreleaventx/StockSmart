@@ -77,18 +77,27 @@ function validGroceryItem(string $name): bool
         'https://openpetfoodfacts.org',
     ];
 
-    $queryWords = array_filter(preg_split('/[^a-z0-9]+/i', strtolower($query)), fn($w) => strlen($w) >= 3);
+    $queryLower = strtolower($query);
+    $queryWords = array_filter(preg_split('/[^a-z0-9]+/', $queryLower), fn($w) => strlen($w) >= 3);
 
     foreach ($domains as $domain) {
         $url = $domain . '/cgi/search.pl?search_terms=' . rawurlencode($query)
-             . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name';
+             . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name,categories_tags';
         $json = @file_get_contents($url, false, $ctx);
         if ($json) {
             $data = json_decode($json, true);
             foreach ($data['products'] ?? [] as $item) {
-                $pName = strtolower($item['product_name'] ?? '');
+                $pName = strtolower(trim($item['product_name'] ?? ''));
+                $cats = $item['categories_tags'] ?? [];
+                if ($pName === '' || empty($cats)) {
+                    continue;
+                }
+                // Match if query appears in product_name and product name isn't a long unrelated novelty title
+                if (str_contains($pName, $queryLower) && strlen($pName) <= strlen($queryLower) + 25) {
+                    return true;
+                }
                 foreach ($queryWords as $qw) {
-                    if ($pName !== '' && str_contains($pName, $qw)) {
+                    if (strlen($qw) >= 4 && str_contains($pName, $qw) && count($queryWords) >= 2) {
                         return true;
                     }
                 }
@@ -97,14 +106,15 @@ function validGroceryItem(string $name): bool
     }
 
     // 2. Fallback: Wikipedia REST Summary API (handles plurals like "Paper Towels" -> "Paper towel")
-    $wikiTitle = str_replace(' ', '_', ucfirst(strtolower($query)));
+    $wikiTitle = str_replace(' ', '_', ucfirst($queryLower));
     $wikiUrl = 'https://wikipedia.org' . rawurlencode($wikiTitle);
     $wikiJson = @file_get_contents($wikiUrl, false, $ctx);
     if ($wikiJson) {
         $wiki = json_decode($wikiJson, true);
         $extract = strtolower(($wiki['description'] ?? '') . ' ' . ($wiki['extract'] ?? ''));
         if (!empty($wiki['title']) && ($wiki['type'] ?? '') === 'standard') {
-            if (!preg_match('/\b(software|application|platform|website|video game|film|movie|television|song|album|band|company|corporation|person|actor|politician|city|country)\b/', $extract)) {
+            if (!preg_match('/\b(software|application|platform|website|video game|film|movie|television|song|album|band|company|corporation|person|actor|politician|city|country|emotion|feeling|insult|pejorative)\b/', $extract)
+                && preg_match('/\b(food|drink|beverage|fruit|vegetable|meat|fish|seafood|dairy|cheese|milk|bread|grain|cereal|snack|sweet|candy|spice|herb|sauce|oil|ingredient|dish|meal|edible|culinary|product|goods|merchandise|towel|paper|soap|detergent|cleaner|cleaning|hygiene|cosmetic|toiletry|packaging|container|bag|foil|household|battery|pet)\b/', $extract)) {
                 return true;
             }
         }
