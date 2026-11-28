@@ -24,9 +24,25 @@ function pageStart(string $title, string $heading, string $section = ''): void
         if (sel.disabled) trigger.disabled = true;
         wrap.appendChild(trigger);
 
-        const menu = document.createElement('div');
+                const menu = document.createElement('div');
         menu.className = 'custom-select-menu';
         wrap.appendChild(menu);
+
+        let searchInput = null;
+        if (sel.options.length > 8) {
+          searchInput = document.createElement('input');
+          searchInput.type = 'text';
+          searchInput.className = 'custom-select-search';
+          searchInput.placeholder = 'Type to filter...';
+          searchInput.addEventListener('click', (e) => e.stopPropagation());
+          searchInput.addEventListener('input', () => {
+            const q = searchInput.value.toLowerCase();
+            menu.querySelectorAll('.custom-select-option').forEach((el) => {
+              el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+            });
+          });
+          menu.appendChild(searchInput);
+        }
 
         const sync = () => {
           const opt = sel.selectedOptions[0];
@@ -55,6 +71,11 @@ function pageStart(string $title, string $heading, string $section = ''): void
             if (w !== wrap) w.classList.remove('open');
           });
           wrap.classList.toggle('open');
+          if (wrap.classList.contains('open') && searchInput) {
+            searchInput.value = '';
+            menu.querySelectorAll('.custom-select-option').forEach((el) => (el.style.display = ''));
+            setTimeout(() => searchInput.focus(), 0);
+          }
         });
 
         sel.form?.addEventListener('reset', () => setTimeout(sync, 0));
