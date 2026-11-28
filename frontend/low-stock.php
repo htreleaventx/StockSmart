@@ -38,31 +38,36 @@ try {
     <?php endif; ?>
 
     <?php if (!$error): ?>
-    <table>
-      <thead>
-      <tr>
-        <th>Product ID</th>
-        <th>Product Name</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Min Stock</th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php if (!$rows): ?>
-        <tr><td colspan="5">No low stock alerts.</td></tr>
-      <?php endif; ?>
-      <?php foreach ($rows as $row): ?>
+        <?php if (!$error): ?>
+    <p class="note"><strong><?= count($rows) ?></strong> <?= count($rows) === 1 ? 'item' : 'items' ?> low on stock</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
         <tr>
-          <td><?= (int)$row['ProductID'] ?></td>
-          <td><?= htmlspecialchars($row['ProductName']) ?></td>
-          <td><?= htmlspecialchars($row['CategoryName'] ?? '') ?></td>
-          <td><?= (int)$row['Quantity'] ?></td>
-          <td><?= (int)$row['MinStock'] ?></td>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Min Stock</th>
         </tr>
-      <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <?php if (!$rows): ?>
+          <tr><td colspan="5">No low stock alerts.</td></tr>
+        <?php endif; ?>
+        <?php foreach ($rows as $row): ?>
+          <tr>
+            <td><?= (int)$row['ProductID'] ?></td>
+            <td><?= htmlspecialchars($row['ProductName']) ?></td>
+            <td><?= htmlspecialchars($row['CategoryName'] ?? '') ?></td>
+            <td style="color: #b00020; font-weight: bold;"><?= (int)$row['Quantity'] ?></td>
+            <td><?= (int)$row['MinStock'] ?></td>
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+    <?php endif; ?>
     <?php endif; ?>
   </section>
 </main>
