@@ -46,10 +46,17 @@ if (input(INPUT_GET, 'deleted') === '1') {
     <h3>Product Query Results</h3>
 
     <?php pageMessage($error, $message); ?>
-    <p class="note"><strong><?= count($products) ?></strong> <?= count($products) === 1 ? 'product' : 'products' ?> found</p>
+
+    <div style="display: flex; gap: 10px; align-items: center; background: var(--ink); padding: 10px 14px; border-radius: 12px; margin: 10px 0;">
+      <input type="text" id="productSearch" placeholder="Search by ID, product name, or category..."
+             style="flex: 1; margin: 0; border: 1.5px solid #9fb88a; background: #fff; color: var(--ink-dark);">
+      <button type="button" id="clearProductSearch" class="btn-secondary" style="margin: 0; padding: 7px 14px; font-size: 0.85rem;">Clear</button>
+    </div>
+
+    <p class="note"><strong id="productCount"><?= count($products) ?></strong> <?= count($products) === 1 ? 'product' : 'products' ?> found</p>
 
     <div class="table-wrap">
-      <table>
+      <table id="productsTable">
         <thead>
         <tr>
           <th>Product ID</th>
@@ -87,6 +94,29 @@ if (input(INPUT_GET, 'deleted') === '1') {
     </div>
   </section>
 </main>
+<script>
+  const searchBox = document.getElementById('productSearch');
+  const clearBtn = document.getElementById('clearProductSearch');
+  const countEl = document.getElementById('productCount');
+  const rows = Array.from(document.querySelectorAll('#productsTable tbody tr'));
 
+  function filterProducts() {
+    const q = searchBox.value.trim().toLowerCase();
+    let visible = 0;
+    rows.forEach((tr) => {
+      const match = tr.textContent.toLowerCase().includes(q);
+      tr.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    countEl.textContent = visible;
+  }
+
+  searchBox.addEventListener('input', filterProducts);
+  clearBtn.addEventListener('click', () => {
+    searchBox.value = '';
+    filterProducts();
+    searchBox.focus();
+  });
+</script>
 </body>
 </html>
