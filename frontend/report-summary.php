@@ -37,41 +37,44 @@ if (!in_array($report, ['weekly', 'monthly'], true) || !validDate($start) || !va
     <a href="report-summary.php" class="active">Report Summary</a>
   </aside>
 
-  <section class="content">
+    <section class="content">
     <h3>Report Summary</h3>
 
     <?php pageMessage($error); ?>
     <?php if (!$error): ?>
-      <p class="note"><?= e(ucfirst($report)) ?> sales from <?= e($start) ?> to <?= e($end) ?>.</p>
+      <p class="note"><?= e(ucfirst($report)) ?> sales from <?= e($start) ?> to <?= e($end) ?> (<strong><?= count($periods) ?></strong> <?= count($periods) === 1 ? 'period' : 'periods' ?>).</p>
     <?php endif; ?>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Period</th>
-        <th>Total Sales</th>
-        <th>Total Cost</th>
-        <th>Total Revenue</th>
-        <th>Total Profit</th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php foreach ($periods as $period):
-          $first = new DateTimeImmutable($period['PeriodStart']);
-          $last = $first->modify($report === 'monthly' ? 'last day of this month' : '+6 days');
-      ?>
+    <div class="table-wrap">
+      <table>
+        <thead>
         <tr>
-          <td><?= e(max($first->format('Y-m-d'), $start)) ?> to <?= e(min($last->format('Y-m-d'), $end)) ?></td>
-          <td><?= e($period['TotalSales']) ?></td>
-          <td><?= e($period['TotalCost']) ?></td>
-          <td><?= e($period['TotalRevenue']) ?></td>
-          <td><?= e($period['TotalProfit']) ?></td>
+          <th>Period</th>
+          <th>Total Sales</th>
+          <th>Total Cost</th>
+          <th>Total Revenue</th>
+          <th>Total Profit</th>
         </tr>
-      <?php endforeach; ?>
-      <?php if (!$periods): ?><tr><td colspan="5">No sales to display.</td></tr><?php endif; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <?php foreach ($periods as $period):
+            $first = new DateTimeImmutable($period['PeriodStart']);
+            $last = $first->modify($report === 'monthly' ? 'last day of this month' : '+6 days');
+        ?>
+          <tr>
+            <td><?= e(max($first->format('Y-m-d'), $start)) ?> to <?= e(min($last->format('Y-m-d'), $end)) ?></td>
+            <td><?= e($period['TotalSales']) ?></td>
+            <td><?= e($period['TotalCost']) ?></td>
+            <td><?= e($period['TotalRevenue']) ?></td>
+            <td><?= e($period['TotalProfit']) ?></td>
+          </tr>
+        <?php endforeach; ?>
+        <?php if (!$periods): ?><tr><td colspan="5">No sales to display.</td></tr><?php endif; ?>
+        </tbody>
+      </table>
+    </div>
   </section>
+
 </main>
 
 </body>
