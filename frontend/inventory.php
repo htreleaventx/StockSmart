@@ -141,7 +141,7 @@ if (!$editing || $record) {
 
       <button type="submit"><?= $editing ? 'Save Changes' : 'Update Inventory' ?></button>
       <?php if ($editing): ?>
-        <a href="inventory-results.php">Cancel</a>
+        <a href="inventory-results.php" class="btn-secondary">Cancel</a>
       <?php else: ?>
         <button type="reset">Clear Form</button>
       <?php endif; ?>
