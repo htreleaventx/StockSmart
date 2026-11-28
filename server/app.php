@@ -61,71 +61,43 @@ function validGroceryItem(string $name): bool
         return false;
     }
 
-    // Query all 4 Open Facts domains in parallel via curl_multi (< 0.5s total)
+    $ctx = stream_context_create([
+        'http' => [
+            'method' => 'GET',
+            'timeout' => 2.5,
+            'ignore_errors' => true,
+            'header' => "User-Agent: StockSmart-CS4347/1.0 (student-project@utdallas.edu)\r\n",
+        ],
+    ]);
+
+    // 1. Query Open Facts v2 Search API across Food, Retail Products, Beauty & Pet Food
     $domains = [
-        'https://openfoodfacts.org',      // Groceries, food, beverages
-        'https://openproductsfacts.org',  // Household, paper, cleaning, general retail
-        'https://openbeautyfacts.org',    // Personal care, soap, shampoo, cosmetics
-        'https://openpetfoodfacts.org',   // Pet food & pet supplies
+        'https://openfoodfacts.org',
+        'https://openproductsfacts.org',
+        'https://openbeautyfacts.org',
+        'https://openpetfoodfacts.org',
     ];
 
-    $mh = curl_multi_init();
-    $handles = [];
-    foreach ($domains as $i => $domain) {
-        $url = $domain . '/cgi/search.pl?search_terms=' . rawurlencode($query)
-             . '&search_simple=1&action=process&json=1&page_size=1&fields=product_name';
-        $ch = curl_init($url);
-        curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => 3,
-            CURLOPT_USERAGENT => 'StockSmart-CS4347/1.0 (student-project@utdallas.edu)',
-        ]);
-        curl_multi_add_handle($mh, $ch);
-        $handles[$i] = $ch;
-    }
-
-    do {
-        $status = curl_multi_exec($mh, $active);
-        if ($active) {
-            curl_multi_select($mh, 0.5);
-        }
-    } while ($active && $status === CURLM_OK);
-
-    $found = false;
-    foreach ($handles as $ch) {
-        $body = curl_multi_getcontent($ch);
-        curl_multi_remove_handle($mh, $ch);
-        curl_close($ch);
-        if ($body) {
-            $data = json_decode($body, true);
+    foreach ($domains as $domain) {
+        $url = $domain . '/api/v2/search?search_terms=' . rawurlencode($query) . '&page_size=1&fields=product_name';
+        $json = @file_get_contents($url, false, $ctx);
+        if ($json) {
+            $data = json_decode($json, true);
             if (!empty($data['products'])) {
-                $found = true;
+                return true;
             }
         }
     }
-    curl_multi_close($mh);
 
-    if ($found) {
-        return true;
-    }
-
-    // Fallback: Check Wikidata API for physical goods/consumer products while blocking software/media/orgs
-    $wikiUrl = 'https://wikidata.org'
-             . rawurlencode($query) . '&language=en&format=json&limit=3';
-    $ch = curl_init($wikiUrl);
-    curl_setopt_array($ch, [
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 2,
-        CURLOPT_USERAGENT => 'StockSmart-CS4347/1.0 (student-project@utdallas.edu)',
-    ]);
-    $wikiJson = curl_exec($ch);
-    curl_close($ch);
-
+    // 2. Fallback: Wikipedia REST Summary API (automatically resolves plurals like "Paper Towels" -> "Paper towel")
+    $wikiTitle = str_replace(' ', '_', ucfirst(strtolower($query)));
+    $wikiUrl = 'https://wikipedia.org' . rawurlencode($wikiTitle);
+    $wikiJson = @file_get_contents($wikiUrl, false, $ctx);
     if ($wikiJson) {
         $wiki = json_decode($wikiJson, true);
-        foreach ($wiki['search'] ?? [] as $entity) {
-            $desc = strtolower($entity['description'] ?? '');
-            if ($desc !== '' && !preg_match('/\b(software|application|app|platform|website|video game|film|movie|song|album|band|company|corporation|person|actor|politician|city|country)\b/', $desc)) {
+        $extract = strtolower(($wiki['description'] ?? '') . ' ' . ($wiki['extract'] ?? ''));
+        if (!empty($wiki['title']) && ($wiki['type'] ?? '') === 'standard') {
+            if (!preg_match('/\b(software|application|platform|website|video game|film|movie|television|song|album|band|company|corporation|person|actor|politician|city|country)\b/', $extract)) {
                 return true;
             }
         }
