@@ -291,6 +291,38 @@ a.btn-pill:hover {
   background: #d7edc0;
 }
 
+/* Compact buttons inside table action cells */
+td a,
+td button {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 5px 12px;
+  margin: 2px 4px 2px 0;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+td a {
+  background: #e9f6d3;
+  color: var(--ink);
+  border: 1px solid #9fb88a;
+}
+
+td a:hover {
+  background: #d7edc0;
+}
+
+td button[type="submit"] {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+}
+
+td button[type="submit"]:hover {
+  background: #962d22;
+}
+
 /* ---------- Scrollable Compact Tables ---------- */
 .table-wrap {
   max-height: 360px;
