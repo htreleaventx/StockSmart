@@ -47,11 +47,39 @@ function validDate(string $value, ?string $minDate = null, ?string $maxDate = nu
 
 function validGroceryItem(string $name): bool
 {
-    if (!preg_match('/[a-zA-Z]/', $name) || !preg_match('/\A[a-zA-Z0-9\s\-\'&.,()%\/]+\z/', $name)) {
+    $trimmed = trim($name);
+    if (mb_strlen($trimmed) < 2 || mb_strlen($trimmed) > 100) {
         return false;
     }
-    $blocked = '/\b(laptop|phone|iphone|macbook|ps5|xbox|television|tv|shirt|shoes|sneakers|car|tire|hammer|drill|furniture|sofa|chair|desk|book|toy|perfume|makeup)\b/i';
-    return !preg_match($blocked, $name);
+    if (!preg_match('/[a-zA-Z]/', $trimmed) || !preg_match('/\A[a-zA-Z0-9\s\-\'&.,()%\/]+\z/', $trimmed)) {
+        return false;
+    }
+
+    // Strip measurement units (e.g., "1 gal", "12 oz", "500 ml") so the API searches the core item name
+    $query = trim(preg_replace('/\b\d+(\.\d+)?\s*(oz|fl oz|lb|lbs|g|kg|ml|l|gal|qt|pt|ct|pk|pack)\b/i', '', $trimmed));
+    if ($query === '') {
+        return false;
+    }
+
+    // Query Open Food Facts API (free, no API key required)
+    $url = 'https://openfoodfacts.org' . rawurlencode($query)
+         . '&search_simple=1&action=process&json=1&page_size=1&fields=product_name';
+
+    $ctx = stream_context_create([
+        'http' => [
+            'method' => 'GET',
+            'timeout' => 2.5,
+            'header' => "User-Agent: StockSmart-CS4347-StudentProject/1.0\r\n",
+        ],
+    ]);
+
+    $json = @file_get_contents($url, false, $ctx);
+    if ($json === false) {
+        return true;
+    }
+
+    $data = json_decode($json, true);
+    return isset($data['count']) && (int)$data['count'] > 0;
 }
 
 function login(string $username, string $password): bool
