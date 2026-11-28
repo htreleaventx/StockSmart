@@ -39,6 +39,40 @@ function pageStart(string $title, string $heading, string $section = ''): void
             const q = searchInput.value.toLowerCase();
             menu.querySelectorAll('.custom-select-option').forEach((el) => {
               el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+                    // Upgrade all browser confirm() forms to an in-page modal
+              document.querySelectorAll('form[onsubmit*="confirm("]').forEach((form) => {
+                const raw = form.getAttribute('onsubmit') || '';
+                const match = raw.match(/confirm\(['"](.+?)['"]\)/);
+                const msg = match ? match[1] : 'Are you sure you want to delete this record?';
+                form.removeAttribute('onsubmit');
+
+                form.addEventListener('submit', (e) => {
+                  if (form.dataset.confirmed === '1') return;
+                  e.preventDefault();
+
+                  const backdrop = document.createElement('div');
+                  backdrop.className = 'ss-modal-backdrop';
+                  backdrop.innerHTML = `
+                    <div class="ss-modal" role="dialog" aria-modal="true">
+                      <h4>Confirm Deletion</h4>
+                      <p>${msg}</p>
+                      <div class="ss-modal-actions">
+                        <button type="button" class="btn-secondary" id="ssCancel">Cancel</button>
+                        <button type="button" class="ss-btn-danger" id="ssConfirm">Delete</button>
+                      </div>
+                    </div>
+                  `;
+                  document.body.appendChild(backdrop);
+
+                  backdrop.querySelector('#ssCancel').addEventListener('click', () => backdrop.remove());
+                  backdrop.addEventListener('click', (ev) => { if (ev.target === backdrop) backdrop.remove(); });
+                  backdrop.querySelector('#ssConfirm').addEventListener('click', () => {
+                    form.dataset.confirmed = '1';
+                    backdrop.remove();
+                    form.submit();
+                  });
+                });
+              });
             });
           });
           menu.appendChild(searchInput);
