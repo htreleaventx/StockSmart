@@ -12,7 +12,7 @@ $saved = $_SESSION['saved_report'] ?? ['reportType' => '', 'startDate' => '', 'e
     <a href="report-summary.php">Report Summary</a>
   </aside>
 
-  <section class="content">
+    <section class="content" style="min-height: 62vh; display: flex; flex-direction: column; justify-content: center;">
     <h3>Generate Report</h3>
 
     <form action="report-summary.php" method="get">
