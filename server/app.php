@@ -44,7 +44,6 @@ function validDate(string $value, ?string $minDate = null, ?string $maxDate = nu
     }
     return true;
 }
-
 function validGroceryItem(string $name): bool
 {
     $trimmed = trim($name);
@@ -70,7 +69,7 @@ function validGroceryItem(string $name): bool
         ],
     ]);
 
-    // 1. Query Open Facts v2 Search API across Food, Retail Products, Beauty & Pet Food
+    // 1. Query Open Facts /cgi/search.pl across Food, Retail Products, Beauty & Pet Food
     $domains = [
         'https://openfoodfacts.org',
         'https://openproductsfacts.org',
@@ -78,18 +77,26 @@ function validGroceryItem(string $name): bool
         'https://openpetfoodfacts.org',
     ];
 
+    $queryWords = array_filter(preg_split('/[^a-z0-9]+/i', strtolower($query)), fn($w) => strlen($w) >= 3);
+
     foreach ($domains as $domain) {
-        $url = $domain . '/api/v2/search?search_terms=' . rawurlencode($query) . '&page_size=1&fields=product_name';
+        $url = $domain . '/cgi/search.pl?search_terms=' . rawurlencode($query)
+             . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name';
         $json = @file_get_contents($url, false, $ctx);
         if ($json) {
             $data = json_decode($json, true);
-            if (!empty($data['products'])) {
-                return true;
+            foreach ($data['products'] ?? [] as $item) {
+                $pName = strtolower($item['product_name'] ?? '');
+                foreach ($queryWords as $qw) {
+                    if ($pName !== '' && str_contains($pName, $qw)) {
+                        return true;
+                    }
+                }
             }
         }
     }
 
-    // 2. Fallback: Wikipedia REST Summary API (automatically resolves plurals like "Paper Towels" -> "Paper towel")
+    // 2. Fallback: Wikipedia REST Summary API (handles plurals like "Paper Towels" -> "Paper towel")
     $wikiTitle = str_replace(' ', '_', ucfirst(strtolower($query)));
     $wikiUrl = 'https://wikipedia.org' . rawurlencode($wikiTitle);
     $wikiJson = @file_get_contents($wikiUrl, false, $ctx);
