@@ -55,42 +55,44 @@ function validGroceryItem(string $name): bool
         return false;
     }
 
-    // Strip measurement units (e.g., "1 gal", "12 oz", "500 ml") so the API searches the core item name
-    $query = trim(preg_replace('/\b\d+(\.\d+)?\s*(oz|fl oz|lb|lbs|g|kg|ml|l|gal|qt|pt|ct|pk|pack)\b/i', '', $trimmed));
+    // Strip measurement units (e.g., "1 gal", "12 oz", "6 ct") so the API searches the core item name
+    $query = trim(preg_replace('/\b\d+(\.\d+)?\s*(oz|fl oz|lb|lbs|g|kg|ml|l|gal|qt|pt|ct|pk|pack|ft|sq ft|roll|rolls)\b/i', '', $trimmed));
     if ($query === '') {
         return false;
     }
-    // Query Open Food Facts API (free, no API key required)
-    $url = 'https://openfoodfacts.org' . rawurlencode($query)
-         . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name,categories_tags';
 
     $ctx = stream_context_create([
         'http' => [
             'method' => 'GET',
-            'timeout' => 3.0,
+            'timeout' => 2.5,
             'header' => "User-Agent: StockSmart-CS4347-StudentProject/1.0\r\n",
         ],
     ]);
 
-    $json = @file_get_contents($url, false, $ctx);
-    if ($json === false) {
-        // Fallback if API is unreachable: require at least a common food/store unit or valid word
-        return (bool) preg_match('/\b(milk|bread|egg|apple|banana|chicken|beef|rice|pasta|cheese|yogurt|juice|water|cereal|soup|chip|cookie|soap|towel|paper)\b/i', $trimmed);
-    }
+    // 1. Check Open Food Facts (groceries, produce, dairy, meat, snacks, beverages)
+    // 2. Check Open Products Facts (household, cleaning, paper towels, foil, toiletries)
+    $endpoints = [
+        'https://openfoodfacts.org' . rawurlencode($query) . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name,categories_tags',
+        'https://openproductsfacts.org' . rawurlencode($query) . '&search_simple=1&action=process&json=1&page_size=3&fields=product_name',
+    ];
 
-    $data = json_decode($json, true);
-    if (empty($data['products']) || !is_array($data['products'])) {
-        return false;
-    }
-
-    // Confirm at least one returned result is a categorized food/grocery product
-    foreach ($data['products'] as $item) {
-        if (!empty($item['product_name']) && !empty($item['categories_tags'])) {
-            return true;
+    foreach ($endpoints as $url) {
+        $json = @file_get_contents($url, false, $ctx);
+        if ($json === false) {
+            continue;
+        }
+        $data = json_decode($json, true);
+        if (!empty($data['products']) && is_array($data['products'])) {
+            foreach ($data['products'] as $item) {
+                if (!empty($item['product_name'])) {
+                    return true;
+                }
+            }
         }
     }
 
-    return false;
+    // Fallback for generic household essentials not yet cataloged in Open Products Facts
+    return (bool) preg_match('/\b(paper towel|toilet paper|tissue|napkin|aluminum foil|plastic wrap|trash bag|garbage bag|dish soap|hand soap|detergent|bleach|cleaner|sponge|shampoo|conditioner|toothpaste|toothbrush|deodorant|lotion|battery|batteries|light bulb)\b/i', $trimmed);
 }
 
 function login(string $username, string $password): bool
