@@ -67,31 +67,35 @@ if ($category === false) {
 
     <?php if (!$error): ?>
     <h3 class="spaced">Search Results</h3>
+    <p class="note"><strong><?= count($products) ?></strong> <?= count($products) === 1 ? 'product' : 'products' ?> found</p>
 
-    <?php if (!$products): ?><p class="note">No products found.</p><?php endif; ?>
-
-    <table>
-      <thead>
-      <tr>
-        <th>Product ID</th>
-        <th>Product Name</th>
-        <th>Category</th>
-        <th>Quantity</th>
-        <th>Expiration Date</th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php foreach ($products as $product): ?>
+    <div class="table-wrap">
+      <table>
+        <thead>
         <tr>
-          <td><?= e($product['ProductID']) ?></td>
-          <td><?= e($product['ProductName']) ?></td>
-          <td><?= e($product['CategoryName']) ?></td>
-          <td><?= e($product['Quantity']) ?></td>
-          <td><?= e($product['ExpirationDate'] ?? '—') ?></td>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Expiration Date</th>
         </tr>
-      <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <?php if (!$products): ?>
+          <tr><td colspan="5">No products found.</td></tr>
+        <?php endif; ?>
+        <?php foreach ($products as $product): ?>
+          <tr>
+            <td><?= e($product['ProductID']) ?></td>
+            <td><?= e($product['ProductName']) ?></td>
+            <td><?= e($product['CategoryName']) ?></td>
+            <td><?= e($product['Quantity']) ?></td>
+            <td><?= e($product['ExpirationDate'] ?? '—') ?></td>
+          </tr>
+        <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
     <?php endif; ?>
   </section>
 </main>
