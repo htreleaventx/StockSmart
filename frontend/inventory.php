@@ -31,8 +31,8 @@ try {
         $error = "That inventory record no longer exists.";
     } elseif ($submitted) {
         $productId = $editing ? $record['ProductID'] : integer(INPUT_POST, 'productId');
-        $quantity = integer(INPUT_POST, 'quantity', 0);
-        $minStock = integer(INPUT_POST, 'minStock', 0);
+        $quantity = integer(INPUT_POST, 'quantity', 0, 10000);
+        $minStock = integer(INPUT_POST, 'minStock', 0, 10000);
         $form = [
             'productId' => $productId ?? '',
             'quantity' => (string)filter_input(INPUT_POST, 'quantity'),
@@ -41,7 +41,7 @@ try {
 
         if (!$productId || $quantity === null || $minStock === null) {
             http_response_code(422);
-            $error = "Please choose a product and enter whole numbers (0 or more) for both quantities.";
+            $error = "Choose a product and enter whole numbers between 0 and 10,000 for Quantity and Minimum Stock.";
         } elseif ($editing) {
             $pdo->prepare("UPDATE INVENTORY SET Quantity = ?, MinStock = ?, LastUpdated = CURRENT_TIMESTAMP WHERE InventoryID = ?")
                 ->execute([$quantity, $minStock, $editId]);
