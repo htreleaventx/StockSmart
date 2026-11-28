@@ -544,6 +544,19 @@ table.totals th {
   display: block;
 }
 
+.custom-select-search {
+  width: calc(100% - 16px);
+  margin: 8px;
+  padding: 6px 10px;
+  border: 1.5px solid #9fb88a;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  position: sticky;
+  top: 8px;
+  background: #fff;
+  z-index: 2;
+}
+
 .custom-select-option {
   padding: 8px 12px;
   font-size: 0.88rem;
