@@ -7,10 +7,10 @@ require __DIR__ . '/db.php';
 $error = '';
 $rows = [];
 $expired = input(INPUT_GET, 'expired') === '1';
-$days = isset($_GET['expiringDays']) ? integer(INPUT_GET, 'expiringDays') : 10;
+$days = isset($_GET['expiringDays']) ? integer(INPUT_GET, 'expiringDays', 1, 365) : 10;
 if (!$expired && $days === null) {
-    http_response_code(400);
-    $error = 'Enter a whole number of days greater than zero.';
+    http_response_code(422);
+    $error = 'Enter a whole number of days between 1 and 365.';
 } else {
     try {
         $expiryFilter = $expired ? '< 0' : 'BETWEEN 0 AND ?';
