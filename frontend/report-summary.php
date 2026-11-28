@@ -10,9 +10,14 @@ $start = input(INPUT_GET, 'startDate') ?: (new DateTimeImmutable($today))->modif
 $end = input(INPUT_GET, 'endDate') ?: $today;
 $periods = [];
 $error = '';
-if (!in_array($report, ['weekly', 'monthly'], true) || !validDate($start) || !validDate($end) || $start > $end) {
+$minReportDate = '2020-01-01';
+$maxReportDate = date('Y-m-d', strtotime('+1 year'));
+if (!in_array($report, ['weekly', 'monthly'], true)
+    || !validDate($start, $minReportDate, $maxReportDate)
+    || !validDate($end, $minReportDate, $maxReportDate)
+    || $start > $end) {
     http_response_code(422);
-    $error = 'Choose a valid report type and date range.';
+    $error = "Choose a valid report type and a date range between $minReportDate and $maxReportDate (Start Date must be on or before End Date).";
 } else {
     $bucket = $report === 'monthly'
         ? "DATE_FORMAT(SaleDate, '%Y-%m-01')"
