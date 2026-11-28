@@ -100,12 +100,14 @@ if (postRequest()) {
              name="expirationDate" value="<?= e($product['ExpirationDate']) ?>">
       <br><br>
 
+
       <button type="submit"><?= $edit ? 'Save Changes' : 'Add Product' ?></button>
       <?php if ($edit): ?>
-        <a href="product-results.php">Go Back</a>
+        <a href="product-results.php" class="btn-secondary">Go Back</a>
       <?php else: ?>
         <button type="reset">Clear Form</button>
       <?php endif; ?>
+
     </form>
   </section>
 </main>
